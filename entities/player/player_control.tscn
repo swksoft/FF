@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3on7xv7vfpn2"]
+
+[ext_resource type="Script" path="res://entities/player/player_control.gd" id="1_4j8y3"]
+[ext_resource type="PackedScene" uid="uid://gyjyu2bliujw" path="res://entities/player/player.tscn" id="2_c3cs7"]
+
+[node name="PlayerControl" type="Node2D"]
+script = ExtResource("1_4j8y3")
+
+[node name="Player" parent="." instance=ExtResource("2_c3cs7")]
+
+[node name="Player2" parent="." instance=ExtResource("2_c3cs7")]
+speed = 165
+max_speed = 1010
+acceleration = 3020
+deceleration = 91
+stop_distance = 45
+slow_down_distance = 25
+cooldown = 1.5
+
+[node name="Player3" parent="." instance=ExtResource("2_c3cs7")]
+speed = 600
+max_speed = 1480
+acceleration = 6410
+deceleration = 76
+stop_distance = 10
+slow_down_distance = 15
+cooldown = 1.0
+
+[node name="Player4" parent="." instance=ExtResource("2_c3cs7")]
+max_speed = 500
+acceleration = 500
+cooldown = 0.15
