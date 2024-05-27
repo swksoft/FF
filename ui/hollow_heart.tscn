@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7pak185ttsq"]
+
+[ext_resource type="Texture2D" uid="uid://bj558t0fytfyl" path="res://assets/sprites/heart_hollow.png" id="1_neiq6"]
+
+[node name="HollowHeart" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_neiq6")

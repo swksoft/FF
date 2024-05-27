@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu3uy1pv8jksi"]
+
+[ext_resource type="Script" path="res://entities/bullet/trails.gd" id="1_dsneg"]
+
+[sub_resource type="Curve" id="Curve_7xe7e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Trails" type="Line2D"]
+top_level = true
+width = 2.0
+width_curve = SubResource("Curve_7xe7e")
+default_color = Color(1, 1, 1, 0.380392)
+script = ExtResource("1_dsneg")
+MAX_LENGHT = 5

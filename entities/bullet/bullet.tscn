@@ -1,23 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://by521l74ulvsi"]
+[gd_scene load_steps=6 format=3 uid="uid://by521l74ulvsi"]
 
 [ext_resource type="Script" path="res://entities/bullet/bullet.gd" id="1_18tu8"]
-[ext_resource type="Texture2D" uid="uid://ctgpemhy71i00" path="res://icon.svg" id="1_d7voo"]
+[ext_resource type="Texture2D" uid="uid://cwgtwt6aax2i0" path="res://assets/sprites/shot-1.png" id="2_rx2qq"]
+[ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/bullet/trails.tscn" id="3_28jn2"]
+[ext_resource type="AudioStream" uid="uid://cqpve1w6oh27o" path="res://assets/sfx/projectile1.wav" id="4_v1gxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iod2y"]
-size = Vector2(32, 6)
+size = Vector2(8, 8)
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["PlayerBullet"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_18tu8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.046875)
-texture = ExtResource("1_d7voo")
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rx2qq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iod2y")
 
+[node name="Trails" parent="." instance=ExtResource("3_28jn2")]
+
 [node name="Despawn" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v1gxu")
+volume_db = -35.0
+autoplay = true
 
 [connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://m7certu5eq1g"]
+[gd_scene load_steps=5 format=3 uid="uid://m7certu5eq1g"]
 
 [ext_resource type="Script" path="res://ui/map.gd" id="1_4rdsn"]
 [ext_resource type="Texture2D" uid="uid://ctgpemhy71i00" path="res://icon.svg" id="1_orgun"]
+[ext_resource type="Texture2D" uid="uid://cc1qwbqmf4x7r" path="res://assets/sprites/maptes.png" id="2_4ux84"]
+[ext_resource type="Texture2D" uid="uid://dgvbsno76t7fc" path="res://assets/sprites/heart.png" id="3_ge46m"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -13,13 +15,12 @@ grow_vertical = 2
 script = ExtResource("1_4rdsn")
 
 [node name="MapImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(640, 360)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_orgun")
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_4ux84")
+expand_mode = 1
 
 [node name="PointsArea" type="Control" parent="."]
 layout_mode = 1
@@ -32,14 +33,16 @@ metadata/_edit_lock_ = true
 
 [node name="Area1" type="VBoxContainer" parent="PointsArea"]
 layout_mode = 0
-offset_left = 58.0
+offset_left = 392.0
 offset_top = 128.0
-offset_right = 104.0
-offset_bottom = 177.0
+offset_right = 448.0
+offset_bottom = 208.0
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="PointsArea/Area1"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Area1"
 horizontal_alignment = 1
 
@@ -51,24 +54,26 @@ columns = 3
 [node name="Heart" type="TextureRect" parent="PointsArea/Area1/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart2" type="TextureRect" parent="PointsArea/Area1/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart3" type="TextureRect" parent="PointsArea/Area1/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="TakeAction0" type="TextureButton" parent="PointsArea/Area1"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_orgun")
 texture_pressed = ExtResource("1_orgun")
 texture_hover = ExtResource("1_orgun")
@@ -79,14 +84,16 @@ stretch_mode = 0
 
 [node name="Area2" type="VBoxContainer" parent="PointsArea"]
 layout_mode = 0
-offset_left = 451.0
-offset_top = 83.0
-offset_right = 497.0
-offset_bottom = 150.0
+offset_left = 474.0
+offset_top = 23.0
+offset_right = 530.0
+offset_bottom = 103.0
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="PointsArea/Area2"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Area2"
 horizontal_alignment = 1
 
@@ -98,24 +105,25 @@ columns = 3
 [node name="Heart" type="TextureRect" parent="PointsArea/Area2/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart2" type="TextureRect" parent="PointsArea/Area2/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart3" type="TextureRect" parent="PointsArea/Area2/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="TakeAction1" type="TextureButton" parent="PointsArea/Area2"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("1_orgun")
 texture_pressed = ExtResource("1_orgun")
 texture_hover = ExtResource("1_orgun")
@@ -126,14 +134,16 @@ stretch_mode = 0
 
 [node name="Area3" type="VBoxContainer" parent="PointsArea"]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 254.0
-offset_right = 342.0
-offset_bottom = 321.0
+offset_left = 288.0
+offset_top = 211.0
+offset_right = 334.0
+offset_bottom = 291.0
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="PointsArea/Area3"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Area3"
 horizontal_alignment = 1
 
@@ -145,12 +155,14 @@ columns = 3
 [node name="Heart3" type="TextureRect" parent="PointsArea/Area3/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="TakeAction2" type="TextureButton" parent="PointsArea/Area3"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_orgun")
 texture_pressed = ExtResource("1_orgun")
 texture_hover = ExtResource("1_orgun")
@@ -161,14 +173,16 @@ stretch_mode = 0
 
 [node name="Area4" type="VBoxContainer" parent="PointsArea"]
 layout_mode = 0
-offset_left = 244.0
-offset_top = 55.0
-offset_right = 290.0
-offset_bottom = 122.0
+offset_left = 187.0
+offset_top = 8.0
+offset_right = 233.0
+offset_bottom = 88.0
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="PointsArea/Area4"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Area4"
 horizontal_alignment = 1
 
@@ -180,18 +194,20 @@ columns = 3
 [node name="Heart2" type="TextureRect" parent="PointsArea/Area4/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart3" type="TextureRect" parent="PointsArea/Area4/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="TakeAction3" type="TextureButton" parent="PointsArea/Area4"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_orgun")
 texture_pressed = ExtResource("1_orgun")
 texture_hover = ExtResource("1_orgun")
@@ -202,14 +218,16 @@ stretch_mode = 0
 
 [node name="Area5" type="VBoxContainer" parent="PointsArea"]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 176.0
-offset_right = 253.0
-offset_bottom = 243.0
+offset_left = 151.0
+offset_top = 159.0
+offset_right = 199.0
+offset_bottom = 239.0
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="PointsArea/Area5"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Area5"
 horizontal_alignment = 1
 
@@ -221,18 +239,19 @@ columns = 3
 [node name="Heart" type="TextureRect" parent="PointsArea/Area5/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="Heart3" type="TextureRect" parent="PointsArea/Area5/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_orgun")
+texture = ExtResource("3_ge46m")
 expand_mode = 1
 
 [node name="TakeAction4" type="TextureButton" parent="PointsArea/Area5"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("1_orgun")
 texture_pressed = ExtResource("1_orgun")
 texture_hover = ExtResource("1_orgun")
@@ -242,8 +261,8 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [connection signal="pressed" from="PointsArea/Area1/TakeAction0" to="." method="_on_take_action_0_pressed"]
-[connection signal="pressed" from="PointsArea/Area2/TakeAction1" to="." method="_on_take_action_1_pressed"]
 [connection signal="pressed" from="PointsArea/Area2/TakeAction1" to="." method="_on_take_action_pressed"]
+[connection signal="pressed" from="PointsArea/Area2/TakeAction1" to="." method="_on_take_action_1_pressed"]
 [connection signal="pressed" from="PointsArea/Area3/TakeAction2" to="." method="_on_take_action_pressed"]
 [connection signal="pressed" from="PointsArea/Area3/TakeAction2" to="." method="_on_take_action_2_pressed"]
 [connection signal="pressed" from="PointsArea/Area4/TakeAction3" to="." method="_on_take_action_pressed"]

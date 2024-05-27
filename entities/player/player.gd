@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Player
+
+signal troop_down
 
 @export var bullet_scene : PackedScene
 
@@ -9,21 +12,35 @@ extends CharacterBody2D
 @export var deceleration = 1
 @export var stop_distance = 5
 @export var slow_down_distance = 50
+@export var offset : Vector2 = Vector2.ZERO
 
-@export var cooldown : float = 0.5
+@export var cooldown : float = 1.5
+@export var randomized : bool = false
 
 var direction = Vector2.ZERO
 var mouse_position = null
 
 @onready var cooldown_shoot = $CooldownShoot
 
-# TODO: QUE NO SEA POSIBLE MOVER AL PERSONAJE FUERA DE LA PANTALLA (si sacas el mouse de la ventana el personaje te sigue hasta ahí)
+# TODO: QUE DEJE DE VIBRAR
 
 func _ready():
+	randomize()
+	
+	if randomized == true:
+		randomize_stats()
+		
 	cooldown_shoot.wait_time = cooldown
 
+func randomize_stats():
+	offset = Vector2(randi_range(-16,100), randi_range(-100,100))
+	speed = randi_range(300, 700)
+	cooldown = randf_range(0.5, 2.0)
+	deceleration = randf_range(0.5, 1.5)
+	acceleration = randi_range(5000, 12000)
+
 func _physics_process(delta):
-	var mouse_position = get_global_mouse_position()
+	var mouse_position = get_global_mouse_position() + offset
 	var direction = (mouse_position - global_position).normalized()
 	var distance_to_mouse = global_position.distance_to(mouse_position)
 	
@@ -48,3 +65,10 @@ func shoot():
 
 func _on_cooldown_shoot_timeout():
 	shoot()
+
+func _on_hurtbox_area_entered(area):
+	print(area)
+	if area.is_in_group("Enemy") or area.is_in_group("EnemyBullet"):
+		GameEvents.emit_update_troop() # TODO: NO ES NECESARIO NO FUNCA ASI
+		queue_free()
+		
