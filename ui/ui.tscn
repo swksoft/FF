@@ -16,6 +16,9 @@ script = ExtResource("1_nxr6k")
 metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." groups=["ui_modulate"]]
+modulate = Color(0.298039, 0.396078, 0.490196, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
