@@ -10,9 +10,12 @@ func buy(id : int):
 		GameEvents.types_troop[id] += 1
 		GameEvents.current_money -= troop_type_price[id]
 		print("$", GameEvents.current_money)
+		print("troops: ", GameEvents.types_troop)
+		GameEvents.emit_update_general_data()
 	else:
 		print("You need more money.")
 		print("$", GameEvents.current_money)
+		print("troops: ", GameEvents.types_troop)
 
 func _on_done_button_pressed():
 	self.visible = false
