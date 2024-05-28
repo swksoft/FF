@@ -4,6 +4,8 @@ extends Control
 @onready var exit_button = $PanelContainer/VBoxContainer/Exit
 
 func _ready():
+	GameEvents.current_turn = 0
+	
 	start_button.grab_focus()
 	
 	match OS.get_name():

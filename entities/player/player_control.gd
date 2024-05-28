@@ -10,7 +10,7 @@ func _ready():
 	GameEvents.update_troop.connect(on_update_troop)
 	print("Fleet: ", get_children())
 	
-	for shoot in GameEvents.shoot_troops:
+	for shoot in GameEvents.types_troop[0]:
 		var shoot_type = shoot_type_scene.instantiate()
 		add_child(shoot_type)
 

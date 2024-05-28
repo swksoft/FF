@@ -14,8 +14,8 @@ script = ExtResource("1_fifkn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 910.0
-offset_bottom = 910.0
+offset_right = 491.0
+offset_bottom = 491.0
 texture = ExtResource("1_07ql3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

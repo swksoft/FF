@@ -1,4 +1,5 @@
 extends Player
+class_name Troop
 
 func shoot():
 	var bullet = bullet_scene.instantiate()

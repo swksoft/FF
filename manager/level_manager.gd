@@ -5,6 +5,8 @@ extends Node
 @export var money_get : int = 0
 @export var time : float = 120.0
 
+var total_enemies
+
 func on_kill_get(value):
 	money_get += value
 
