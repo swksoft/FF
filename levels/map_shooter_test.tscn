@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://chor52kqsx3p5"]
+[gd_scene load_steps=7 format=3 uid="uid://chor52kqsx3p5"]
 
 [ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="1_4ghid"]
 [ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_awc7n"]
-[ext_resource type="Script" path="res://manager/level_manager.gd" id="2_jxbc8"]
 [ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_2vj6e"]
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="4_1uxgn"]
 [ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="4_7o740"]
@@ -11,7 +10,6 @@
 [node name="MapShooter_Test" type="Node2D"]
 
 [node name="LevelManager" parent="." instance=ExtResource("1_awc7n")]
-script = ExtResource("2_jxbc8")
 
 [node name="ui_shooter" parent="." instance=ExtResource("1_4ghid")]
 layer = -1

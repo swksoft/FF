@@ -1,18 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1c1ta1d0hobh"]
+[gd_scene load_steps=7 format=3 uid="uid://b1c1ta1d0hobh"]
 
 [ext_resource type="PackedScene" uid="uid://m7certu5eq1g" path="res://ui/map.tscn" id="1_1ugiq"]
 [ext_resource type="PackedScene" uid="uid://dp2u4jfl1ru8f" path="res://manager/turn_manager.tscn" id="1_30uqp"]
 [ext_resource type="PackedScene" uid="uid://chqqqa7i6n1en" path="res://ui/ui.tscn" id="2_0tody"]
-[ext_resource type="AudioStream" uid="uid://m8fis8e5wgde" path="res://assets/music/mind.ogg" id="4_addla"]
+[ext_resource type="PackedScene" uid="uid://githl677oot" path="res://manager/money_manager.tscn" id="2_bpvdu"]
+[ext_resource type="PackedScene" uid="uid://dho3kphocfndk" path="res://manager/action_manager.tscn" id="3_qmv8t"]
+[ext_resource type="AudioStream" uid="uid://dusiyuqfbyftc" path="res://assets/music/overworld2.ogg" id="6_xetkl"]
 
 [node name="Main Scene" type="Node2D"]
 
 [node name="TurnManager" parent="." instance=ExtResource("1_30uqp")]
 
+[node name="MoneyManager" parent="." instance=ExtResource("2_bpvdu")]
+
+[node name="ActionManager" parent="." instance=ExtResource("3_qmv8t")]
+
 [node name="UI" parent="." instance=ExtResource("2_0tody")]
 
 [node name="Map" parent="." instance=ExtResource("1_1ugiq")]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_addla")
+process_mode = 3
+stream = ExtResource("6_xetkl")
+autoplay = true
+
+[connection signal="pressed" from="UI/CanvasLayer/ENDTURN" to="TurnManager" method="_on_endturn_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/ENDTURN" to="ActionManager" method="_on_endturn_pressed"]
+
+[editable path="UI"]
+[editable path="Map"]
