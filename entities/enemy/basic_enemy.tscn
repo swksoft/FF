@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bymn8ljt8aeps"]
+
+[ext_resource type="Texture2D" uid="uid://dpfg3fo57erru" path="res://assets/sprites/carne4.png" id="1_lxv3h"]
+[ext_resource type="Script" path="res://entities/enemy/basic_enemy.gd" id="1_nwoin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnphb"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rqfk"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6p4c"]
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_nwoin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bnphb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lxv3h")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_0rqfk")
+debug_color = Color(2.98411e-06, 0.638502, 0.37781, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_n6p4c")
+debug_color = Color(0.978037, 0, 0.399389, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

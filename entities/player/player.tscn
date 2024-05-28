@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://gyjyu2bliujw"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_gjltl"]
+[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="2_7u5hd"]
+[ext_resource type="Texture2D" uid="uid://44qfej66jfvr" path="res://assets/sprites/james.png" id="3_bxjg1"]
+[ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/bullet/trails.tscn" id="4_u1xur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sr4xg"]
+radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaoe1"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_gjltl")
+bullet_scene = ExtResource("2_7u5hd")
+
+[node name="Trails" parent="." instance=ExtResource("4_u1xur")]
+modulate = Color(0.496337, 0.496337, 0.496337, 1)
+z_index = -1
+width = 10.0
+MAX_LENGHT = 10
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bxjg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sr4xg")
+
+[node name="CooldownShoot" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_iaoe1")
+debug_color = Color(0.982628, 0, 0.360471, 0.42)
+
+[connection signal="timeout" from="CooldownShoot" to="." method="_on_cooldown_shoot_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

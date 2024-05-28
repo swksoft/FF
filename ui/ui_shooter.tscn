@@ -1,0 +1,156 @@
+[gd_scene load_steps=2 format=3 uid="uid://cln7640tkuc04"]
+
+[ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="1_8n2ms"]
+
+[node name="ui_shooter" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.529412)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PlayerTroopsContainer" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 64.0
+grow_vertical = 0
+theme = ExtResource("1_8n2ms")
+
+[node name="V" type="VBoxContainer" parent="Control/PlayerTroopsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -10.0
+offset_right = 26.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextTroops" type="Label" parent="Control/PlayerTroopsContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Total Troops"
+horizontal_alignment = 1
+
+[node name="TotalTroops" type="Label" parent="Control/PlayerTroopsContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "int"
+horizontal_alignment = 1
+
+[node name="TotalMoneyContainer" type="Panel" parent="Control"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 32.0
+theme = ExtResource("1_8n2ms")
+
+[node name="V" type="VBoxContainer" parent="Control/TotalMoneyContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -10.0
+offset_right = 24.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextMoney" type="Label" parent="Control/TotalMoneyContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Total Money"
+horizontal_alignment = 1
+
+[node name="TotalMoney" type="Label" parent="Control/TotalMoneyContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "$int"
+horizontal_alignment = 1
+
+[node name="EnemyTroopsContainer" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_8n2ms")
+
+[node name="V" type="VBoxContainer" parent="Control/EnemyTroopsContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Enemy Troops"
+horizontal_alignment = 1
+
+[node name="TotalTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "int"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -24.0
+offset_right = 145.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProTip" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Pro tip: You can escape with 'esc' key (you'll lose all your current money)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+show_percentage = false

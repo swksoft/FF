@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://m7certu5eq1g"]
+
+[ext_resource type="Texture2D" uid="uid://cc1qwbqmf4x7r" path="res://assets/sprites/maptes.png" id="2_4ux84"]
+[ext_resource type="PackedScene" uid="uid://bwyerofglbnnk" path="res://ui/terrain_icon.tscn" id="3_ja7is"]
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_4ux84")
+expand_mode = 1
+
+[node name="PointsArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TerrainIcon" parent="PointsArea" instance=ExtResource("3_ja7is")]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 176.0
+offset_right = 195.0
+offset_bottom = 232.0
+name_icon = "Bliblo"
+max_lives = 1
+
+[node name="TerrainIcon2" parent="PointsArea" instance=ExtResource("3_ja7is")]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 24.0
+offset_right = 229.0
+offset_bottom = 80.0
+name_icon = "Subus"
+max_lives = 2
+character = 2
+
+[node name="TerrainIcon3" parent="PointsArea" instance=ExtResource("3_ja7is")]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 228.0
+offset_right = 331.0
+offset_bottom = 284.0
+name_icon = "New Ocre"
+character = 0
+
+[node name="TerrainIcon4" parent="PointsArea" instance=ExtResource("3_ja7is")]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 145.0
+offset_right = 439.0
+offset_bottom = 201.0
+name_icon = "Aguascalientes"
+character = 1
+
+[node name="TerrainIcon5" parent="PointsArea" instance=ExtResource("3_ja7is")]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 39.0
+offset_right = 522.0
+offset_bottom = 95.0
+name_icon = "Ys"
+max_lives = 2
+character = 4

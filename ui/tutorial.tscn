@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0ucco71dbkiq"]
+
+[ext_resource type="Script" path="res://ui/tutorial.gd" id="1_aapb3"]
+[ext_resource type="Texture2D" uid="uid://c2a5ip5ggjfls" path="res://assets/sprites/tutojuegoses1.png" id="2_hm6kh"]
+[ext_resource type="Texture2D" uid="uid://dfruc0emtuqdy" path="res://assets/sprites/tutojuegoses2.png" id="3_68ft8"]
+[ext_resource type="Texture2D" uid="uid://dxqtsbdni6ama" path="res://assets/sprites/tutojuegoses3.png" id="4_dd8e2"]
+[ext_resource type="Texture2D" uid="uid://dh6kkww2qxt7b" path="res://assets/sprites/tutojuegoses4.png" id="5_cr0a8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uikq5"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="TutorialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aapb3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uikq5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "
+What the heck is happening?
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Hello everyone! Space Megasex' the name.
+Lately I've been liking this conquering thing
+So I hope you help me to do so."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture = ExtResource("2_hm6kh")
+expand_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "I'm not that strong, in fact, I die in one hit, so
+don't forget to get troops for me.
+Use the type you feel most comfortable."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture = ExtResource("3_68ft8")
+expand_mode = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "You can attack in wathever order you like.
+Every successful attackwill drain the terrain's hearts.
+If there are none hearts, then the terrain is yours!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture = ExtResource("4_dd8e2")
+expand_mode = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "If the enemy decides to attack you, you can either
+intercept them or retreat in case you don't have
+the required manpower."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture = ExtResource("5_cr0a8")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Fine."
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

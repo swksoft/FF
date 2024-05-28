@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://chqqqa7i6n1en"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_nxr6k"]
+[ext_resource type="PackedScene" uid="uid://ca6ybgp3mhvb7" path="res://ui/canvas_modulate.tscn" id="2_lhho1"]
+[ext_resource type="PackedScene" uid="uid://c6dcmkn0bwggl" path="res://ui/enable_disable_button_on_turn.tscn" id="3_beg2n"]
+[ext_resource type="PackedScene" uid="uid://dk0srfwbfdrak" path="res://ui/general_data_display.tscn" id="3_gyt4t"]
+[ext_resource type="PackedScene" uid="uid://crs5bvsnkishe" path="res://ui/stats_panel.tscn" id="3_iprop"]
+[ext_resource type="PackedScene" uid="uid://i4aj2qk6glgq" path="res://ui/shop.tscn" id="3_nlmlf"]
+[ext_resource type="PackedScene" uid="uid://c0ucco71dbkiq" path="res://ui/tutorial.tscn" id="4_56bi6"]
+[ext_resource type="Script" path="res://ui/enable_disable_button_on_turn.gd" id="4_woxfd"]
+[ext_resource type="Texture2D" uid="uid://44qfej66jfvr" path="res://assets/sprites/james.png" id="5_rm24b"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_nxr6k")
+metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CanvasModulate" parent="CanvasLayer" instance=ExtResource("2_lhho1")]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.298039)
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rm24b")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 241.0
+offset_bottom = -9.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="PanelContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Button"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Troop Data"
+
+[node name="EnableDisableButtonOnTurn" parent="CanvasLayer/HBoxContainer/Button" instance=ExtResource("3_beg2n")]
+script = ExtResource("4_woxfd")
+
+[node name="AddButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Buy fleet with money"
+theme_override_font_sizes/font_size = 11
+text = "Add troops"
+
+[node name="EnableDisableButtonOnTurn" parent="CanvasLayer/HBoxContainer/AddButton" instance=ExtResource("3_beg2n")]
+
+[node name="StatsPanel" parent="CanvasLayer" instance=ExtResource("3_iprop")]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = 32.0
+grow_horizontal = 0
+tooltip_text = "Feel free to check the tutorial."
+theme_override_font_sizes/font_size = 12
+text = "What to do?"
+
+[node name="EnableDisableButtonOnTurn" parent="CanvasLayer/Button" instance=ExtResource("3_beg2n")]
+
+[node name="ENDTURN" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -67.0
+offset_right = -12.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Pro-tip: You can earn a lot of money by fighting with
+several territories at the same time to receive 
+multiple counterattacks. But this will make 
+everything more complicated, as you can see."
+theme_override_font_sizes/font_size = 50
+text = "END TURN"
+
+[node name="EnableDisableButtonOnTurn" parent="CanvasLayer/ENDTURN" instance=ExtResource("3_beg2n")]
+
+[node name="GeneralDataDisplay" parent="CanvasLayer" instance=ExtResource("3_gyt4t")]
+mouse_filter = 2
+
+[node name="Shop" parent="CanvasLayer" instance=ExtResource("3_nlmlf")]
+visible = false
+
+[node name="TutorialScreen" parent="CanvasLayer" instance=ExtResource("4_56bi6")]
+visible = false
+
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

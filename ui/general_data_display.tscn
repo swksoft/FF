@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk0srfwbfdrak"]
+
+[ext_resource type="Script" path="res://ui/general_data_display.gd" id="1_mtkuf"]
+
+[node name="GeneralDataDisplay" type="HBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_right = 154.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+alignment = 1
+script = ExtResource("1_mtkuf")
+
+[node name="TurnLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Turn: int"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Money: $int"
+horizontal_alignment = 1
+
+[node name="ActionsLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Actions: $int"
+horizontal_alignment = 1

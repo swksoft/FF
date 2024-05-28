@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=3 uid="uid://i4aj2qk6glgq"]
+
+[ext_resource type="Script" path="res://ui/shop.gd" id="1_fvkmh"]
+[ext_resource type="Texture2D" uid="uid://ctgpemhy71i00" path="res://icon.svg" id="1_hok5y"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fvkmh")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Whitch type?"
+horizontal_alignment = 1
+
+[node name="Option1" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/Option1"]
+layout_mode = 2
+text = "Shoot ($315)"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option1"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_hok5y")
+expand_mode = 1
+
+[node name="BuyButton1" type="Button" parent="PanelContainer/VBoxContainer/Option1"]
+layout_mode = 2
+text = "+"
+
+[node name="Option2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/Option2"]
+layout_mode = 2
+text = "Laser ($500)"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_hok5y")
+expand_mode = 1
+
+[node name="BuyButton2" type="Button" parent="PanelContainer/VBoxContainer/Option2"]
+layout_mode = 2
+text = "+"
+
+[node name="Option3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/Option3"]
+layout_mode = 2
+text = "Homing ($675)"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option3"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_hok5y")
+expand_mode = 1
+
+[node name="BuyButton3" type="Button" parent="PanelContainer/VBoxContainer/Option3"]
+layout_mode = 2
+text = "+"
+
+[node name="Option4" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/Option4"]
+layout_mode = 2
+text = "Bomb ($888)"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option4"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_hok5y")
+expand_mode = 1
+
+[node name="BuyButton4" type="Button" parent="PanelContainer/VBoxContainer/Option4"]
+layout_mode = 2
+text = "+"
+
+[node name="Option5" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer/Option5"]
+layout_mode = 2
+text = "Shield ($475)"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option5"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_hok5y")
+expand_mode = 1
+
+[node name="BuyButton5" type="Button" parent="PanelContainer/VBoxContainer/Option5"]
+layout_mode = 2
+text = "+"
+
+[node name="DoneButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Done"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option1/BuyButton1" to="." method="_on_buy_button_1_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option2/BuyButton2" to="." method="_on_buy_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option2/BuyButton2" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option3/BuyButton3" to="." method="_on_buy_button_3_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option3/BuyButton3" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option4/BuyButton4" to="." method="_on_buy_button_4_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option4/BuyButton4" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option5/BuyButton5" to="." method="_on_buy_button_5_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option5/BuyButton5" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/DoneButton" to="." method="_on_done_button_pressed"]
