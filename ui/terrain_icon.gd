@@ -5,6 +5,14 @@ extends VBoxContainer
 @export var is_conquered : bool = false
 @export_enum("gomez", "miau", "alumina", "cagliostro", "bob") var character : int
 
+var character_names = {
+	0: "Gomez",
+	1: "Miau",
+	2: "Alumina",
+	3: "Cagliostro",
+	4: "Bob"
+}
+
 var heart_scene : PackedScene = load("res://ui/heart.tscn")
 var hollow_heart_scene : PackedScene = load("res://ui/hollow_heart.tscn")
 var heart_good : PackedScene = load("res://ui/heart_good.tscn")
@@ -16,18 +24,31 @@ var current_lives : int
 @onready var texture_button = $TextureButton
 
 func _ready():
+	texture_button.tooltip_text = "Name: " + str(character_names[character])
+	
 	current_lives = max_lives
 	label.text = str(name_icon)
 	
 	check_terrain_state()
+	
+	
 
-func _process(delta):
-	if Input.is_action_just_pressed("left"):
-		pass
-	elif Input.is_action_just_pressed("right"):
-		pass
+func damage_terrain():
+	current_lives -= 1
+	if current_lives <= 0:
+		print("taken")
+		is_conquered = true
+	print(current_lives)
+	
+	check_terrain_state()
+
+func recover_terrain():
+	pass
 
 func check_terrain_state():
+	for children in get_node("Lives").get_children():
+		children.queue_free()
+	
 	if is_conquered == false:
 		match character:
 			0:
@@ -63,3 +84,15 @@ func _on_failed_defense():
 	
 func _on_failed_conquest():
 	current_lives += 0
+
+
+func _on_texture_button_pressed():
+	if is_conquered or GameEvents.actions < 1:
+		print_debug("Unavailable")
+		return
+	
+	GameEvents.emit_action_taken()
+	
+	damage_terrain() # DEBUG
+	
+	#get_tree().change_scene_to_file("res://levels/map_shooter_test.tscn")
