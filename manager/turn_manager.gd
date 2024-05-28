@@ -18,6 +18,7 @@ func _on_endturn_pressed():
 	GameEvents.current_money += 100 + (100 * GameEvents.conquisted_territories)
 	
 	GameEvents.emit_player_turn_end()
+	await get_tree().create_timer(1.0).timeout
 	GameEvents.emit_update_general_data()
 	
 	# TODO: CUANDO PASE EL TURNO DEL ENEMIGO
