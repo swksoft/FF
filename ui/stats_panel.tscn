@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://crs5bvsnkishe"]
+
+[ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="1_qvhl5"]
+[ext_resource type="Script" path="res://ui/stats_panel.gd" id="2_sk1h7"]
+
+[node name="StatsPanel" type="Panel"]
+visible = false
+offset_left = 8.0
+offset_top = 184.0
+offset_right = 144.0
+offset_bottom = 312.0
+theme = ExtResource("1_qvhl5")
+script = ExtResource("2_sk1h7")
+metadata/_edit_group_ = true
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -58.0
+offset_right = 52.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Total" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Total Troops: 250"
+vertical_alignment = 1
+
+[node name="Shoot" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Shoot Type: 50"
+vertical_alignment = 1
+
+[node name="Laser" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Laser Type: 50"
+vertical_alignment = 1
+
+[node name="Homing" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Homing Type: 50"
+vertical_alignment = 1
+
+[node name="Shield" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Shield Type: 50"
+vertical_alignment = 1
+
+[node name="Bomb" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Bomb Type: 50"
+vertical_alignment = 1
