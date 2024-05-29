@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cln7640tkuc04"]
+[gd_scene load_steps=3 format=3 uid="uid://cln7640tkuc04"]
 
 [ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="1_8n2ms"]
+[ext_resource type="Script" path="res://ui/ui_shooter.gd" id="1_mrmt8"]
 
 [node name="ui_shooter" type="CanvasLayer"]
+script = ExtResource("1_mrmt8")
 
 [node name="Control" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.529412)
@@ -86,6 +88,41 @@ theme_override_font_sizes/font_size = 8
 text = "$int"
 horizontal_alignment = 1
 
+[node name="EarningsContainer2" type="Panel" parent="Control"]
+layout_mode = 1
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 32.0
+theme = ExtResource("1_8n2ms")
+
+[node name="V" type="VBoxContainer" parent="Control/EarningsContainer2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -10.0
+offset_right = 24.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextEarnings" type="Label" parent="Control/EarningsContainer2/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Earnings"
+horizontal_alignment = 1
+
+[node name="TotalEarnings" type="Label" parent="Control/EarningsContainer2/V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "$int"
+horizontal_alignment = 1
+
 [node name="EnemyTroopsContainer" type="Panel" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
@@ -115,13 +152,13 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
+[node name="TextEnemyTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Enemy Troops"
 horizontal_alignment = 1
 
-[node name="TotalTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
+[node name="TotalEnemyTroops" type="Label" parent="Control/EnemyTroopsContainer/V"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "int"
