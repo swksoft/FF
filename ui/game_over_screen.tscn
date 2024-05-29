@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://baubbuxjjja4y"]
+
+[ext_resource type="Texture2D" uid="uid://cc3bbeobhew1b" path="res://assets/screens/defeat.png" id="1_m5qse"]
+[ext_resource type="Script" path="res://ui/over_screen.gd" id="1_pqe7e"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqe7e")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m5qse")
+
+[node name="C" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="V" type="VBoxContainer" parent="C"]
+layout_mode = 2
+
+[node name="TextLabel1" type="Label" parent="C/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.478493, 0.931006, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Space Megasex is death."
+horizontal_alignment = 1
+
+[node name="TextLabel2" type="Label" parent="C/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.478493, 0.931006, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Next time, try to be more cautius,
+buy more troops, if you think you're
+going to lose, escape, you know the drill.
+
+Better luck next time!"
+horizontal_alignment = 1
+
+[node name="RecordLabel" type="Label" parent="C/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.478493, 0.931006, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "
+Your Record: int turns
+
+"
+horizontal_alignment = 1
+
+[node name="TextLabel3" type="Label" parent="C/V"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.478493, 0.931006, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Click this button to report the game
+to itch.io or want to go to the main menu:"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="C/V"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Click Here"
+
+[connection signal="pressed" from="C/V/Button" to="." method="_on_button_pressed"]
