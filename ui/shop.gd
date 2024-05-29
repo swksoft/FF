@@ -1,6 +1,6 @@
 extends Control
 
-var troop_type_price : Array = [315, 500, 675, 888, 475]
+var troop_type_price : Array = [315, 500, 1500, 888, 475]
 
 func _ready():
 	print("$", GameEvents.current_money)
