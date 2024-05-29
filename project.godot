@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="FF"
-run/main_scene="res://levels/main_scene.tscn"
+config/tags=PackedStringArray("jam")
+run/main_scene="res://levels/map_shooter_test.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://assets/icon.png"
 
 [autoload]
 
@@ -28,6 +33,7 @@ window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/gui/cursor.png"
 
 [editor_plugins]
 
@@ -72,7 +78,8 @@ right={
 2d_physics/layer_3="Projectile"
 2d_physics/layer_4="EnemyProjectile"
 2d_physics/layer_5="Boss"
-2d_physics/layer_6="wall"
+2d_physics/layer_6="Wall"
+2d_physics/layer_7="Troop"
 
 [rendering]
 
