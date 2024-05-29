@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://de2yk0a0l7sr8"]
+
+[ext_resource type="PackedScene" uid="uid://baubbuxjjja4y" path="res://ui/game_over_screen.tscn" id="1_d2t60"]
+[ext_resource type="Texture2D" uid="uid://dhmsrghsxgbkr" path="res://assets/screens/victory.png" id="2_enork"]
+
+[node name="WinScreen" instance=ExtResource("1_d2t60")]
+
+[node name="Image" parent="." index="0"]
+texture = ExtResource("2_enork")
+
+[node name="TextLabel1" parent="C/V" index="0"]
+text = "Space Megasex is alive"
+
+[node name="TextLabel2" parent="C/V" index="1"]
+text = "Very good, but I think you can do better."
+
+[node name="TextLabel3" parent="C/V" index="3"]
+text = "Click this button to donate $5 usd to
+SWKsoft entertainment or if
+you want to go to the main menu:"
