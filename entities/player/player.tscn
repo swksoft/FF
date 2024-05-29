@@ -1,9 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://gyjyu2bliujw"]
+[gd_scene load_steps=10 format=3 uid="uid://gyjyu2bliujw"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_gjltl"]
 [ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="2_7u5hd"]
-[ext_resource type="Texture2D" uid="uid://44qfej66jfvr" path="res://assets/sprites/james.png" id="3_bxjg1"]
+[ext_resource type="Texture2D" uid="uid://2ofhu7cdw8gm" path="res://assets/sprites/spacemegasex_48x48.png" id="4_f8d0c"]
 [ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/bullet/trails.tscn" id="4_u1xur"]
+
+[sub_resource type="Curve" id="Curve_wb842"]
+_data = [Vector2(0.0339171, 0.713508), 0.0, 0.0, 0, 0, Vector2(0.7779, 0.405258), 3.06442e-06, 3.06442e-06, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xwrq6"]
+curve = SubResource("Curve_wb842")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qchni"]
+emission_shape_offset = Vector3(0, 1, 0)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(-100, 0, 0)
+linear_accel_min = 90.0
+linear_accel_max = 90.0
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0.305882, 0.290196, 0.623529, 0.172549)
+alpha_curve = SubResource("CurveTexture_xwrq6")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr4xg"]
 radius = 15.0
@@ -16,24 +34,34 @@ collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_gjltl")
 bullet_scene = ExtResource("2_7u5hd")
+stop_distance = 1
+slow_down_distance = 100
 
 [node name="Trails" parent="." instance=ExtResource("4_u1xur")]
+visible = false
 modulate = Color(0.496337, 0.496337, 0.496337, 1)
 z_index = -1
 width = 10.0
 MAX_LENGHT = 10
 
+[node name="Particle" type="GPUParticles2D" parent="."]
+rotation = 1.5708
+process_material = SubResource("ParticleProcessMaterial_qchni")
+texture = ExtResource("4_f8d0c")
+lifetime = 0.25
+speed_scale = 2.0
+fixed_fps = 60
+
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_bxjg1")
+texture = ExtResource("4_f8d0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sr4xg")
 
 [node name="CooldownShoot" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 0

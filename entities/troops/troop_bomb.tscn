@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvmp51sdywh50"]
+
+[ext_resource type="PackedScene" uid="uid://dd4w57cb0bwcv" path="res://entities/troops/troop.tscn" id="1_oknpb"]
+[ext_resource type="Texture2D" uid="uid://4oti0onwt3yp" path="res://assets/sprites/troops_bomb5.png" id="2_3bjha"]
+[ext_resource type="Script" path="res://entities/troops/troop_bomb.gd" id="2_ydois"]
+[ext_resource type="PackedScene" uid="uid://bvfft881a7uv6" path="res://entities/bullet/bomb.tscn" id="3_uhrh2"]
+
+[node name="TroopBomb" instance=ExtResource("1_oknpb")]
+script = ExtResource("2_ydois")
+orbit_radius = 45
+orbit_speed = 6.28319
+bomb_scene = ExtResource("3_uhrh2")
+bullet_scene = null
+stop_distance = 5
+slow_down_distance = 50
+can_shoot = false
+
+[node name="Trails" parent="." index="0"]
+default_color = Color(1, 0.266667, 0.266667, 1)
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_3bjha")

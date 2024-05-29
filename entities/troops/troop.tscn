@@ -1,17 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd4w57cb0bwcv"]
+[gd_scene load_steps=5 format=3 uid="uid://dd4w57cb0bwcv"]
 
 [ext_resource type="PackedScene" uid="uid://gyjyu2bliujw" path="res://entities/player/player.tscn" id="1_u3sb7"]
 [ext_resource type="Script" path="res://entities/troops/troop.gd" id="2_6wy5l"]
-[ext_resource type="Texture2D" uid="uid://b88qgslfv501n" path="res://assets/sprites/heart_good.png" id="3_xu0wd"]
+[ext_resource type="Texture2D" uid="uid://id1rqod15c1l" path="res://assets/sprites/troops_shoot1.png" id="3_1nr1o"]
 
-[node name="Troop" groups=["Troop"] instance=ExtResource("1_u3sb7")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp0uh"]
+size = Vector2(16, 16)
+
+[node name="TroopShoot" groups=["Troop"] instance=ExtResource("1_u3sb7")]
 script = ExtResource("2_6wy5l")
 randomized = true
 
 [node name="Trails" parent="." index="0"]
-MAX_LENGHT = 3
+visible = true
+MAX_LENGHT = 5
 
-[node name="Sprite" parent="." index="1"]
+[node name="Particle" parent="." index="1"]
+visible = false
+
+[node name="Sprite" parent="." index="2"]
 rotation = 0.0
 scale = Vector2(1, 1)
-texture = ExtResource("3_xu0wd")
+texture = ExtResource("3_1nr1o")
+
+[node name="Hitbox" type="Area2D" parent="." index="5" groups=["Troop"]]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("RectangleShape2D_dp0uh")
+debug_color = Color(0.35279, 0.618967, 7.70092e-07, 0.42)
+
+[node name="Hurtbox" parent="." index="6" groups=["Troop"]]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

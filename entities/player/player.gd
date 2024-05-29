@@ -3,6 +3,8 @@ class_name Player
 
 signal troop_down
 
+# TODO: MAS TROPAS = MAS IMPRECISION
+
 @export var bullet_scene : PackedScene
 
 @export var speed = 500
@@ -13,6 +15,7 @@ signal troop_down
 @export var stop_distance = 5
 @export var slow_down_distance = 50
 @export var offset : Vector2 = Vector2.ZERO
+@export var can_shoot : bool = true
 
 @export var cooldown : float = 1.5
 @export var randomized : bool = false
@@ -22,7 +25,7 @@ var mouse_position = null
 
 @onready var cooldown_shoot = $CooldownShoot
 
-# TODO: QUE DEJE DE VIBRAR
+# FIXME: COLISIONES ROTAS
 
 func _ready():
 	randomize()
@@ -31,6 +34,8 @@ func _ready():
 		randomize_stats()
 		
 	cooldown_shoot.wait_time = cooldown
+	
+	cooldown_shoot.start()
 
 func randomize_stats():
 	offset = Vector2(randi_range(-16,100), randi_range(-100,100))
@@ -39,7 +44,7 @@ func randomize_stats():
 	deceleration = randf_range(0.5, 1.5)
 	acceleration = randi_range(5000, 12000)
 
-func _physics_process(delta):
+func follow_mouse(delta):
 	var mouse_position = get_global_mouse_position() + offset
 	var direction = (mouse_position - global_position).normalized()
 	var distance_to_mouse = global_position.distance_to(mouse_position)
@@ -53,22 +58,30 @@ func _physics_process(delta):
 			velocity = velocity.limit_length(max_speed)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration)
-
+	
 	move_and_slide()
+
+func _physics_process(delta):
+	follow_mouse(delta)
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.position = global_position
+	bullet.set_collision_layer_value(3, true)
 	
 	get_parent().add_child(bullet)
 
+func get_damage():
+	queue_free()
+
 func _on_cooldown_shoot_timeout():
-	shoot()
+	if can_shoot == true:
+		shoot()
 
 func _on_hurtbox_area_entered(area):
-	print(area)
 	if area.is_in_group("Enemy") or area.is_in_group("EnemyBullet"):
 		GameEvents.emit_update_troop() # TODO: NO ES NECESARIO NO FUNCA ASI
-		queue_free()
-		
+		get_damage()
+	if area.is_in_group("PlayerBullet"):
+		get_damage()
