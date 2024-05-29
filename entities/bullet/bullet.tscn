@@ -9,9 +9,10 @@
 size = Vector2(8, 8)
 
 [node name="Bullet" type="Area2D" groups=["PlayerBullet"]]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_18tu8")
+max_pierce = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -29,7 +30,7 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_v1gxu")
-volume_db = -35.0
+volume_db = -20.0
 autoplay = true
 
 [connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]
