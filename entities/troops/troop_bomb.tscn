@@ -18,5 +18,5 @@ can_shoot = false
 [node name="Trails" parent="." index="0"]
 default_color = Color(1, 0.266667, 0.266667, 1)
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("2_3bjha")

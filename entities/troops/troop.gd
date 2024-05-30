@@ -4,6 +4,9 @@ class_name Troop
 # TODO: RANDOMIZAR SEGUIMIENTO
 # TODO: RANDOMIZAR TIEMPO DE PROYECTIL EN PANTAYA (O CAMBIAR)
 
+func get_damage():
+	queue_free()
+
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	
