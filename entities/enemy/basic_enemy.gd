@@ -2,10 +2,10 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var speed : int = 160
-@export var direction = Vector2.LEFT
+@export var direction = Vector2.LEFT.normalized()
 @export var money_get = 5
 @export var randomized : bool = true
-
+@export var can_shoot : bool = true
 @export var bullet_scene : PackedScene
 
 func _ready():
@@ -43,4 +43,5 @@ func shoot():
 	get_parent().add_child(bullet)
 
 func _on_timer_timeout():
-	shoot()
+	if can_shoot == true:
+		shoot()

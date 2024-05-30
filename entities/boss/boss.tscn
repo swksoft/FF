@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ubslu6th643"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ubslu6th643"]
 
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_0beu4"]
 [ext_resource type="Script" path="res://entities/boss/boss.gd" id="2_enpuo"]
+[ext_resource type="Texture2D" uid="uid://cc5yhbxi7rgte" path="res://assets/sprites/gluglo1.png" id="3_8qs4k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e45ol"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as3mp"]
+size = Vector2(48, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gg884"]
+radius = 24.0832
 
 [node name="Boss" instance=ExtResource("1_0beu4")]
 script = ExtResource("2_enpuo")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_e45ol")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_8qs4k")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_as3mp")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_gg884")
