@@ -1,0 +1,105 @@
+[gd_scene load_steps=21 format=3 uid="uid://bellw87v5438m"]
+
+[ext_resource type="Script" path="res://EnemyExplosion.gd" id="1_ywo7j"]
+[ext_resource type="Texture2D" uid="uid://dsqkcjfcwleki" path="res://assets/sprites/explosion/spr_realisticexplosion_0.png" id="2_qu0me"]
+[ext_resource type="Texture2D" uid="uid://dd7omnr8e2npt" path="res://assets/sprites/explosion/spr_realisticexplosion_1.png" id="3_6tp25"]
+[ext_resource type="Texture2D" uid="uid://2jdlb05b3nox" path="res://assets/sprites/explosion/spr_realisticexplosion_2.png" id="4_2v05c"]
+[ext_resource type="Texture2D" uid="uid://dt8q3pvwbvfhu" path="res://assets/sprites/explosion/spr_realisticexplosion_3.png" id="5_t4gjv"]
+[ext_resource type="Texture2D" uid="uid://060srrdygkdv" path="res://assets/sprites/explosion/spr_realisticexplosion_4.png" id="6_8munx"]
+[ext_resource type="Texture2D" uid="uid://51xfjnc53cow" path="res://assets/sprites/explosion/spr_realisticexplosion_5.png" id="7_isos0"]
+[ext_resource type="Texture2D" uid="uid://c7sh0q1ooikrk" path="res://assets/sprites/explosion/spr_realisticexplosion_6.png" id="8_jh2mc"]
+[ext_resource type="Texture2D" uid="uid://b3a1cau3ysl3r" path="res://assets/sprites/explosion/spr_realisticexplosion_7.png" id="9_dackp"]
+[ext_resource type="Texture2D" uid="uid://cwo8qnagimlyp" path="res://assets/sprites/explosion/spr_realisticexplosion_9.png" id="10_batn8"]
+[ext_resource type="Texture2D" uid="uid://bq4pxwn4ajyv8" path="res://assets/sprites/explosion/spr_realisticexplosion_10.png" id="11_4pbu8"]
+[ext_resource type="Texture2D" uid="uid://b476cc5w3yc07" path="res://assets/sprites/explosion/spr_realisticexplosion_11.png" id="12_jawmy"]
+[ext_resource type="Texture2D" uid="uid://dnq1kaelut2c8" path="res://assets/sprites/explosion/spr_realisticexplosion_12.png" id="13_4ckch"]
+[ext_resource type="Texture2D" uid="uid://c4wrvk588ewng" path="res://assets/sprites/explosion/spr_realisticexplosion_13.png" id="14_eyjvl"]
+[ext_resource type="Texture2D" uid="uid://chf4iiwaeb6oc" path="res://assets/sprites/explosion/spr_realisticexplosion_14.png" id="15_vckge"]
+[ext_resource type="Texture2D" uid="uid://c3eor1r7tqlvg" path="res://assets/sprites/explosion/spr_realisticexplosion_15.png" id="16_h7vrj"]
+[ext_resource type="Texture2D" uid="uid://fe7qgiohro4m" path="res://assets/sprites/explosion/spr_realisticexplosion_16.png" id="17_btkft"]
+[ext_resource type="AudioStream" uid="uid://b07hrjnldpa3c" path="res://assets/sfx/explosion2.wav" id="18_5t2ba"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30oy6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qu0me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6tp25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2v05c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t4gjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8munx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_isos0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jh2mc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dackp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_batn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4pbu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jawmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4ckch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_eyjvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vckge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_h7vrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_btkft")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fbun"]
+size = Vector2(64, 64)
+
+[node name="EnemyBomb" type="Area2D"]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_ywo7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30oy6")
+animation = &"Explosion"
+autoplay = "Explosion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4fbun")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_5t2ba")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

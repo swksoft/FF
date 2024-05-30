@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://by6hy655p6o2v"]
+
+[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_c011k"]
+[ext_resource type="Script" path="res://entities/enemy/bomb_enemy.gd" id="2_4gd5s"]
+[ext_resource type="Texture2D" uid="uid://syf2twkypxeg" path="res://assets/sprites/enemy_troops_bomb_enemy5.png" id="2_q2lg3"]
+[ext_resource type="PackedScene" uid="uid://bellw87v5438m" path="res://entities/bullet/enemy_bomb.tscn" id="3_5tc1d"]
+
+[node name="BombEnemy" instance=ExtResource("1_c011k")]
+script = ExtResource("2_4gd5s")
+explosion_scene = ExtResource("3_5tc1d")
+bullet_scene = null
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_q2lg3")
+
+[node name="ExplosionTime" type="Timer" parent="." index="5"]
+wait_time = 8.0
+
+[connection signal="timeout" from="ExplosionTime" to="." method="_on_explosion_time_timeout"]
