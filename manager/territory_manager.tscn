@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc4o6dcil7wsk"]
+
+[ext_resource type="Script" path="res://manager/territory_manager.gd" id="1_stnr2"]
+
+[node name="TerritoryManager" type="Node"]
+script = ExtResource("1_stnr2")

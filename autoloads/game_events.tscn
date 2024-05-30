@@ -4,3 +4,4 @@
 
 [node name="GameEvents" type="Node"]
 script = ExtResource("1_73ncy")
+whos_turn = 1
