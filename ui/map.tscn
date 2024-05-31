@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://m7certu5eq1g"]
+[gd_scene load_steps=7 format=3 uid="uid://m7certu5eq1g"]
 
 [ext_resource type="Texture2D" uid="uid://cc1qwbqmf4x7r" path="res://assets/sprites/maptes.png" id="2_4ux84"]
+[ext_resource type="Texture2D" uid="uid://cnlemylgds476" path="res://assets/sprites/iconsga2.png" id="3_15agk"]
 [ext_resource type="PackedScene" uid="uid://bwyerofglbnnk" path="res://ui/terrain_icon.tscn" id="3_ja7is"]
+[ext_resource type="Texture2D" uid="uid://c53sxve1lu2kt" path="res://assets/sprites/iconsga4.png" id="4_veutn"]
+[ext_resource type="Texture2D" uid="uid://bvh5bago64fpw" path="res://assets/sprites/iconsga3.png" id="5_k61hb"]
+[ext_resource type="Texture2D" uid="uid://dcf11c5s50avt" path="res://assets/sprites/iconsga1.png" id="6_exb4p"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
@@ -34,8 +38,10 @@ offset_left = 155.0
 offset_top = 176.0
 offset_right = 195.0
 offset_bottom = 232.0
-name_icon = "Bliblo"
-max_lives = 1
+territory_name = "Bliblo"
+
+[node name="TextureButton" parent="PointsArea/TerrainIcon" index="0"]
+texture_normal = ExtResource("3_15agk")
 
 [node name="TerrainIcon2" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
@@ -43,9 +49,10 @@ offset_left = 189.0
 offset_top = 24.0
 offset_right = 229.0
 offset_bottom = 80.0
-name_icon = "Subus"
-max_lives = 2
-character = 2
+territory_name = "Subus"
+
+[node name="TextureButton" parent="PointsArea/TerrainIcon2" index="0"]
+texture_normal = ExtResource("4_veutn")
 
 [node name="TerrainIcon3" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
@@ -53,8 +60,10 @@ offset_left = 291.0
 offset_top = 228.0
 offset_right = 331.0
 offset_bottom = 284.0
-name_icon = "New Ocre"
-character = 0
+territory_name = "New Ocre"
+
+[node name="TextureButton" parent="PointsArea/TerrainIcon3" index="0"]
+texture_normal = ExtResource("5_k61hb")
 
 [node name="TerrainIcon4" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
@@ -62,8 +71,10 @@ offset_left = 399.0
 offset_top = 145.0
 offset_right = 439.0
 offset_bottom = 201.0
-name_icon = "Aguascalientes"
-character = 1
+territory_name = "Aguascalientes"
+
+[node name="TextureButton" parent="PointsArea/TerrainIcon4" index="0"]
+texture_normal = ExtResource("6_exb4p")
 
 [node name="TerrainIcon5" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
@@ -71,6 +82,10 @@ offset_left = 482.0
 offset_top = 39.0
 offset_right = 522.0
 offset_bottom = 95.0
-name_icon = "Ys"
-max_lives = 2
-character = 4
+territory_name = "Ys"
+
+[editable path="PointsArea/TerrainIcon"]
+[editable path="PointsArea/TerrainIcon2"]
+[editable path="PointsArea/TerrainIcon3"]
+[editable path="PointsArea/TerrainIcon4"]
+[editable path="PointsArea/TerrainIcon5"]

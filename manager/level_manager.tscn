@@ -5,3 +5,4 @@
 [node name="LevelManager" type="Node"]
 process_mode = 1
 script = ExtResource("1_1qdxe")
+countdown_time = 1.0

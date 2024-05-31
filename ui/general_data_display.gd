@@ -7,12 +7,11 @@ extends HBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.update_general_data.connect(on_general_data_update)
-	GameEvents.action_taken.connect(_on_action_taken)
 
 # TODO: ACLARAR QUE HACE CADA UNO (PANEL TOOLTIP)
 
 func update_hud():
-	turn_label.text = "TURN: " + str(GameEvents.current_turn+1)
+	turn_label.text = "TURN: " + str(GameEvents.current_turn)
 	money_label.text = "MONEY: $" + str(GameEvents.current_money)
 	if GameEvents.actions <= 0:
 		actions_label.add_theme_color_override("font_color", Color.RED)
@@ -23,6 +22,5 @@ func update_hud():
 func on_general_data_update():
 	update_hud()
 
-func _on_action_taken():
-	GameEvents.actions -= 1
+func _on_action_manager_change_hud_turns():
 	update_hud()

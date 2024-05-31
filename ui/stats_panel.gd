@@ -7,12 +7,11 @@ extends Panel
 @onready var shield = $V/Shield
 @onready var bomb = $V/Bomb
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.data_troup.connect(_on_data_troup_signal)
 
 func update():
-	total.text = "Total Troops: " + str(GameEvents.total_troops)
+	total.text = "Total Troops: " + str(GameEvents.get_total_troops())
 	shoot.text = "Shoot Type: " + str(GameEvents.types_troop[0])
 	laser.text = "Laser Type: " + str(GameEvents.types_troop[1])
 	homing.text = "Homing Type: " + str(GameEvents.types_troop[2])
@@ -21,5 +20,3 @@ func update():
 
 func _on_data_troup_signal():
 	update()
-
-

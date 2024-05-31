@@ -4,5 +4,3 @@
 
 [node name="TurnManager" type="Node"]
 script = ExtResource("1_erk3w")
-
-[connection signal="take_action" from="." to="." method="_on_take_action"]

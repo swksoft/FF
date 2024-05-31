@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal troop_down
+signal player_death
 
 # TODO: MAS TROPAS = MAS IMPRECISION
 
@@ -26,6 +27,9 @@ var mouse_position = null
 @onready var cooldown_shoot = $CooldownShoot
 
 # FIXME: COLISIONES ROTAS
+
+func get_damage():
+	call_deferred("emit_signal", "player_death")
 
 func _ready():
 	randomize()
@@ -72,8 +76,7 @@ func shoot():
 	
 	get_parent().add_child(bullet)
 
-func get_damage():
-	queue_free()
+
 
 func _on_cooldown_shoot_timeout():
 	if can_shoot == true:

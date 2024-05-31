@@ -4,8 +4,9 @@ var button : Control
 
 func _ready():
 	button = get_parent()
-	GameEvents.player_turn_start.connect(on_turn_start)
-	GameEvents.player_turn_end.connect(on_turn_end)
+	#GameEvents.player_turn_start.connect(on_turn_start)
+	#GameEvents.player_turn_end.connect(on_turn_end)
+	# FIXME: JIJI
 	
 func on_turn_start():
 	button.mouse_filter = Control.MOUSE_FILTER_STOP

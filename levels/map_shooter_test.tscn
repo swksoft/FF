@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chor52kqsx3p5"]
+[gd_scene load_steps=10 format=3 uid="uid://chor52kqsx3p5"]
 
 [ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="1_4ghid"]
 [ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_awc7n"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="4_1uxgn"]
 [ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="4_7o740"]
 [ext_resource type="AudioStream" uid="uid://cclx2sro3mg43" path="res://assets/music/technoboss.ogg" id="7_83hmy"]
+[ext_resource type="PackedScene" uid="uid://cl0o6t3fup2hn" path="res://entities/enemy/dvd_enemy.tscn" id="7_cggvr"]
+[ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="7_cytem"]
+[ext_resource type="PackedScene" uid="uid://by6hy655p6o2v" path="res://entities/enemy/bomb_enemy.tscn" id="8_fqn3b"]
 
 [node name="MapShooter_Test" type="Node2D"]
 
@@ -18,12 +21,32 @@ layer = -1
 collision_layer = 32
 collision_mask = 0
 
+[node name="AreaDespawn" parent="." instance=ExtResource("7_cytem")]
+collision_layer = 130
+
 [node name="PlayerControl" parent="." instance=ExtResource("4_7o740")]
 
-[node name="BasicEnemy" parent="." instance=ExtResource("4_1uxgn")]
-position = Vector2(440, 184)
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("4_1uxgn")]
+position = Vector2(600, 184)
+can_shoot = false
+
+[node name="DvdEnemy" parent="Enemies" instance=ExtResource("7_cggvr")]
+position = Vector2(736, 120)
+
+[node name="BombEnemy" parent="Enemies" instance=ExtResource("8_fqn3b")]
+position = Vector2(464, 136)
+can_shoot = false
 
 [node name="MusicPlay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_83hmy")
 
+[connection signal="time_passed_hud" from="LevelManager" to="ui_shooter" method="_on_level_manager_time_passed_hud"]
+[connection signal="update_hud" from="LevelManager" to="ui_shooter" method="_on_level_manager_update_hud"]
+[connection signal="change_escape_hud" from="PlayerControl" to="ui_shooter" method="_on_player_control_change_escape_hud"]
+[connection signal="change_troop_hud" from="PlayerControl" to="ui_shooter" method="_on_player_control_change_troop_hud"]
 [connection signal="escape_signal" from="PlayerControl" to="LevelManager" method="_on_player_control_escape_signal"]
+[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
+
+[editable path="PlayerControl"]

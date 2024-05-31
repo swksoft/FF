@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1c1ta1d0hobh"]
+[gd_scene load_steps=8 format=3 uid="uid://b1c1ta1d0hobh"]
 
 [ext_resource type="PackedScene" uid="uid://m7certu5eq1g" path="res://ui/map.tscn" id="1_1ugiq"]
 [ext_resource type="PackedScene" uid="uid://dp2u4jfl1ru8f" path="res://manager/turn_manager.tscn" id="1_30uqp"]
 [ext_resource type="PackedScene" uid="uid://chqqqa7i6n1en" path="res://ui/ui.tscn" id="2_0tody"]
 [ext_resource type="PackedScene" uid="uid://githl677oot" path="res://manager/money_manager.tscn" id="2_bpvdu"]
 [ext_resource type="PackedScene" uid="uid://dho3kphocfndk" path="res://manager/action_manager.tscn" id="3_qmv8t"]
+[ext_resource type="PackedScene" uid="uid://bc4o6dcil7wsk" path="res://manager/territory_manager.tscn" id="4_or7h7"]
 [ext_resource type="AudioStream" uid="uid://dusiyuqfbyftc" path="res://assets/music/overworld2.ogg" id="6_xetkl"]
 
 [node name="Main Scene" type="Node2D"]
@@ -15,6 +16,8 @@
 
 [node name="ActionManager" parent="." instance=ExtResource("3_qmv8t")]
 
+[node name="TerritoryManager" parent="." instance=ExtResource("4_or7h7")]
+
 [node name="UI" parent="." instance=ExtResource("2_0tody")]
 
 [node name="Map" parent="." instance=ExtResource("1_1ugiq")]
@@ -24,10 +27,16 @@ metadata/_edit_group_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_xetkl")
-autoplay = true
 
+[connection signal="hide_hud" from="TurnManager" to="UI" method="_on_turn_manager_hide_hud"]
+[connection signal="change_hud_turns" from="ActionManager" to="UI/CanvasLayer/GeneralDataDisplay" method="_on_action_manager_change_hud_turns"]
 [connection signal="pressed" from="UI/CanvasLayer/ENDTURN" to="TurnManager" method="_on_endturn_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/ENDTURN" to="ActionManager" method="_on_endturn_pressed"]
 
 [editable path="UI"]
 [editable path="Map"]
+[editable path="Map/PointsArea/TerrainIcon"]
+[editable path="Map/PointsArea/TerrainIcon2"]
+[editable path="Map/PointsArea/TerrainIcon3"]
+[editable path="Map/PointsArea/TerrainIcon4"]
+[editable path="Map/PointsArea/TerrainIcon5"]

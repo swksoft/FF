@@ -9,6 +9,8 @@ class_name Enemy
 @export var bullet_scene : PackedScene
 
 func _ready():
+	GameEvents.emit_enemy_spawn()
+	
 	randomize()
 	
 	if randomized == true:
@@ -17,9 +19,13 @@ func _ready():
 func _physics_process(delta):
 	position += direction * speed * delta
 
+func death():
+	GameEvents.emit_enemy_death(money_get)
+	queue_free()
+
 func get_damage():
 	GameEvents.current_money += money_get
-	queue_free()
+	death()
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("PlayerBullet"):
@@ -32,6 +38,9 @@ func _on_hurtbox_area_entered(area):
 		
 	elif area.is_in_group("Explosion"):
 		get_damage()
+	
+	elif area.is_in_group("EnemyWall"):
+		death()
 
 func shoot():
 	var bullet = bullet_scene.instantiate()

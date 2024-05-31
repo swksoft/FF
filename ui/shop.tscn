@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://i4aj2qk6glgq"]
+[gd_scene load_steps=7 format=3 uid="uid://i4aj2qk6glgq"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_fvkmh"]
-[ext_resource type="Texture2D" uid="uid://ctgpemhy71i00" path="res://icon.svg" id="1_hok5y"]
+[ext_resource type="Texture2D" uid="uid://id1rqod15c1l" path="res://assets/sprites/troops_shoot1.png" id="2_yuhqq"]
+[ext_resource type="Texture2D" uid="uid://bhudmftn870fb" path="res://assets/sprites/troops_missile3.png" id="3_gsatk"]
+[ext_resource type="Texture2D" uid="uid://xdpw5ubddwmk" path="res://assets/sprites/troops_homing4.png" id="4_lkv5c"]
+[ext_resource type="Texture2D" uid="uid://4oti0onwt3yp" path="res://assets/sprites/troops_bomb5.png" id="5_0d7f2"]
+[ext_resource type="Texture2D" uid="uid://dsh54c7y21wbm" path="res://assets/sprites/troops_shield2.png" id="6_2l4bf"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -43,7 +47,7 @@ text = "Shoot ($315)"
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option1"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("1_hok5y")
+texture = ExtResource("2_yuhqq")
 expand_mode = 1
 
 [node name="BuyButton1" type="Button" parent="PanelContainer/VBoxContainer/Option1"]
@@ -61,7 +65,7 @@ text = "Laser ($500)"
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option2"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("1_hok5y")
+texture = ExtResource("3_gsatk")
 expand_mode = 1
 
 [node name="BuyButton2" type="Button" parent="PanelContainer/VBoxContainer/Option2"]
@@ -79,7 +83,7 @@ text = "Homing ($675)"
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option3"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("1_hok5y")
+texture = ExtResource("4_lkv5c")
 expand_mode = 1
 
 [node name="BuyButton3" type="Button" parent="PanelContainer/VBoxContainer/Option3"]
@@ -97,7 +101,7 @@ text = "Bomb ($888)"
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option4"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("1_hok5y")
+texture = ExtResource("5_0d7f2")
 expand_mode = 1
 
 [node name="BuyButton4" type="Button" parent="PanelContainer/VBoxContainer/Option4"]
@@ -115,7 +119,7 @@ text = "Shield ($475)"
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Option5"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("1_hok5y")
+texture = ExtResource("6_2l4bf")
 expand_mode = 1
 
 [node name="BuyButton5" type="Button" parent="PanelContainer/VBoxContainer/Option5"]
@@ -129,12 +133,12 @@ size_flags_vertical = 4
 text = "Done"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option1/BuyButton1" to="." method="_on_buy_button_1_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Option2/BuyButton2" to="." method="_on_buy_button_2_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option2/BuyButton2" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option2/BuyButton2" to="." method="_on_buy_button_2_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option3/BuyButton3" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option3/BuyButton3" to="." method="_on_buy_button_3_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Option4/BuyButton4" to="." method="_on_buy_button_4_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option4/BuyButton4" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Option5/BuyButton5" to="." method="_on_buy_button_5_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option4/BuyButton4" to="." method="_on_buy_button_4_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Option5/BuyButton5" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Option5/BuyButton5" to="." method="_on_buy_button_5_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/DoneButton" to="." method="_on_done_button_pressed"]

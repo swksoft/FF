@@ -7,9 +7,11 @@ var bomb_type_scene : PackedScene = load("res://entities/troops/troop_bomb.tscn"
 var escape_amount : int
 
 signal escape_signal
+signal change_escape_hud(escape_amount)
+signal change_troop_hud()
 
 func _ready():
-	
+	GameEvents.troop_down.connect(_on_troop_down)
 	
 	escape_amount = 0
 	GameEvents.update_troop.connect(on_update_troop)
@@ -28,13 +30,15 @@ func _ready():
 		var bomb_type = bomb_type_scene.instantiate()
 		add_child(bomb_type)
 
+func _on_troop_down(type):
+	GameEvents.types_troop[type] -= 1
+	emit_signal("change_troop_hud")
+
 func _process(delta):
 	if Input.is_action_pressed("esc"):
 		escape_amount += 75 * delta
-		#print(escape_amount)
 	else:
 		escape_amount -= 75 * delta
-		#print(escape_amount)
 	
 	if escape_amount >= 100:
 		escape_amount = 100
@@ -42,8 +46,10 @@ func _process(delta):
 	elif escape_amount <= 0:
 		escape_amount = 0
 	
-	if get_children().size() <= 0:
-		print("game_over")
+	emit_signal("change_escape_hud", escape_amount)
+	
+	#if get_children().size() <= 0:
+		#print("game_over")
 		# TODO: RETURN TO MAP AND ENEMY TURN MOMENT
 		
 func check_fleet():

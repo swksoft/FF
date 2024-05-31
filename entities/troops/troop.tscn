@@ -9,6 +9,7 @@ size = Vector2(16, 16)
 
 [node name="TroopShoot" groups=["Troop"] instance=ExtResource("1_u3sb7")]
 script = ExtResource("2_6wy5l")
+type = 0
 randomized = true
 
 [node name="Trails" parent="." index="0"]
