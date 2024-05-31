@@ -2,6 +2,8 @@ class_name TurnManager extends Node
 
 signal hide_hud(activate)
 
+
+
 func all_territories_conquered() -> bool:
 	for territory in GameEvents.territories.values():
 		if not territory["is_conquered"]:
@@ -36,10 +38,10 @@ func get_money():
 	return round(income)
 
 func _ready():
+	
 	if GameEvents.in_battle:
 		print_debug(" RESULTADOS DE BATALLA : ")
 		GameEvents.in_battle = false
-	
 	if GameEvents.current_turn == 0:
 		next_turn()
 

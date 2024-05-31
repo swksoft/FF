@@ -24,6 +24,7 @@ func _ready():
 
 func _on_new_game_pressed():
 	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
+	GameEvents.reset_data()
 
 func _on_exit_pressed():
 	get_tree().quit()

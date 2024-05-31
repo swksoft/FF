@@ -67,6 +67,7 @@ func reset_data():
 	shoot_troops = 0
 	bomb_troops = 0
 	laser_troops = 0
+	in_battle = false
 
 func emit_terrain_conquested(name_terrain):
 	emit_signal("terrain_conquested", name_terrain)

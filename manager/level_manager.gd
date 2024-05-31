@@ -48,7 +48,7 @@ func _ready():
 
 func battle_end():
 	
-	get_tree().call_deferred("change_scene_to_file", "res://levels/main_scene.tscn")
+	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
 
 func _on_player_control_escape_signal():
 	money_get = 0
