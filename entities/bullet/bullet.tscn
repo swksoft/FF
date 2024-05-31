@@ -9,7 +9,7 @@
 size = Vector2(8, 8)
 
 [node name="Bullet" type="Area2D" groups=["PlayerBullet"]]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_18tu8")
 max_pierce = 1
