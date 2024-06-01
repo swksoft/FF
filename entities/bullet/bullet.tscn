@@ -32,4 +32,7 @@ stream = ExtResource("4_v1gxu")
 volume_db = -20.0
 autoplay = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
