@@ -23,9 +23,12 @@ func handle_return_from_battle():
 	elif GameEvents.battle_type == "defensa":
 		print("El jugador vuelve de una batalla de defensa")
 
+	print(GameEvents.battle_result)
+
 	match GameEvents.battle_result:
 		"ganado":
-			
+			GameEvents.territories[GameEvents.current_territory]["lives"] -= 1
+			print_debug(GameEvents.territories[GameEvents.current_territory]["lives"])
 			GameEvents.emit_terrain_lives_hud()
 		"perdido":
 			print("El jugador perdió la batalla")

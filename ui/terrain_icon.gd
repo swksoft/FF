@@ -25,6 +25,8 @@ func update_lives():
 		texture_button.disabled = true
 
 func _ready():
+	GameEvents.terrain_lives_hud.connect(_on_terrain_lives_hud)
+	
 	update_lives()
 	
 	# NAME 

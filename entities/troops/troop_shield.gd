@@ -3,6 +3,8 @@ extends Troop
 var life = 2
 var orbit_angle = 0.0
 
+# FIXME: GIANT NO MATA POR CONTACTO
+# FIXME: ARREGLAR BOMBAS
 # FIXME: DISPARA MUY SEGUIDO Y HACE MUCHO DAÑO ( CAMBIAR A MENOS)
 
 @export var orbit_radius = 45  # Radio de la órbita alrededor del mouse

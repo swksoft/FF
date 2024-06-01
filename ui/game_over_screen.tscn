@@ -53,11 +53,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.478493, 0.931006, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "Next time, try to be more cautius,
-buy more troops, if you think you're
-going to lose, escape, you know the drill.
+text = "Be more careful next time! 
+recruit more ships if you think you are getting your rear blasted.
+escape if you can, always think of the next fight, Sun tzu style
 
-Better luck next time!"
+Better luck next time, Mega Space Sex! "
 horizontal_alignment = 1
 
 [node name="RecordLabel" type="Label" parent="C/V"]

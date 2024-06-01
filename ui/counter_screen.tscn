@@ -53,7 +53,7 @@ size_flags_vertical = 4
 [node name="Message" type="Label" parent="PanelContainer/V"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "[TERRITORY] IS COUNTERATTACKING"
+text = "SOMEONE IS COUNTERATTACKING"
 
 [node name="H" type="HBoxContainer" parent="PanelContainer/V"]
 layout_mode = 2

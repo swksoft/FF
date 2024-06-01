@@ -6,7 +6,7 @@ signal fight(terrain)
 signal defend
 signal life_down()
 signal life_up()
-signal terrain_lives_hud()
+signal terrain_lives_hud
 
 # MAP SIGNALS
 signal action_taken
@@ -14,7 +14,6 @@ signal terrain_conquested(name_terrain)
 signal update_general_data
 signal update_troop
 signal data_troup
-
 
 # SHOOTER SIGNALS
 signal enemy_death(money)
@@ -68,7 +67,6 @@ func start_battle(type: String, territory: String):
 	current_territory = territory
 
 func end_battle(result: String):
-	#in_battle = false
 	battle_result = result
 	update_territory_status()
 
