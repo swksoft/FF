@@ -4,7 +4,7 @@
 
 [node name="map_attack" instance=ExtResource("1_t77p6")]
 
-[node name="MusicPlay" parent="." index="7"]
+[node name="MusicPlay" parent="." index="8"]
 autoplay = true
 
 [editable path="PlayerControl"]

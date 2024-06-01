@@ -8,6 +8,7 @@
 [node name="GiantBoss" parent="Enemies" index="0" instance=ExtResource("2_psxbq")]
 position = Vector2(512, 184)
 
+[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
 [connection signal="end_level" from="Enemies/GiantBoss" to="LevelManager" method="_on_giant_boss_end_level"]
 [connection signal="get_money" from="Enemies/GiantBoss" to="LevelManager" method="_on_giant_boss_get_money"]
 

@@ -6,16 +6,13 @@
 [node name="map_defend2" instance=ExtResource("1_gjk1d")]
 
 [node name="LevelManager" parent="." index="0"]
-countdown_time = 35.0
+countdown_time = 36.0
 timer_on = true
 
-[node name="EnemyTroopsContainer" parent="ui_shooter/Control" index="2"]
-visible = false
-
-[node name="SpawnArea" parent="." index="5"]
+[node name="SpawnArea" parent="." index="6"]
 timer_on = true
 
-[node name="MusicPlay" parent="." index="7"]
+[node name="MusicPlay" parent="." index="8"]
 stream = ExtResource("2_lqm60")
 autoplay = true
 

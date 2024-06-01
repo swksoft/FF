@@ -5,9 +5,17 @@
 
 [node name="map_attack_pointy" instance=ExtResource("1_pdpn1")]
 
+[node name="LayerBG1" parent="BG" index="1"]
+offset_bottom = 24.0
+
+[node name="LayerBG2" parent="BG" index="2"]
+offset_top = 0.0
+offset_bottom = 24.0
+
 [node name="PointyBoss" parent="Enemies" index="0" instance=ExtResource("2_iyduk")]
 position = Vector2(544, 256)
 
+[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
 [connection signal="end_level" from="Enemies/PointyBoss" to="LevelManager" method="_on_pointy_boss_end_level"]
 [connection signal="get_money" from="Enemies/PointyBoss" to="LevelManager" method="_on_pointy_boss_get_money"]
 

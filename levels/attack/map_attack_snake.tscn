@@ -8,6 +8,7 @@
 [node name="SnakeBoss" parent="Enemies" index="0" instance=ExtResource("2_pqihh")]
 position = Vector2(576, 256)
 
+[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
 [connection signal="end_level" from="Enemies/SnakeBoss" to="LevelManager" method="_on_snake_boss_end_level"]
 [connection signal="get_money" from="Enemies/SnakeBoss" to="LevelManager" method="_on_snake_boss_get_money"]
 
