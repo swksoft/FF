@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb4pbsj7mgobj"]
+[gd_scene load_steps=8 format=3 uid="uid://bb4pbsj7mgobj"]
 
 [ext_resource type="PackedScene" uid="uid://jey2tsytquc5" path="res://entities/boss/pointy_boss.tscn" id="1_be88a"]
+[ext_resource type="Shader" path="res://shaders/flash_hit.gdshader" id="2_hj7fv"]
 [ext_resource type="Texture2D" uid="uid://d2ip5dmut7yje" path="res://assets/sprites/sprites13.png" id="2_igmbg"]
+[ext_resource type="AudioStream" uid="uid://bfu8cflvs038" path="res://assets/sfx/CCZ BF Vocal.wav" id="4_dlu5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_580o3"]
 size = Vector2(84, 116)
@@ -9,13 +11,18 @@ size = Vector2(84, 116)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxcwi"]
 radius = 44.0114
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3i8iv"]
+resource_local_to_scene = true
+shader = ExtResource("2_hj7fv")
+shader_parameter/opacity = 1.0
+shader_parameter/r = 1.0
+shader_parameter/g = null
+shader_parameter/b = null
+shader_parameter/mix_color = 0.0
+
 [node name="SnakeBoss" instance=ExtResource("1_be88a")]
 price = 3800
 max_health = 300
-
-[node name="Sprite" parent="." index="0"]
-texture = ExtResource("2_igmbg")
-flip_h = true
 
 [node name="Col" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_580o3")
@@ -23,8 +30,17 @@ shape = SubResource("RectangleShape2D_580o3")
 [node name="Col" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_qxcwi")
 
+[node name="Sprite" parent="." index="3"]
+material = SubResource("ShaderMaterial_3i8iv")
+texture = ExtResource("2_igmbg")
+flip_h = true
+
 [node name="MovePong" parent="StateMachine" index="0"]
 direction = Vector2(1, -1)
 
 [node name="ShootPlayer" parent="StateMachine" index="1"]
 cooldown = 10
+
+[node name="sfxDamage" parent="." index="6"]
+stream = ExtResource("4_dlu5u")
+pitch_scale = 0.6

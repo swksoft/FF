@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bymn8ljt8aeps"]
+[gd_scene load_steps=8 format=3 uid="uid://bymn8ljt8aeps"]
 
 [ext_resource type="Script" path="res://entities/enemy/basic_enemy.gd" id="1_nwoin"]
 [ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="2_hpyur"]
 [ext_resource type="Texture2D" uid="uid://bro6worfhl0jb" path="res://assets/sprites/enemy_troops_shoot_enemy1.png" id="2_tqwhn"]
+[ext_resource type="PackedScene" uid="uid://4yekcuds2grw" path="res://entities/death_animation.tscn" id="3_4na2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnphb"]
 radius = 16.0
@@ -19,6 +20,7 @@ collision_mask = 0
 script = ExtResource("1_nwoin")
 randomized = false
 bullet_scene = ExtResource("2_hpyur")
+death_scene = ExtResource("3_4na2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bnphb")

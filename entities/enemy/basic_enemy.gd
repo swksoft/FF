@@ -6,7 +6,9 @@ class_name Enemy
 @export var money_get = 5
 @export var randomized : bool = true
 @export var can_shoot : bool = true
+
 @export var bullet_scene : PackedScene
+@export var death_scene : PackedScene
 
 func _ready():
 	GameEvents.emit_enemy_spawn()
@@ -21,6 +23,11 @@ func _physics_process(delta):
 
 func death():
 	GameEvents.emit_enemy_death(money_get)
+	
+	var death = death_scene.instantiate()
+	death.position = global_position
+	get_parent().call_deferred("add_child", death)
+	
 	queue_free()
 
 func get_damage():
