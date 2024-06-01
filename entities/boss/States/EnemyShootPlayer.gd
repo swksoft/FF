@@ -31,7 +31,7 @@ func Physics_Update(delta: float):
 		bullet.position = boss.global_position
 		bullet.set_collision_layer_value(2, true)
 		bullet.scale *= 2
-		bullet.speed = 50
+		bullet.speed = boss.projectile_velocity
 		bullet.time_despawn = 4
 		bullet.direction = (player.global_position - boss.global_position).normalized()
 		bullet.set_collision_layer_value(2, true)
