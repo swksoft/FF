@@ -7,6 +7,7 @@ signal get_money(price)
 @export var price = 3200
 @export var max_health = 500
 @export var projectile_velocity = 300
+@export var territory_name : String
 
 var health
 
@@ -23,6 +24,7 @@ func _physics_process(delta):
 func take_damage(damage):
 	health -= damage
 	if health <= 0:
+		GameEvents.territories[territory_name].lives -= 1
 		emit_signal("get_money", price)
 		emit_signal("end_level")
 		queue_free()
@@ -36,3 +38,5 @@ func _on_hurtbox_area_entered(area):
 	elif area.is_in_group("Troops"):
 		take_damage(area.damage)
 	area.queue_free()
+	
+

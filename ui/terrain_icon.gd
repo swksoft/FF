@@ -15,7 +15,8 @@ var icons : Array = [preload("res://assets/sprites/iconsga3.png"), preload("res:
 @onready var lives_label = $LivesLabel
 
 func update_lives():
-	var total_lives = GameEvents.territories[territory_name.to_lower()]["lives"]
+	var space_to_underscore = territory_name.replace(" ", "_")
+	var total_lives = GameEvents.territories[space_to_underscore.to_lower()]["lives"]
 	
 	lives_label.text = str(total_lives)
 	
@@ -28,8 +29,7 @@ func _ready():
 	update_lives()
 	
 	# NAME 
-	if GameEvents.territories.has(territory_name.to_lower()):
-		label.text = territory_name
+	label.text = territory_name
 	# LIVES
 	
 	

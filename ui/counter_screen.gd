@@ -16,7 +16,7 @@ func _ready():
 	
 	if GameEvents.player_lives <= 0:
 		desist_button.visible = false
-	message.text = territory.to_upper() + " IS COUNTERATTACKING"
+	message.text = territory.replace("_", " ").to_upper() + " IS COUNTERATTACKING"
 
 func _on_fight_button_pressed():
 	GameEvents.emit_defend(territory)
