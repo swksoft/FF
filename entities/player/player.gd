@@ -29,7 +29,8 @@ var mouse_position = null
 # FIXME: COLISIONES ROTAS
 
 func get_damage():
-	call_deferred("emit_signal", "player_death")
+	
+	emit_signal("player_death")
 
 func _ready():
 	randomize()
@@ -43,14 +44,18 @@ func _ready():
 
 func randomize_stats():
 	offset = Vector2(randi_range(-16,100), randi_range(-100,100))
-	speed = randi_range(300, 700)
 	cooldown = randf_range(0.5, 2.0)
+	
+	speed = randi_range(300, 700)
+	max_speed = randi_range(750, 1500)
 	deceleration = randf_range(0.5, 1.5)
 	acceleration = randi_range(5000, 12000)
+	slow_down_distance = randi_range(50,150)
+	stop_distance = randi_range(0.5,1.5)
 
-func follow_mouse(delta):
-	var mouse_position = get_global_mouse_position() + offset
-	var direction = (mouse_position - global_position).normalized()
+func follow_mouse(_delta):
+	mouse_position = get_global_mouse_position() + offset
+	direction = (mouse_position - global_position).normalized()
 	var distance_to_mouse = global_position.distance_to(mouse_position)
 	
 	if distance_to_mouse > stop_distance:
@@ -76,15 +81,12 @@ func shoot():
 	
 	get_parent().add_child(bullet)
 
-
-
 func _on_cooldown_shoot_timeout():
 	if can_shoot == true:
 		shoot()
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("Enemy") or area.is_in_group("EnemyBullet"):
-		GameEvents.emit_update_troop() # TODO: NO ES NECESARIO NO FUNCA ASI
 		get_damage()
 	if area.is_in_group("PlayerBullet"):
 		get_damage()

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="FF"
 config/tags=PackedStringArray("jam")
-run/main_scene="res://levels/main_scene.tscn"
+run/main_scene="res://menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://assets/icon.png"
@@ -24,7 +24,7 @@ config/icon="res://assets/icon.png"
 
 GameEvents="*res://autoloads/game_events.gd"
 ScreenMessage="*res://autoloads/screen_message.tscn"
-CounterAttacksUi="*res://ui/counter_attacks_ui.tscn"
+CounterAttacksUi="res://ui/counter_attacks_ui.tscn"
 
 [display]
 

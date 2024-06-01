@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://0k2dkmfhk13c"]
+
+[ext_resource type="PackedScene" uid="uid://cxnq3guu5r0gv" path="res://entities/enemy/formations/line_formation_A.tscn" id="1_vamep"]
+
+[node name="LineFormationB" instance=ExtResource("1_vamep")]
+
+[node name="BasicEnemy2" parent="." index="1"]
+position = Vector2(32, 32)
+can_shoot = false
+
+[node name="BasicEnemy3" parent="." index="2"]
+position = Vector2(64, 64)
+can_shoot = false
+
+[node name="BasicEnemy4" parent="." index="3"]
+position = Vector2(96, 96)
+can_shoot = false
+
+[node name="BasicEnemy5" parent="." index="4"]
+position = Vector2(128, 128)
+can_shoot = false
+
+[node name="BasicEnemy6" parent="." index="5"]
+position = Vector2(160, 160)
+can_shoot = false

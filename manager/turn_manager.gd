@@ -34,13 +34,10 @@ func _on_endturn_pressed():
 	GameEvents.current_money += 100 + (100 * GameEvents.conquisted_territories)
 	
 	GameEvents.emit_player_turn_end()
-	
-	# TODO: TURN MANAGER NO PAUSA LA ESCENA
-	# FIXME: BOTONES SIGUEN INACTIVOS
+
 	#await get_tree().create_timer(1.0).timeout
 	#GameEvents.emit_update_general_data()
 	
-	# TODO: CUANDO PASE EL TURNO DEL ENEMIGO
 	message_turn = "Turn " + str(GameEvents.current_turn + 1)
 	
 	if all_territories_conquered():

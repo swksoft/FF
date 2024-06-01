@@ -15,7 +15,6 @@ func _ready():
 	
 	escape_amount = 0
 	GameEvents.update_troop.connect(on_update_troop)
-	print("Fleet: ", get_children())
 	
 	for shoot in GameEvents.types_troop[0]:
 		var shoot_type = shoot_type_scene.instantiate()

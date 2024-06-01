@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://o3fensl833ma"]
+[gd_scene load_steps=3 format=3 uid="uid://o3fensl833ma"]
 
 [ext_resource type="PackedScene" uid="uid://chor52kqsx3p5" path="res://levels/map_shooter_test.tscn" id="1_gjk1d"]
+[ext_resource type="AudioStream" uid="uid://dd30a6tqyf55a" path="res://assets/music/counterattack.ogg" id="2_lqm60"]
 
 [node name="map_defend2" instance=ExtResource("1_gjk1d")]
 
 [node name="LevelManager" parent="." index="0"]
+countdown_time = 35.0
 timer_on = true
 
 [node name="EnemyTroopsContainer" parent="ui_shooter/Control" index="2"]
 visible = false
+
+[node name="SpawnArea" parent="." index="5"]
+timer_on = true
+
+[node name="MusicPlay" parent="." index="7"]
+stream = ExtResource("2_lqm60")
+autoplay = true
 
 [editable path="ui_shooter"]
 [editable path="PlayerControl"]

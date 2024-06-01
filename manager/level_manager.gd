@@ -1,7 +1,5 @@
 extends Node
 
-# TODO: DONT FORGET ABOUT MAX TROUPS 0
-
 signal time_passed_hud(current_time)
 signal update_hud(money_get, total_enemies)
 
@@ -15,12 +13,18 @@ var total_enemies : int = 0
 var battle_type: String
 var battle_territory: String
 
-func _on_battle_start(type: String, territory: String):
-	GameEvents.start_battle(type, territory)
-
-func _on_battle_end(result: String):
-	GameEvents.end_battle(result)
-	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
+func _ready():
+	GameEvents.time_out.connect(_on_time_out)
+	GameEvents.enemy_spawn.connect(_on_enemy_spawn)
+	GameEvents.enemy_death.connect(_on_enemy_death)
+	
+	var screen_size = get_viewport().size
+	
+	GameEvents.in_battle = true
+	
+	Input.warp_mouse(Vector2(0, screen_size.y/2))
+	
+	current_time = countdown_time
 
 func _process(delta):
 	if timer_on == false:
@@ -34,62 +38,53 @@ func _process(delta):
 			current_time = 0
 			GameEvents.emit_time_out()
 
-func game_over():
-	get_tree().call_deferred("change_scene_to_file", "res://ui/game_over_screen.tscn")
+func _on_battle_start(type: String, territory: String):
+	GameEvents.start_battle(type, territory)
 
-func _ready():
-	# Imprimir los datos de la batalla (puedes quitar esto más tarde)
-	
-	var a = GameEvents.battle_type
-	
-	print("Tipo de batalla: ", GameEvents.battle_type)
-	print("Territorio: ", GameEvents.current_territory)
-	
-	GameEvents.time_out.connect(_on_time_out)
-	
-	var screen_size = get_viewport().size
-	GameEvents.in_battle = true
-	Input.warp_mouse(Vector2(0, screen_size.y/2))
-	GameEvents.enemy_spawn.connect(_on_enemy_spawn)
-	GameEvents.enemy_death.connect(_on_enemy_death)
-	
-	#_on_battle_start(type, territory)
-	
-	# TIME
-	current_time = countdown_time
-#
-#func on_kill_get(value):
-	#money_get += value
-#
-#func on_battle_finished():
-	#GameEvents.current_money += money_get
-#
-#func on_battle_canceled():
-	#money_get = 0
-	#GameEvents.current_money += money_get
-
-func _on_time_out():
-	_on_battle_end("escape")
-
-func battle_end():
+func _on_battle_end(result: String):
+	GameEvents.current_money = money_get
+	GameEvents.end_battle(result)
+	#get_tree().change_scene_to_file("res://levels/main_scene.tscn")
 	get_tree().call_deferred("change_scene_to_file", "res://levels/main_scene.tscn")
+	
+func _on_time_out():
+	_on_battle_end("ganado")
 
 func _on_player_control_escape_signal():
 	money_get = 0
-	battle_end()
+	_on_battle_end("escapado")
 	
-func _on_player_player_death():
-	game_over()
-
 func _on_enemy_spawn():
 	total_enemies += 1
 	emit_signal("update_hud", money_get, total_enemies)
 
 func _on_enemy_death(money : int):
-	money_get = money
-	total_enemies -= 1
+	money_get += money
+	#total_enemies -= 1
 	
 	if total_enemies <= 0:
-		battle_end()
+		_on_battle_end("ganado")
 		
 	emit_signal("update_hud", money_get, total_enemies)
+
+func _on_player_player_death():
+	get_tree().change_scene_to_file("res://ui/game_over_screen.tscn")
+
+
+func _on_snake_boss_end_level():
+	_on_battle_end("gamado")
+
+func _on_pointy_boss_end_level():
+	_on_battle_end("gamado")
+
+func _on_giant_boss_end_level():
+	_on_battle_end("gamado")
+
+func _on_snake_boss_get_money(price):
+	money_get += price
+
+func _on_pointy_boss_get_money(price):
+	money_get += price
+
+func _on_giant_boss_get_money(price):
+	money_get += price

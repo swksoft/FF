@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqx4t2dxpy48j"]
+
+[ext_resource type="PackedScene" uid="uid://d2erk68aqpacb" path="res://entities/enemy/formations/formation.tscn" id="1_no784"]
+[ext_resource type="PackedScene" uid="uid://cdydricfgcfdg" path="res://entities/enemy/shield_enemy.tscn" id="2_lglnq"]
+[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="3_gfv0s"]
+
+[node name="Formation" instance=ExtResource("1_no784")]
+
+[node name="ShieldEnemy" parent="." index="0" instance=ExtResource("2_lglnq")]
+can_shoot = false
+
+[node name="ShieldEnemy2" parent="." index="1" instance=ExtResource("2_lglnq")]
+position = Vector2(64, -64)
+can_shoot = false
+
+[node name="ShieldEnemy3" parent="." index="2" instance=ExtResource("2_lglnq")]
+position = Vector2(64, 64)
+can_shoot = false
+
+[node name="ShieldEnemy4" parent="." index="3" instance=ExtResource("2_lglnq")]
+position = Vector2(128, -128)
+can_shoot = false
+
+[node name="ShieldEnemy5" parent="." index="4" instance=ExtResource("2_lglnq")]
+position = Vector2(128, 128)
+can_shoot = false
+
+[node name="BasicEnemy" parent="." index="5" instance=ExtResource("3_gfv0s")]
+position = Vector2(64, 0)
+can_shoot = false
+
+[node name="BasicEnemy2" parent="." index="6" instance=ExtResource("3_gfv0s")]
+position = Vector2(128, -64)
+can_shoot = false
+
+[node name="BasicEnemy3" parent="." index="7" instance=ExtResource("3_gfv0s")]
+position = Vector2(128, 64)
+can_shoot = false
+
+[node name="BasicEnemy4" parent="." index="8" instance=ExtResource("3_gfv0s")]
+position = Vector2(128, 0)
+can_shoot = false
+
+[node name="BasicEnemy5" parent="." index="9" instance=ExtResource("3_gfv0s")]
+position = Vector2(192, 0)
+can_shoot = false

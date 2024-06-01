@@ -12,8 +12,6 @@ class_name TerritoryManager extends Node
 	#else:
 		#print(territory_name + " is already conquered.")
 
-
-# TODO: ESTO DEBERIA ESTAR EN TURN MANAGER
 func counterattack() -> Array: # (反撃)
 	for territory in GameEvents.territories:
 		print_debug(GameEvents.territories[territory]["confronted"])
@@ -26,9 +24,9 @@ func counterattack() -> Array: # (反撃)
 	for territory_name in GameEvents.territories.keys():
 		var territory = GameEvents.territories[territory_name]
 		if territory["confronted"]:
-			var chance = random.randf_range(0, 1)
-			if chance > 0.25:
-				counterattacking_territories.push_back(territory_name)
+			#var chance = random.randf_range(0, 1)
+			#if chance > 0.25:
+			counterattacking_territories.push_back(territory_name)
 				
 	return counterattacking_territories
 

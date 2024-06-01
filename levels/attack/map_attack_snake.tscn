@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ybrog38qx7du"]
+
+[ext_resource type="PackedScene" uid="uid://bqfg5fqda0svy" path="res://levels/attack/map_attack.tscn" id="1_74p7f"]
+[ext_resource type="PackedScene" uid="uid://bb4pbsj7mgobj" path="res://entities/boss/snake_boss.tscn" id="2_pqihh"]
+
+[node name="map_attack_snake" instance=ExtResource("1_74p7f")]
+
+[node name="SnakeBoss" parent="Enemies" index="0" instance=ExtResource("2_pqihh")]
+position = Vector2(576, 256)
+
+[connection signal="end_level" from="Enemies/SnakeBoss" to="LevelManager" method="_on_snake_boss_end_level"]
+[connection signal="get_money" from="Enemies/SnakeBoss" to="LevelManager" method="_on_snake_boss_get_money"]
+
+[editable path="PlayerControl"]

@@ -8,7 +8,7 @@
 [node name="BombEnemy" instance=ExtResource("1_c011k")]
 script = ExtResource("2_4gd5s")
 explosion_scene = ExtResource("3_5tc1d")
-bullet_scene = null
+can_shoot = false
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_q2lg3")

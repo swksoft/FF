@@ -10,6 +10,8 @@ var canvas_layer
 func _ready():
 	check_life()
 	GameEvents.emit_update_general_data()
+	GameEvents.emit_terrain_lives_hud()
+	
 	GameEvents.life_up.connect(_on_life_up)
 	GameEvents.life_down.connect(_on_life_down)
 

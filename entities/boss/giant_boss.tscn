@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg6eo21okjx5f"]
+
+[ext_resource type="Script" path="res://entities/boss/pointy_boss.gd" id="1_v4pa5"]
+[ext_resource type="Texture2D" uid="uid://dn56peubfviiu" path="res://assets/sprites/gomez.png" id="2_frorx"]
+[ext_resource type="Script" path="res://entities/boss/StateMachine.gd" id="3_gc2m1"]
+[ext_resource type="Script" path="res://entities/boss/States/EnemyIdle.gd" id="4_qoq4h"]
+[ext_resource type="Script" path="res://entities/boss/States/SpawnEnemies.gd" id="5_iop2t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3v06u"]
+radius = 120.266
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y305j"]
+size = Vector2(240, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysy6q"]
+size = Vector2(240, 256)
+
+[node name="GiantBoss" type="CharacterBody2D"]
+script = ExtResource("1_v4pa5")
+price = 2700
+max_health = 350
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3v06u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_frorx")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 66
+collision_mask = 0
+
+[node name="Col" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_y305j")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 68
+
+[node name="Col" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ysy6q")
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_gc2m1")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager"]
+script = ExtResource("4_qoq4h")
+
+[node name="Spawn" type="Node" parent="StateManager" node_paths=PackedStringArray("boss")]
+script = ExtResource("5_iop2t")
+boss = NodePath("../..")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

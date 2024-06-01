@@ -6,12 +6,10 @@ signal hide_hud(activate)
 @export var counter_screen_scene : PackedScene
 
 func _ready():
+	GameEvents.life_down.connect(_on_life_down)
 	GameEvents.fight.connect(_on_fight)
 	GameEvents.defend.connect(_on_defend)
-	
-	#if GameEvents.in_battle:
-		#GameEvents.in_battle = false
-		#
+
 	if GameEvents.in_battle:
 		handle_return_from_battle()
 		GameEvents.reset_battle_state()
@@ -27,7 +25,8 @@ func handle_return_from_battle():
 
 	match GameEvents.battle_result:
 		"ganado":
-			print("El jugador ganó la batalla")
+			
+			GameEvents.emit_terrain_lives_hud()
 		"perdido":
 			print("El jugador perdió la batalla")
 		"escapado":
@@ -36,9 +35,14 @@ func handle_return_from_battle():
 func start_attack_battle(territory: String):
 	GameEvents.territories[territory]["confronted"] = true
 	GameEvents.start_battle("ataque", territory)
-	
-	get_tree().change_scene_to_file("res://levels/attack/map_attack.tscn")
-	#get_tree().call_deferred("change_scene_to_file", "res://levels/attack/map_attack.tscn")
+	print(territory)
+	match territory:
+		"subus":
+			get_tree().change_scene_to_file("res://levels/attack/map_attack_pointy.tscn")
+		"bliblo":
+			get_tree().change_scene_to_file("res://levels/attack/map_attack_snake.tscn")
+		"new ocre":
+			get_tree().change_scene_to_file("res://levels/attack/map_attack_giant.tscn")
 
 func start_defense_battle(territory: String):
 	GameEvents.start_battle("defensa", territory)
@@ -87,6 +91,7 @@ func enemy_turn():
 		var counter_screen = counter_screen_scene.instantiate()
 		counter_screen.territory = current_enemies[enemy]
 		add_child(counter_screen)
+	
 
 func _on_endturn_pressed(): next_turn()
 
@@ -95,3 +100,6 @@ func _on_fight(territory):
 
 func _on_defend(territory):
 	start_defense_battle(territory)
+
+func _on_life_down():
+	next_turn()

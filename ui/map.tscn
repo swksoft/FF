@@ -34,10 +34,10 @@ metadata/_edit_lock_ = true
 
 [node name="TerrainIcon" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
-offset_left = 155.0
-offset_top = 176.0
-offset_right = 195.0
-offset_bottom = 232.0
+offset_left = 491.0
+offset_top = 60.0
+offset_right = 531.0
+offset_bottom = 128.0
 territory_name = "Bliblo"
 
 [node name="TextureButton" parent="PointsArea/TerrainIcon" index="0"]
@@ -56,16 +56,17 @@ texture_normal = ExtResource("4_veutn")
 
 [node name="TerrainIcon3" parent="PointsArea" instance=ExtResource("3_ja7is")]
 layout_mode = 0
-offset_left = 291.0
-offset_top = 228.0
-offset_right = 331.0
-offset_bottom = 284.0
+offset_left = 289.0
+offset_top = 258.0
+offset_right = 329.0
+offset_bottom = 326.0
 territory_name = "New Ocre"
 
 [node name="TextureButton" parent="PointsArea/TerrainIcon3" index="0"]
 texture_normal = ExtResource("5_k61hb")
 
 [node name="TerrainIcon4" parent="PointsArea" instance=ExtResource("3_ja7is")]
+visible = false
 layout_mode = 0
 offset_left = 399.0
 offset_top = 145.0
@@ -77,6 +78,7 @@ territory_name = "Aguascalientes"
 texture_normal = ExtResource("6_exb4p")
 
 [node name="TerrainIcon5" parent="PointsArea" instance=ExtResource("3_ja7is")]
+visible = false
 layout_mode = 0
 offset_left = 482.0
 offset_top = 39.0

@@ -4,6 +4,7 @@
 
 [node name="map_attack" instance=ExtResource("1_t77p6")]
 
-[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
+[node name="MusicPlay" parent="." index="7"]
+autoplay = true
 
 [editable path="PlayerControl"]

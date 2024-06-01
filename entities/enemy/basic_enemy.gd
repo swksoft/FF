@@ -54,3 +54,9 @@ func shoot():
 func _on_timer_timeout():
 	if can_shoot == true:
 		shoot()
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	visible = true
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	visible = false

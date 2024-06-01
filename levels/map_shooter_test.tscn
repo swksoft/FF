@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_awc7n"]
 [ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_2vj6e"]
 [ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="4_7o740"]
-[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="6_wrxam"]
+[ext_resource type="PackedScene" uid="uid://vum6rvnoxutj" path="res://levels/spawner/spawn_area.tscn" id="6_k4r65"]
 [ext_resource type="AudioStream" uid="uid://cclx2sro3mg43" path="res://assets/music/technoboss.ogg" id="7_83hmy"]
 [ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="7_cytem"]
 
@@ -26,10 +26,10 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerControl" parent="." instance=ExtResource("4_7o740")]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="SpawnArea" parent="." instance=ExtResource("6_k4r65")]
+spawn_node = NodePath("../Enemies")
 
-[node name="BasicEnemy" parent="Enemies" instance=ExtResource("6_wrxam")]
-position = Vector2(632, 176)
+[node name="Enemies" type="Node2D" parent="."]
 
 [node name="MusicPlay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_83hmy")

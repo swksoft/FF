@@ -30,6 +30,7 @@ metadata/_edit_group_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_xetkl")
+autoplay = true
 
 [connection signal="hide_hud" from="TurnManager" to="UI" method="_on_turn_manager_hide_hud"]
 [connection signal="change_hud_turns" from="ActionManager" to="UI/CanvasLayer/GeneralDataDisplay" method="_on_action_manager_change_hud_turns"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://xrmutp0gvgqk"]
+
+[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_v30eo"]
+[ext_resource type="Texture2D" uid="uid://bdunulux5kvy2" path="res://assets/sprites/enemy_troops_homing_enemy4.png" id="2_j0qwg"]
+[ext_resource type="Script" path="res://entities/enemy/follow_enemy.gd" id="2_xmcfu"]
+
+[node name="FollowEnemy" instance=ExtResource("1_v30eo")]
+script = ExtResource("2_xmcfu")
+speed = null
+money_get = null
+can_shoot = null
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_j0qwg")

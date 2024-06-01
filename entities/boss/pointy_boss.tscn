@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://jey2tsytquc5"]
+
+[ext_resource type="Texture2D" uid="uid://cc5yhbxi7rgte" path="res://assets/sprites/gluglo1.png" id="1_o7gxe"]
+[ext_resource type="Script" path="res://entities/boss/pointy_boss.gd" id="1_t1pbb"]
+[ext_resource type="Script" path="res://entities/boss/StateMachine.gd" id="3_3suvh"]
+[ext_resource type="Script" path="res://entities/boss/States/EnemyPong.gd" id="4_d56pa"]
+[ext_resource type="Script" path="res://entities/boss/States/EnemyShootPlayer.gd" id="5_u87ir"]
+[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="6_orrjd"]
+[ext_resource type="Script" path="res://entities/boss/States/EnemySpawn.gd" id="7_0pki6"]
+[ext_resource type="PackedScene" uid="uid://xrmutp0gvgqk" path="res://entities/enemy/follow_enemy.tscn" id="8_yybdk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h37qc"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf8bq"]
+size = Vector2(48, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c70fo"]
+radius = 24.0832
+
+[node name="PointyBoss" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_t1pbb")
+max_health = 250
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_o7gxe")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h37qc")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 68
+
+[node name="Col" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_wf8bq")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 66
+collision_mask = 0
+
+[node name="Col" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_c70fo")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_3suvh")
+initial_state = NodePath("MovePong")
+
+[node name="MovePong" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("4_d56pa")
+boss = NodePath("../..")
+
+[node name="ShootPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("5_u87ir")
+boss = NodePath("../..")
+bullet_scene = ExtResource("6_orrjd")
+
+[node name="CooldownTimer" type="Timer" parent="StateMachine/ShootPlayer"]
+one_shot = true
+
+[node name="Spawn" type="Node" parent="StateMachine" node_paths=PackedStringArray("boss")]
+script = ExtResource("7_0pki6")
+boss = NodePath("../..")
+spawn_scene = ExtResource("8_yybdk")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="StateMachine/ShootPlayer/CooldownTimer" to="StateMachine/ShootPlayer" method="_on_cooldown_timer_timeout"]

@@ -1,8 +1,9 @@
 extends VBoxContainer
 
-#FIXME: EXPLOSIONS DOESNT WORK
+#FIXME: EXPLOSIONS WORKS AT RANDOM
 
 @export var territory_name : String = "None"
+@export var conquered_image : CompressedTexture2D
 
 var heart_scene : PackedScene = load("res://ui/heart.tscn")
 var hollow_heart_scene : PackedScene = load("res://ui/hollow_heart.tscn")
@@ -11,22 +12,32 @@ var icons : Array = [preload("res://assets/sprites/iconsga3.png"), preload("res:
 
 @onready var label = $Label
 @onready var texture_button = $TextureButton
+@onready var lives_label = $LivesLabel
+
+func update_lives():
+	var total_lives = GameEvents.territories[territory_name.to_lower()]["lives"]
+	
+	lives_label.text = str(total_lives)
+	
+	if total_lives <= 0:
+		texture_button.texture_normal = conquered_image
+		lives_label.text = "Mine"
+		texture_button.disabled = true
 
 func _ready():
+	update_lives()
+	
 	# NAME 
 	if GameEvents.territories.has(territory_name.to_lower()):
 		label.text = territory_name
-	# ICON
-	
 	# LIVES
-
+	
+	
 func _on_texture_button_pressed():
 	if GameEvents.actions <= 0:
 		return
 	await GameEvents.emit_action_taken()
 	await GameEvents.emit_fight(territory_name.to_lower())
-	
-	
-	#damage_terrain() # DEBUG
-	
-	#get_tree().change_scene_to_file("res://levels/map_shooter_test.tscn")
+
+func _on_terrain_lives_hud():
+	update_lives()

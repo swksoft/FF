@@ -6,6 +6,7 @@ signal fight(terrain)
 signal defend
 signal life_down()
 signal life_up()
+signal terrain_lives_hud()
 
 # MAP SIGNALS
 signal action_taken
@@ -14,10 +15,10 @@ signal update_general_data
 signal update_troop
 signal data_troup
 
+
 # SHOOTER SIGNALS
 signal enemy_death(money)
 signal enemy_spawn
-signal player_death
 signal time_out
 signal troop_down
 signal player_escape
@@ -29,7 +30,7 @@ signal player_escape
 	"bliblo": { "lives": 1, "is_conquered": false, "confronted": false },
 	"subus": { "lives": 2, "is_conquered": false , "confronted": false},
 	"new ocre": { "lives": 3, "is_conquered": false , "confronted": false},
-	"aguascalientes": { "lives": 3, "is_conquered": false , "confronted": false},
+	"aguascalientes": { "lives": 3, "is_conquered": false , "confronted": true},  # HACK: ( PERDON XD)
 	"ys": { "lives": 2, "is_conquered": false , "confronted": false}
 }
 
@@ -49,11 +50,11 @@ var current_territory: String = ""
 var counter_attack_data = {}
 
 @export_category("Troops")
-@export_range(0,99) var shield_troops : int = 0
+@export_range(0,99) var shield_troops : int = 2
 @export_range(0,99) var homing_troops : int = 0
-@export_range(0,99) var shoot_troops : int = 5
-@export_range(0,99) var bomb_troops : int = 0
-@export_range(0,99) var laser_troops : int = 0
+@export_range(0,99) var shoot_troops : int = 3
+@export_range(0,99) var bomb_troops : int = 1
+@export_range(0,99) var laser_troops : int = 1
 
 var types_troop = [shoot_troops, laser_troops, homing_troops, bomb_troops, shield_troops]
 var total_troops : int = types_troop[0] + types_troop[1] + types_troop[2] + types_troop[3] + types_troop[4]
@@ -67,7 +68,7 @@ func start_battle(type: String, territory: String):
 	current_territory = territory
 
 func end_battle(result: String):
-	in_battle = false
+	#in_battle = false
 	battle_result = result
 	update_territory_status()
 
@@ -89,11 +90,13 @@ func update_territory_status():
 
 		if battle_result == "ganado" and battle_type == "ataque":
 			territory["lives"] -= 1
+			emit_terrain_lives_hud()
 			if territory["lives"] <= 0:
 				territory["is_conquered"] = true
 
 		elif battle_result == "perdido" and battle_type == "defensa":
 			territory["lives"] += 1
+			emit_terrain_lives_hud()
 
 		elif battle_result == "escapado":
 			actions = 0
@@ -105,18 +108,28 @@ func get_total_troops():
 
 func _ready():
 	actions = max_actions
-	pass#reset_data() # TODO: COLOCAR EN BUILD
+	reset_data() # TODO: COLOCAR EN BUILD
 
 func reset_data():
+	territories = {
+		"bliblo": { "lives": 1, "is_conquered": false, "confronted": false },
+		"subus": { "lives": 2, "is_conquered": false , "confronted": false},
+		"new ocre": { "lives": 3, "is_conquered": false , "confronted": false},
+		"aguascalientes": { "lives": 3, "is_conquered": false , "confronted": true},
+		"ys": { "lives": 2, "is_conquered": false , "confronted": false}
+	}
+	
+	
 	conquisted_territories = 0
 	# TODO: LO DE ABAJO ESTA MAL CAMBIAR POR TYPES TROOP
 	current_turn = 0
-	current_money = 1959
-	shield_troops  = 0
-	homing_troops  = 0
-	shoot_troops = 0
-	bomb_troops = 0
-	laser_troops = 0
+	actions = 2
+	current_money = 959
+	#shield_troops  = 0
+	#homing_troops  = 0
+	#shoot_troops = 0
+	#bomb_troops = 0
+	#laser_troops = 0
 	in_battle = false
 
 func emit_terrain_conquested(name_terrain):
@@ -134,9 +147,6 @@ func emit_update_general_data():
 func emit_action_taken():
 	action_taken.emit()
 
-func emit_update_troop():
-	update_troop.emit()
-
 func emit_fight(terrain):
 	emit_signal("fight", terrain)
 
@@ -152,3 +162,5 @@ func emit_enemy_spawn():
 func emit_time_out():
 	time_out.emit()
 
+func emit_terrain_lives_hud():
+	terrain_lives_hud.emit()

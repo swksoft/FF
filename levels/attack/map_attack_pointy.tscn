@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://daigonsdmbdwm"]
+
+[ext_resource type="PackedScene" uid="uid://bqfg5fqda0svy" path="res://levels/attack/map_attack.tscn" id="1_pdpn1"]
+[ext_resource type="PackedScene" uid="uid://jey2tsytquc5" path="res://entities/boss/pointy_boss.tscn" id="2_iyduk"]
+
+[node name="map_attack_pointy" instance=ExtResource("1_pdpn1")]
+
+[node name="PointyBoss" parent="Enemies" index="0" instance=ExtResource("2_iyduk")]
+position = Vector2(544, 256)
+
+[connection signal="end_level" from="Enemies/PointyBoss" to="LevelManager" method="_on_pointy_boss_end_level"]
+[connection signal="get_money" from="Enemies/PointyBoss" to="LevelManager" method="_on_pointy_boss_get_money"]
+
+[editable path="PlayerControl"]

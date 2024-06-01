@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0orec0883j1m"]
+[gd_scene load_steps=5 format=3 uid="uid://0orec0883j1m"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_fifkn"]
 [ext_resource type="Texture2D" uid="uid://bw1qbrnpqxiuh" path="res://assets/portraitsex.png" id="2_1usm5"]
 [ext_resource type="Texture2D" uid="uid://cd3hqk05h3b4p" path="res://assets/game_logo.png" id="3_m2o8l"]
+[ext_resource type="AudioStream" uid="uid://mfy4vdqn4g7y" path="res://assets/music/cagliostro.ogg" id="4_l6mf5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,6 +53,11 @@ text = "START"
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "EXIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l6mf5")
+volume_db = -8.05
+autoplay = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

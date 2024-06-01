@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmk32tg2ot4tf"]
+
+[ext_resource type="PackedScene" uid="uid://d2erk68aqpacb" path="res://entities/enemy/formations/formation.tscn" id="1_xhjx5"]
+[ext_resource type="PackedScene" uid="uid://xrmutp0gvgqk" path="res://entities/enemy/follow_enemy.tscn" id="2_21nuq"]
+
+[node name="Formation" instance=ExtResource("1_xhjx5")]
+
+[node name="FollowEnemy" parent="." index="0" instance=ExtResource("2_21nuq")]
+position = Vector2(0, 64)
+can_shoot = false
+
+[node name="FollowEnemy2" parent="." index="1" instance=ExtResource("2_21nuq")]
+position = Vector2(0, -64)
+can_shoot = false

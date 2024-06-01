@@ -1,5 +1,5 @@
 extends Enemy
-class_name Boss
+#class_name Boss
 
 @export var max_hp : int = 100
 @export var enemy_spawn_scene : PackedScene
@@ -27,13 +27,11 @@ func _process(delta):
 			create_enemies_state()
 
 func get_damage():
-	hp -= 1 # FIXME: NO
+	hp -= 1
 	if hp <= 0:
 		death()
 
 func shoot_state():
-	
-	
 	var player = get_tree().get_first_node_in_group("Player")
 	
 	for i in instance:

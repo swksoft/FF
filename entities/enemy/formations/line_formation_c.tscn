@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://co6txwckbwr23"]
+
+[ext_resource type="PackedScene" uid="uid://cxnq3guu5r0gv" path="res://entities/enemy/formations/line_formation_A.tscn" id="1_n1mxq"]
+
+[node name="LineFormationC" instance=ExtResource("1_n1mxq")]
+
+[node name="BasicEnemy2" parent="." index="1"]
+position = Vector2(32, -32)
+
+[node name="BasicEnemy3" parent="." index="2"]
+position = Vector2(64, -64)
+
+[node name="BasicEnemy4" parent="." index="3"]
+position = Vector2(96, -96)
+
+[node name="BasicEnemy5" parent="." index="4"]
+position = Vector2(128, -128)
+
+[node name="BasicEnemy6" parent="." index="5"]
+position = Vector2(160, -160)

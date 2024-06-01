@@ -6,7 +6,6 @@
 
 [node name="ShieldEnemy" instance=ExtResource("1_uqwwn")]
 script = ExtResource("2_0tr7c")
-bullet_scene = null
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_74tbu")

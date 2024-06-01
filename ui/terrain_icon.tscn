@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwyerofglbnnk"]
+[gd_scene load_steps=4 format=3 uid="uid://bwyerofglbnnk"]
 
 [ext_resource type="Script" path="res://ui/terrain_icon.gd" id="1_c5bu8"]
+[ext_resource type="Texture2D" uid="uid://c4ib8kscqnf4j" path="res://assets/sprites/iconsga6.png" id="2_ot7ku"]
 [ext_resource type="Texture2D" uid="uid://c5vpgke06wckg" path="res://assets/sprites/iconsga5.png" id="2_v6fbi"]
 
 [node name="TerrainIcon" type="VBoxContainer"]
@@ -10,6 +11,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 script = ExtResource("1_c5bu8")
+conquered_image = ExtResource("2_ot7ku")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(32, 32)

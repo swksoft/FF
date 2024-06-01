@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy8phpe6xqr14"]
+
+[ext_resource type="PackedScene" uid="uid://bqfg5fqda0svy" path="res://levels/attack/map_attack.tscn" id="1_wlnid"]
+[ext_resource type="PackedScene" uid="uid://dg6eo21okjx5f" path="res://entities/boss/giant_boss.tscn" id="2_psxbq"]
+
+[node name="map_attack_giant" instance=ExtResource("1_wlnid")]
+
+[node name="GiantBoss" parent="Enemies" index="0" instance=ExtResource("2_psxbq")]
+position = Vector2(512, 184)
+
+[connection signal="end_level" from="Enemies/GiantBoss" to="LevelManager" method="_on_giant_boss_end_level"]
+[connection signal="get_money" from="Enemies/GiantBoss" to="LevelManager" method="_on_giant_boss_get_money"]
+
+[editable path="PlayerControl"]

@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+# FIXME: DINERO NO SUBE AL PARECER 
+# FIXME: HAY COLISIONES/PROYECTILES ROTOS
+
 var territory : String
 var layer_num = 5
 
@@ -9,7 +12,7 @@ var layer_num = 5
 func _ready():
 	layer = layer_num
 	
-	get_tree().paused = true
+	#get_tree().paused = true
 	
 	if GameEvents.player_lives <= 0:
 		desist_button.visible = false
@@ -19,6 +22,6 @@ func _on_fight_button_pressed():
 	GameEvents.emit_defend(territory)
 
 func _on_desist_button_pressed():
-	get_tree().paused = false
+	#get_tree().paused = false
 	GameEvents.emit_life_down()
 	queue_free()

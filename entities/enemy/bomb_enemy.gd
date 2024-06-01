@@ -9,7 +9,8 @@ func get_damage():
 	death()
 
 func _on_explosion_time_timeout():
-	get_damage()
+	pass
+	#get_damage()
 
 func _on_hurtbox_area_entered(_area):
 	get_damage()
