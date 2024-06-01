@@ -23,6 +23,7 @@ shader_parameter/mix_color = 0.0
 [node name="SnakeBoss" instance=ExtResource("1_be88a")]
 price = 3800
 max_health = 300
+territory_name = "bliblo"
 
 [node name="Col" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_580o3")

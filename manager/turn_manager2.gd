@@ -36,7 +36,8 @@ func handle_return_from_battle():
 			print("El jugador escapó de la batalla")
 
 func start_attack_battle(territory: String):
-	GameEvents.territories[territory]["confronted"] = true
+	var space_to_underscore = territory.replace(" ", "_")
+	GameEvents.territories[space_to_underscore]["confronted"] = true
 	GameEvents.start_battle("ataque", territory)
 	print(territory)
 	match territory:

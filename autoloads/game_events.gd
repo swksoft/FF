@@ -25,10 +25,10 @@ signal player_escape
 @export_enum("player", "enemy") var whos_turn : int = 1
 
 @export_category("Territory Data")
-@export var territories: Dictionary = {
+@onready var territories: Dictionary = {
 	"bliblo": { "lives": 1, "is_conquered": false, "confronted": false },
 	"subus": { "lives": 2, "is_conquered": false , "confronted": false},
-	"new ocre": { "lives": 3, "is_conquered": false , "confronted": false},
+	"new_ocre": { "lives": 3, "is_conquered": false , "confronted": false},
 	"aguascalientes": { "lives": 3, "is_conquered": false , "confronted": true},  # HACK: ( PERDON XD)
 	"ys": { "lives": 2, "is_conquered": false , "confronted": false}
 }
@@ -112,7 +112,7 @@ func reset_data():
 	territories = {
 		"bliblo": { "lives": 1, "is_conquered": false, "confronted": false },
 		"subus": { "lives": 2, "is_conquered": false , "confronted": false},
-		"new ocre": { "lives": 3, "is_conquered": false , "confronted": false},
+		"new_ocre": { "lives": 3, "is_conquered": false , "confronted": false},
 		"aguascalientes": { "lives": 3, "is_conquered": false , "confronted": true},
 		"ys": { "lives": 2, "is_conquered": false , "confronted": false}
 	}
