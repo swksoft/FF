@@ -5,6 +5,8 @@ class_name Troop
 
 @export_enum("shield_troop", "homing_troops", "shoot_troops", "bomb_troops", "laser_troops") var type : int = 0
 
+@export var contact_damage = 10
+
 func get_damage():
 	GameEvents.emit_troop_down(type)
 	queue_free()

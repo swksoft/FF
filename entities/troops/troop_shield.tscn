@@ -8,6 +8,7 @@
 script = ExtResource("2_4hexp")
 orbit_radius = 45
 orbit_speed = 6.28319
+contact_damage = 20
 max_speed = 1000
 acceleration = 1000
 stop_distance = 5

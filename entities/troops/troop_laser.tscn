@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bhudmftn870fb" path="res://assets/sprites/troops_missile3.png" id="3_d2ofm"]
 
 [node name="TroopLaser" instance=ExtResource("1_e4dpl")]
+contact_damage = 5
 bullet_scene = ExtResource("2_co12v")
 speed = 150
 max_speed = 880
@@ -14,8 +15,8 @@ stop_distance = 125
 slow_down_distance = 50
 randomized = false
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("3_d2ofm")
 
-[node name="CooldownShoot" parent="." index="3"]
+[node name="CooldownShoot" parent="." index="4"]
 autostart = true

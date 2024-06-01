@@ -10,6 +10,7 @@ script = ExtResource("2_ydois")
 orbit_radius = 45
 orbit_speed = 6.28319
 bomb_scene = ExtResource("3_uhrh2")
+contact_damage = 20
 bullet_scene = null
 stop_distance = 5
 slow_down_distance = 50

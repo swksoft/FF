@@ -9,7 +9,6 @@ var orbit_angle = 0.0
 
 func get_damage():
 	var bomb = bomb_scene.instantiate()
-	#get_parent().add_child(bomb)
 	get_parent().call_deferred("add_child", bomb)
 	
 	queue_free()
