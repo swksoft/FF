@@ -25,6 +25,21 @@ shader_parameter/g = null
 shader_parameter/b = null
 shader_parameter/mix_color = 0.0
 
+[sub_resource type="Animation" id="Animation_jx4qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/mix_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_w1n83"]
 resource_name = "take_damage"
 length = 0.0625031
@@ -42,21 +57,6 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_jx4qh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:material:shader_parameter/mix_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rge40"]
 _data = {
 "RESET": SubResource("Animation_jx4qh"),
@@ -64,6 +64,8 @@ _data = {
 }
 
 [node name="GiantBoss" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_v4pa5")
 price = 2700
 max_health = 350
@@ -78,8 +80,8 @@ collision_mask = 68
 [node name="Col" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_ysy6q")
 
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 66
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 2
 collision_mask = 0
 
 [node name="Col" type="CollisionShape2D" parent="Hitbox"]
