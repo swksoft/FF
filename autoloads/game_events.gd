@@ -50,11 +50,11 @@ var current_territory: String = ""
 var counter_attack_data = {}
 
 @export_category("Troops")
-@export_range(0,99) var shield_troops : int = 2
+@export_range(0,99) var shield_troops : int = 8
 @export_range(0,99) var homing_troops : int = 0
-@export_range(0,99) var shoot_troops : int = 3
-@export_range(0,99) var bomb_troops : int = 1
-@export_range(0,99) var laser_troops : int = 1
+@export_range(0,99) var shoot_troops : int = 0
+@export_range(0,99) var bomb_troops : int = 0
+@export_range(0,99) var laser_troops : int = 0
 
 var types_troop = [shoot_troops, laser_troops, homing_troops, bomb_troops, shield_troops]
 var total_troops : int = types_troop[0] + types_troop[1] + types_troop[2] + types_troop[3] + types_troop[4]

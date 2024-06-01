@@ -40,6 +40,20 @@ mouse_cursor/custom_image="res://assets/gui/cursor.png"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/project_time_tracker/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://components/": "gray",
+"res://entities/": "red",
+"res://fonts/": "pink",
+"res://levels/": "yellow",
+"res://manager/": "gray",
+"res://menu/": "green",
+"res://shaders/": "pink",
+"res://tests/": "yellow"
+}
+
 [gui]
 
 theme/custom_font="res://fonts/Pixelme.ttf"
@@ -88,4 +102,4 @@ right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.0666667, 0.0666667, 0.4, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

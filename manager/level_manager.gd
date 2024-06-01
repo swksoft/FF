@@ -42,10 +42,12 @@ func _on_battle_start(type: String, territory: String):
 	GameEvents.start_battle(type, territory)
 
 func _on_battle_end(result: String):
-	GameEvents.current_money = money_get
+	print(result)
+	GameEvents.current_money += money_get
 	GameEvents.end_battle(result)
-	#get_tree().change_scene_to_file("res://levels/main_scene.tscn")
-	get_tree().call_deferred("change_scene_to_file", "res://levels/main_scene.tscn")
+	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
+	# FIXME: CANNOT CALL METHOD "CALL_DEFERRED" ON A NULL VALUE
+	#get_tree().call_deferred("change_scene_to_file", "res://levels/main_scene.tscn")
 	
 func _on_time_out():
 	_on_battle_end("ganado")
