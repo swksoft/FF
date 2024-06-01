@@ -1,12 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://chor52kqsx3p5"]
+[gd_scene load_steps=15 format=3 uid="uid://chor52kqsx3p5"]
 
 [ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="1_4ghid"]
 [ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_awc7n"]
+[ext_resource type="Texture2D" uid="uid://cmtaemfquqk88" path="res://assets/gui/sky2.png" id="3_1gisw"]
 [ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_2vj6e"]
+[ext_resource type="Texture2D" uid="uid://cafvuwcmyfgx8" path="res://assets/gui/nocheestrellada.png" id="3_mu0ha"]
 [ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="4_7o740"]
+[ext_resource type="Texture2D" uid="uid://cad3b8e7cj46i" path="res://assets/gui/sky1.png" id="4_px1sn"]
+[ext_resource type="Shader" path="res://shaders/scroll.gdshader" id="4_t0lsp"]
 [ext_resource type="PackedScene" uid="uid://vum6rvnoxutj" path="res://levels/spawner/spawn_area.tscn" id="6_k4r65"]
 [ext_resource type="AudioStream" uid="uid://cclx2sro3mg43" path="res://assets/music/technoboss.ogg" id="7_83hmy"]
 [ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="7_cytem"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jii21"]
+shader = ExtResource("4_t0lsp")
+shader_parameter/speed = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gv3wo"]
+shader = ExtResource("4_t0lsp")
+shader_parameter/speed = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nchiv"]
+shader = ExtResource("4_t0lsp")
+shader_parameter/speed = 0.25
 
 [node name="MapShooter_Test" type="Node2D"]
 
@@ -14,6 +30,46 @@
 
 [node name="ui_shooter" parent="." instance=ExtResource("1_4ghid")]
 layer = -1
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="LayerBG3" type="TextureRect" parent="BG"]
+self_modulate = Color(1, 1, 1, 0.396078)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jii21")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mu0ha")
+
+[node name="LayerBG1" type="TextureRect" parent="BG"]
+self_modulate = Color(1, 1, 1, 0.509804)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gv3wo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_1gisw")
+
+[node name="LayerBG2" type="TextureRect" parent="BG"]
+self_modulate = Color(1, 1, 1, 0.509804)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_nchiv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_px1sn")
 
 [node name="Walls" parent="." instance=ExtResource("3_2vj6e")]
 collision_layer = 32
