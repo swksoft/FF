@@ -47,8 +47,9 @@ func _ready():
 	
 	GameEvents.time_out.connect(_on_time_out)
 	
+	var screen_size = get_viewport().size
 	GameEvents.in_battle = true
-	
+	Input.warp_mouse(Vector2(0, screen_size.y/2))
 	GameEvents.enemy_spawn.connect(_on_enemy_spawn)
 	GameEvents.enemy_death.connect(_on_enemy_death)
 	
