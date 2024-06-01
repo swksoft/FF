@@ -17,6 +17,7 @@ size = Vector2(16, 16)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nwoin")
+randomized = false
 bullet_scene = ExtResource("2_hpyur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

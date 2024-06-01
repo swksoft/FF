@@ -47,10 +47,6 @@ func _process(delta):
 		escape_amount = 0
 	
 	emit_signal("change_escape_hud", escape_amount)
-	
-	#if get_children().size() <= 0:
-		#print("game_over")
-		# TODO: RETURN TO MAP AND ENEMY TURN MOMENT
 		
 func check_fleet():
 	if get_children().size() <= 0:

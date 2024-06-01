@@ -6,6 +6,7 @@ extends HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	GameEvents.update_general_data.connect(on_general_data_update)
 
 # TODO: ACLARAR QUE HACE CADA UNO (PANEL TOOLTIP)

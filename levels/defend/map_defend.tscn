@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbkgukmwbulwn"]
+
+[ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_hpwri"]
+[ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="2_p4fjs"]
+[ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_mwqse"]
+[ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="4_77slv"]
+[ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="5_wtphp"]
+[ext_resource type="PackedScene" uid="uid://lbxxvi7gsumt" path="res://entities/enemy/formations/path_spawn_line.tscn" id="6_w1o2s"]
+
+[node name="MapDefend" type="Node2D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("1_hpwri")]
+countdown_time = 24.0
+timer_on = true
+
+[node name="ui_shooter" parent="." instance=ExtResource("2_p4fjs")]
+
+[node name="EnemyTroopsContainer" parent="ui_shooter/Control" index="2"]
+visible = false
+
+[node name="Walls" parent="." instance=ExtResource("3_mwqse")]
+
+[node name="AreaDespawn" parent="." instance=ExtResource("4_77slv")]
+
+[node name="PlayerControl" parent="." instance=ExtResource("5_wtphp")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="PathSpawn" parent="Enemies" instance=ExtResource("6_w1o2s")]
+position = Vector2(640, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="time_passed_hud" from="LevelManager" to="ui_shooter" method="_on_level_manager_time_passed_hud"]
+[connection signal="update_hud" from="LevelManager" to="ui_shooter" method="_on_level_manager_update_hud"]
+[connection signal="escape_signal" from="PlayerControl" to="LevelManager" method="_on_player_control_escape_signal"]
+
+[editable path="ui_shooter"]
+[editable path="PlayerControl"]

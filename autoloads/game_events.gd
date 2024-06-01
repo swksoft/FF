@@ -4,6 +4,8 @@ extends Node
 signal end_turn
 signal fight(terrain)
 signal defend
+signal life_down()
+signal life_up()
 
 # MAP SIGNALS
 signal action_taken
@@ -37,7 +39,14 @@ signal player_escape
 @export var max_actions : int = 2
 var actions : int
 
+@export var player_lives = 3
+
 var in_battle: bool = false
+var battle_type: String = ""
+var battle_result: String = ""
+var current_territory: String = ""
+
+var counter_attack_data = {}
 
 @export_category("Troops")
 @export_range(0,99) var shield_troops : int = 0
@@ -51,10 +60,51 @@ var total_troops : int = types_troop[0] + types_troop[1] + types_troop[2] + type
 
 var conquisted_territories : int
 
+func start_battle(type: String, territory: String):
+	in_battle = true
+	battle_type = type
+	battle_result = ""
+	current_territory = territory
+
+func end_battle(result: String):
+	in_battle = false
+	battle_result = result
+	update_territory_status()
+
+func emit_life_up():
+	life_up.emit()
+	
+func emit_life_down():
+	life_down.emit()
+
+func reset_battle_state():
+	in_battle = false
+	battle_type = ""
+	battle_result = ""
+	current_territory = ""
+
+func update_territory_status():
+	if current_territory in territories:
+		var territory = territories[current_territory]
+
+		if battle_result == "ganado" and battle_type == "ataque":
+			territory["lives"] -= 1
+			if territory["lives"] <= 0:
+				territory["is_conquered"] = true
+
+		elif battle_result == "perdido" and battle_type == "defensa":
+			territory["lives"] += 1
+
+		elif battle_result == "escapado":
+			actions = 0
+
+		territories[current_territory] = territory
+
 func get_total_troops():
 	return GameEvents.types_troop[0] + GameEvents.types_troop[1] + GameEvents.types_troop[2] + GameEvents.types_troop[3] + GameEvents.types_troop[4]
 
 func _ready():
+	actions = max_actions
 	pass#reset_data() # TODO: COLOCAR EN BUILD
 
 func reset_data():
@@ -90,12 +140,15 @@ func emit_update_troop():
 func emit_fight(terrain):
 	emit_signal("fight", terrain)
 
-func emit_defend():
-	defend.emit()
+func emit_defend(territory):
+	emit_signal("defend", territory)
 
 func emit_enemy_death(money):
 	emit_signal("enemy_death", money)
 	
 func emit_enemy_spawn():
 	enemy_spawn.emit()
+
+func emit_time_out():
+	time_out.emit()
 

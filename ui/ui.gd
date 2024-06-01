@@ -5,8 +5,13 @@ extends Control
 @onready var tutorial_screen = $CanvasLayer/TutorialScreen
 var canvas_layer 
 
+@onready var player_lives_label = $CanvasLayer/PlayerInfoV/PlayerLivesLabel
+
 func _ready():
+	check_life()
 	GameEvents.emit_update_general_data()
+	GameEvents.life_up.connect(_on_life_up)
+	GameEvents.life_down.connect(_on_life_down)
 
 func _on_button_mouse_entered():
 	GameEvents.emit_data_troup()
@@ -28,3 +33,14 @@ func _on_turn_manager_hide_hud(activate):
 		canvas_layer.visible = false
 	else:
 		canvas_layer.visible = true
+
+func check_life():
+	player_lives_label.text = str(GameEvents.player_lives)
+
+func _on_life_up():
+	GameEvents.player_lives += 1
+	check_life()
+
+func _on_life_down():
+	GameEvents.player_lives -= 1
+	check_life()

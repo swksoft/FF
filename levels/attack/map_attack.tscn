@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqfg5fqda0svy"]
+
+[ext_resource type="PackedScene" uid="uid://chor52kqsx3p5" path="res://levels/map_shooter_test.tscn" id="1_t77p6"]
+
+[node name="map_attack" instance=ExtResource("1_t77p6")]
+
+[connection signal="player_death" from="PlayerControl/Player" to="LevelManager" method="_on_player_player_death"]
+
+[editable path="PlayerControl"]

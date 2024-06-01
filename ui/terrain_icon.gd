@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+#FIXME: EXPLOSIONS DOESNT WORK
+
 @export var territory_name : String = "None"
 
 var heart_scene : PackedScene = load("res://ui/heart.tscn")
@@ -19,6 +21,8 @@ func _ready():
 	# LIVES
 
 func _on_texture_button_pressed():
+	if GameEvents.actions <= 0:
+		return
 	await GameEvents.emit_action_taken()
 	await GameEvents.emit_fight(territory_name.to_lower())
 	

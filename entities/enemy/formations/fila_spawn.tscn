@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://da1eonpexew2k"]
+
+[ext_resource type="Script" path="res://entities/enemy/formations/fila_spawn.gd" id="1_dp30e"]
+
+[node name="FilaSpawn" type="Node2D"]
+script = ExtResource("1_dp30e")
+quantity = 8

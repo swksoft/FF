@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1c1ta1d0hobh"]
+[gd_scene load_steps=9 format=3 uid="uid://b1c1ta1d0hobh"]
 
 [ext_resource type="PackedScene" uid="uid://m7certu5eq1g" path="res://ui/map.tscn" id="1_1ugiq"]
 [ext_resource type="PackedScene" uid="uid://dp2u4jfl1ru8f" path="res://manager/turn_manager.tscn" id="1_30uqp"]
 [ext_resource type="PackedScene" uid="uid://chqqqa7i6n1en" path="res://ui/ui.tscn" id="2_0tody"]
+[ext_resource type="PackedScene" uid="uid://cplsms2sj4cd3" path="res://ui/counter_screen.tscn" id="2_1u7li"]
 [ext_resource type="PackedScene" uid="uid://githl677oot" path="res://manager/money_manager.tscn" id="2_bpvdu"]
 [ext_resource type="PackedScene" uid="uid://dho3kphocfndk" path="res://manager/action_manager.tscn" id="3_qmv8t"]
 [ext_resource type="PackedScene" uid="uid://bc4o6dcil7wsk" path="res://manager/territory_manager.tscn" id="4_or7h7"]
@@ -10,7 +11,9 @@
 
 [node name="Main Scene" type="Node2D"]
 
-[node name="TurnManager" parent="." instance=ExtResource("1_30uqp")]
+[node name="TurnManager" parent="." node_paths=PackedStringArray("territory_manager") instance=ExtResource("1_30uqp")]
+territory_manager = NodePath("../TerritoryManager")
+counter_screen_scene = ExtResource("2_1u7li")
 
 [node name="MoneyManager" parent="." instance=ExtResource("2_bpvdu")]
 

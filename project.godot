@@ -24,6 +24,7 @@ config/icon="res://assets/icon.png"
 
 GameEvents="*res://autoloads/game_events.gd"
 ScreenMessage="*res://autoloads/screen_message.tscn"
+CounterAttacksUi="*res://ui/counter_attacks_ui.tscn"
 
 [display]
 
@@ -87,3 +88,4 @@ right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0666667, 0.0666667, 0.4, 1)

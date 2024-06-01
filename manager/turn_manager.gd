@@ -59,6 +59,7 @@ func conquer_territory(name_territory: String):
 	if GameEvents.territories.has(name_territory):
 		var territory = GameEvents.territories[name_territory]
 		territory["is_conquered"] = true
+		GameEvents.emit_life_up()
 		print(name_territory + " has been conquered!")
 	else:
 		print("Territory " + name_territory + " does not exist.")

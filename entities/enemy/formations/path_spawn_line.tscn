@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://lbxxvi7gsumt"]
+
+[ext_resource type="PackedScene" uid="uid://brwm5of2viki" path="res://entities/enemy/formations/path_spawn.tscn" id="1_nu6vh"]
+
+[sub_resource type="Curve2D" id="Curve2D_1kew4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 360)
+}
+point_count = 2
+
+[node name="PathSpawn" instance=ExtResource("1_nu6vh")]
+quantity = 5
+
+[node name="Path" parent="." index="0"]
+curve = SubResource("Curve2D_1kew4")
+
+[node name="Follow" parent="Path" index="0"]
+position = Vector2(0, 0)
+rotation = 1.5708

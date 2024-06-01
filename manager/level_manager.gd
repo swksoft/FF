@@ -1,6 +1,6 @@
 extends Node
 
-# TODO: DONT FORGET ABOUT MAX TROUPS0
+# TODO: DONT FORGET ABOUT MAX TROUPS 0
 
 signal time_passed_hud(current_time)
 signal update_hud(money_get, total_enemies)
@@ -12,26 +12,47 @@ signal update_hud(money_get, total_enemies)
 var current_time: float
 var total_enemies : int = 0
 
+var battle_type: String
+var battle_territory: String
+
+func _on_battle_start(type: String, territory: String):
+	GameEvents.start_battle(type, territory)
+
+func _on_battle_end(result: String):
+	GameEvents.end_battle(result)
+	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
+
 func _process(delta):
-	# USE THIS ONLY ON DEFENSE
 	if timer_on == false:
 		return
 	
 	if current_time > 0:
 		current_time -= delta
 		emit_signal("time_passed_hud", str(round(current_time)))
+		
 		if current_time <= 0.1:
 			current_time = 0
-			print("Countdown finished! (failed to conquest)")
+			GameEvents.emit_time_out()
 
 func game_over():
-	get_tree().change_scene_to_file("res://ui/game_over_screen.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://ui/game_over_screen.tscn")
 
 func _ready():
+	# Imprimir los datos de la batalla (puedes quitar esto más tarde)
+	
+	var a = GameEvents.battle_type
+	
+	print("Tipo de batalla: ", GameEvents.battle_type)
+	print("Territorio: ", GameEvents.current_territory)
+	
+	GameEvents.time_out.connect(_on_time_out)
+	
 	GameEvents.in_battle = true
 	
 	GameEvents.enemy_spawn.connect(_on_enemy_spawn)
 	GameEvents.enemy_death.connect(_on_enemy_death)
+	
+	#_on_battle_start(type, territory)
 	
 	# TIME
 	current_time = countdown_time
@@ -46,9 +67,11 @@ func _ready():
 	#money_get = 0
 	#GameEvents.current_money += money_get
 
+func _on_time_out():
+	_on_battle_end("escape")
+
 func battle_end():
-	
-	get_tree().change_scene_to_file("res://levels/main_scene.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://levels/main_scene.tscn")
 
 func _on_player_control_escape_signal():
 	money_get = 0

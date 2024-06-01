@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://chor52kqsx3p5"]
+[gd_scene load_steps=8 format=3 uid="uid://chor52kqsx3p5"]
 
 [ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="1_4ghid"]
 [ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_awc7n"]
 [ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_2vj6e"]
-[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="4_1uxgn"]
 [ext_resource type="PackedScene" uid="uid://d3on7xv7vfpn2" path="res://entities/player/player_control.tscn" id="4_7o740"]
+[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="6_wrxam"]
 [ext_resource type="AudioStream" uid="uid://cclx2sro3mg43" path="res://assets/music/technoboss.ogg" id="7_83hmy"]
-[ext_resource type="PackedScene" uid="uid://cl0o6t3fup2hn" path="res://entities/enemy/dvd_enemy.tscn" id="7_cggvr"]
 [ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="7_cytem"]
-[ext_resource type="PackedScene" uid="uid://by6hy655p6o2v" path="res://entities/enemy/bomb_enemy.tscn" id="8_fqn3b"]
 
 [node name="MapShooter_Test" type="Node2D"]
 
@@ -20,24 +18,18 @@ layer = -1
 [node name="Walls" parent="." instance=ExtResource("3_2vj6e")]
 collision_layer = 32
 collision_mask = 0
+metadata/_edit_lock_ = true
 
 [node name="AreaDespawn" parent="." instance=ExtResource("7_cytem")]
 collision_layer = 130
+metadata/_edit_lock_ = true
 
 [node name="PlayerControl" parent="." instance=ExtResource("4_7o740")]
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="BasicEnemy" parent="Enemies" instance=ExtResource("4_1uxgn")]
-position = Vector2(600, 184)
-can_shoot = false
-
-[node name="DvdEnemy" parent="Enemies" instance=ExtResource("7_cggvr")]
-position = Vector2(736, 120)
-
-[node name="BombEnemy" parent="Enemies" instance=ExtResource("8_fqn3b")]
-position = Vector2(464, 136)
-can_shoot = false
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("6_wrxam")]
+position = Vector2(632, 176)
 
 [node name="MusicPlay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_83hmy")
