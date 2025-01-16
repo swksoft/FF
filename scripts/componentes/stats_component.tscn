@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfakbxqn8gfh4"]
+
+[ext_resource type="Script" path="res://scripts/componentes/stats_component.gd" id="1_kj4bi"]
+
+[node name="StatsComponent" type="Node"]
+script = ExtResource("1_kj4bi")
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="bonus_start" from="." to="." method="_on_bonus_start"]
+[connection signal="effect" from="." to="." method="_on_effect"]
+[connection signal="level_up" from="." to="." method="_on_level_up"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

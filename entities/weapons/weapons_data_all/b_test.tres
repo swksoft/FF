@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://c0xbq5g8iynya"]
+
+[ext_resource type="Script" path="res://scripts/resources/bullet_resource.gd" id="1_ltsfm"]
+[ext_resource type="Texture2D" uid="uid://cwgtwt6aax2i0" path="res://entities/weapons/assets/shot-1.png" id="2_s5pyw"]
+
+[resource]
+script = ExtResource("1_ltsfm")
+name_bullet = "Test Bullet"
+sprite_bullet = ExtResource("2_s5pyw")
+damage = 10.0
+speed = 100.0
+lifetime = 5.0
+explosion_radius = 5.0
+pierce = 2

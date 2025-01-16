@@ -1,9 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://gyjyu2bliujw"]
+[gd_scene load_steps=15 format=3 uid="uid://gyjyu2bliujw"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_gjltl"]
-[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="2_7u5hd"]
-[ext_resource type="Texture2D" uid="uid://2ofhu7cdw8gm" path="res://assets/sprites/spacemegasex_48x48.png" id="4_f8d0c"]
-[ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/bullet/trails.tscn" id="4_u1xur"]
+[ext_resource type="PackedScene" uid="uid://dp3mdo47cbto4" path="res://scripts/componentes/health_component.tscn" id="3_xpdgr"]
+[ext_resource type="PackedScene" uid="uid://cfhsx8a7mauxw" path="res://scripts/componentes/stamina_component.tscn" id="4_414oj"]
+[ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/weapons/trails.tscn" id="4_u1xur"]
+[ext_resource type="PackedScene" uid="uid://ck4npq4x3nr23" path="res://scripts/componentes/weapon_component.tscn" id="5_gm5wt"]
+[ext_resource type="PackedScene" uid="uid://bei8pnr6ia8c4" path="res://scripts/componentes/hurtbox_component.tscn" id="5_j86qt"]
+[ext_resource type="PackedScene" uid="uid://bm2jqyfpmefc6" path="res://entities/weapons/weapon.tscn" id="6_f6sey"]
+[ext_resource type="PackedScene" uid="uid://bfakbxqn8gfh4" path="res://scripts/componentes/stats_component.tscn" id="6_iy134"]
+
+[sub_resource type="Curve" id="Curve_o2gm4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.419808, 0.376246), 0.0, 0.0, 0, 0, Vector2(0.941059, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_wb842"]
 _data = [Vector2(0.0339171, 0.713508), 0.0, 0.0, 0, 0, Vector2(0.7779, 0.405258), 3.06442e-06, 3.06442e-06, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -15,61 +23,83 @@ curve = SubResource("Curve_wb842")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qchni"]
 emission_shape_offset = Vector3(0, 1, 0)
 direction = Vector3(0, 0, 0)
-gravity = Vector3(-100, 0, 0)
+gravity = Vector3(0, 0, 0)
 linear_accel_min = 90.0
 linear_accel_max = 90.0
 scale_min = 0.5
 scale_max = 0.5
-color = Color(0.305882, 0.290196, 0.623529, 0.172549)
+color = Color(0.306, 0.29, 0.624, 0.55)
 alpha_curve = SubResource("CurveTexture_xwrq6")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr4xg"]
-radius = 15.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaoe1"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uakj7"]
+size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "weapon", "stamina", "health") groups=["Player"]]
 collision_layer = 0
 collision_mask = 32
+motion_mode = 1
 script = ExtResource("1_gjltl")
-bullet_scene = ExtResource("2_7u5hd")
-stop_distance = 1
-slow_down_distance = 100
+stats = NodePath("StatsComponent")
+weapon = NodePath("WeaponComponent")
+stamina = NodePath("StaminaComponent")
+health = NodePath("HealthComponent")
+curve = SubResource("Curve_o2gm4")
+
+[node name="StatsComponent" parent="." groups=["Player"] instance=ExtResource("6_iy134")]
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("3_xpdgr")]
+stats = NodePath("../StatsComponent")
+
+[node name="StaminaComponent" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("4_414oj")]
+stats = NodePath("../StatsComponent")
+
+[node name="WeaponComponent" parent="." instance=ExtResource("5_gm5wt")]
+collision_layer = 2
+direction = Vector2(1, 0)
+weapon_scene = ExtResource("6_f6sey")
 
 [node name="Trails" parent="." instance=ExtResource("4_u1xur")]
-visible = false
 modulate = Color(0.496337, 0.496337, 0.496337, 1)
 z_index = -1
 width = 10.0
+default_color = Color(0.981909, 0.881057, 0.400472, 0.516)
 MAX_LENGHT = 10
 
 [node name="Particle" type="GPUParticles2D" parent="."]
 rotation = 1.5708
+amount = 4
 process_material = SubResource("ParticleProcessMaterial_qchni")
-texture = ExtResource("4_f8d0c")
-lifetime = 0.25
+lifetime = 0.15
 speed_scale = 2.0
-fixed_fps = 60
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_f8d0c")
+offset = Vector2(0, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Col" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sr4xg")
 
-[node name="CooldownShoot" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]
-collision_layer = 0
+[node name="HurtboxPlayer" parent="." instance=ExtResource("5_j86qt")]
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_iaoe1")
-debug_color = Color(0.982628, 0, 0.360471, 0.42)
+[node name="Col" type="CollisionShape2D" parent="HurtboxPlayer"]
+shape = SubResource("RectangleShape2D_uakj7")
+debug_color = Color(0.981672, 0, 0.369003, 0.42)
 
-[connection signal="timeout" from="CooldownShoot" to="." method="_on_cooldown_shoot_timeout"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[node name="InvalidLabel" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 24.0
+offset_bottom = -8.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="hit_detected" from="HurtboxPlayer" to="HealthComponent" method="_on_hurtbox_component_hit_detected"]

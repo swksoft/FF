@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cc5yhbxi7rgte" path="res://assets/sprites/gluglo1.png" id="1_o7gxe"]
 [ext_resource type="Script" path="res://entities/boss/pointy_boss.gd" id="1_t1pbb"]
-[ext_resource type="Shader" path="res://shaders/flash_hit.gdshader" id="2_dbntn"]
+[ext_resource type="Shader" path="res://scripts/shaders/flash_hit.gdshader" id="2_dbntn"]
 [ext_resource type="Script" path="res://entities/boss/StateMachine.gd" id="3_3suvh"]
 [ext_resource type="Script" path="res://entities/boss/States/EnemyPong.gd" id="4_d56pa"]
 [ext_resource type="Script" path="res://entities/boss/States/EnemyShootPlayer.gd" id="5_u87ir"]
-[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="6_orrjd"]
+[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/weapons/bullet.tscn" id="6_orrjd"]
 [ext_resource type="Script" path="res://entities/boss/States/EnemySpawn.gd" id="7_0pki6"]
 [ext_resource type="PackedScene" uid="uid://xrmutp0gvgqk" path="res://entities/enemy/follow_enemy.tscn" id="8_yybdk"]
-[ext_resource type="AudioStream" uid="uid://busvisq0gs0ol" path="res://assets/sfx/laser3.wav" id="10_v0n1b"]
+[ext_resource type="AudioStream" uid="uid://busvisq0gs0ol" path="res://entities/weapons/assets/sfx/laser3.wav" id="10_v0n1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h37qc"]
 radius = 24.0

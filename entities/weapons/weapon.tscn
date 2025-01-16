@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm2jqyfpmefc6"]
+
+[ext_resource type="Script" path="res://entities/weapons/weapon.gd" id="1_yw3xh"]
+[ext_resource type="Script" path="res://scripts/resources/bullet_resource.gd" id="2_owku0"]
+[ext_resource type="Script" path="res://scripts/resources/weapon_resource.gd" id="3_nkenc"]
+
+[sub_resource type="Resource" id="Resource_mg3ng"]
+script = ExtResource("2_owku0")
+name_bullet = "No Name"
+damage = 10.0
+speed = 50.0
+lifetime = 5.0
+explosion_radius = 0.0
+pierce = 0
+
+[sub_resource type="Resource" id="Resource_jgu3v"]
+script = ExtResource("3_nkenc")
+weapon_name = ""
+manufacturer = ""
+description = ""
+bullet_data = Array[ExtResource("2_owku0")]([SubResource("Resource_mg3ng")])
+price_solaris = 0.0
+total_uses = 0
+cooldown_shoot = 0.0
+stamina_consumption = 0.0
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_yw3xh")
+weapon_stat = SubResource("Resource_jgu3v")
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjnspysrbedcr"]
+
+[ext_resource type="PackedScene" uid="uid://ci60x2xii305c" path="res://levels/camera_event.tscn" id="1_fnhnb"]
+[ext_resource type="PackedScene" uid="uid://gyjyu2bliujw" path="res://entities/player/player.tscn" id="1_qol4y"]
+[ext_resource type="Resource" uid="uid://cvvl8sucelpao" path="res://entities/player/playable_characters/ch_space_sex.tres" id="3_sx11x"]
+[ext_resource type="Script" path="res://scripts/resources/weapon_resource.gd" id="4_hmujw"]
+[ext_resource type="Resource" uid="uid://xc0o1jww0031" path="res://entities/weapons/weapons_data_all/w_test.tres" id="5_uwctu"]
+[ext_resource type="Resource" uid="uid://gudntbx6ify7" path="res://entities/weapons/weapons_data_all/w_tormenta.tres" id="6_e2f1q"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="CameraEvent" parent="." instance=ExtResource("1_fnhnb")]
+
+[node name="Player" parent="." instance=ExtResource("1_qol4y")]
+position = Vector2(76, 178)
+
+[node name="StatsComponent" parent="Player" index="0"]
+attribute = ExtResource("3_sx11x")
+
+[node name="WeaponComponent" parent="Player" index="3"]
+available_weapons = Array[ExtResource("4_hmujw")]([ExtResource("5_uwctu"), ExtResource("6_e2f1q")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.278431)
+offset_right = 641.0
+offset_bottom = 359.0
+color = Color(0.900012, 0, 0.245309, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.278431)
+offset_left = 640.0
+offset_right = 1281.0
+offset_bottom = 359.0
+color = Color(0, 0.555127, 0.558894, 1)
+metadata/_edit_lock_ = true
+
+[editable path="Player"]

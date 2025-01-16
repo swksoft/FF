@@ -4,9 +4,8 @@ extends HBoxContainer
 @onready var money_label = $MoneyLabel
 @onready var actions_label = $ActionsLabel
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	GameEvents.update_general_data.connect(on_general_data_update)
+	GameEvents.characters_ready.update_general_data.connect(on_general_data_update)
 
 func update_hud():
 	turn_label.text = "TURN: " + str(GameEvents.current_turn)

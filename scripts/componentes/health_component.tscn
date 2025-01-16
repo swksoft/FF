@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp3mdo47cbto4"]
+
+[ext_resource type="Script" path="res://scripts/componentes/health_component.gd" id="1_mr0pl"]
+
+[node name="HealthComponent" type="Node"]
+script = ExtResource("1_mr0pl")
+
+[node name="TimerInvulnerability" type="Timer" parent="."]
+
+[connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="health_change" from="." to="." method="_on_health_change"]
+[connection signal="invulneravility" from="." to="." method="_on_invulneravility"]
+[connection signal="timeout" from="TimerInvulnerability" to="." method="_on_timer_invulnerability_timeout"]

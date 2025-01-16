@@ -42,5 +42,4 @@ func Physics_Update(delta: float):
 		max_bullets -= 1
 
 func _on_cooldown_timer_timeout():
-	print("hola")
 	can_shoot = true

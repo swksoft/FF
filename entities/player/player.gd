@@ -1,92 +1,68 @@
 extends CharacterBody2D
 class_name Player
 
-signal troop_down
-signal player_death
-
-# TODO: MAS TROPAS = MAS IMPRECISION
-
-@export var bullet_scene : PackedScene
-
-@export var speed = 500
-@export var max_speed = 1250
-
-@export var acceleration = 8000
-@export var deceleration = 1
-@export var stop_distance = 5
-@export var slow_down_distance = 50
+@export_category("imports")
+@export var stats : StatsComponent
+@export var weapon : WeaponComponent
+@export var stamina : StaminaComponent
+@export var health : HealthComponent
+@export_group("advanced")
 @export var offset : Vector2 = Vector2.ZERO
-@export var can_shoot : bool = true
+@export var curve : Curve
 
-@export var cooldown : float = 1.5
-@export var randomized : bool = false
-
-var direction = Vector2.ZERO
+var can_shoot : bool = true
+var can_move : bool = true
 var mouse_position = null
+var direction : Vector2
+var invulnerabilty : bool = false
+var death = false
 
-@onready var cooldown_shoot = $CooldownShoot
+@onready var particle: GPUParticles2D = $Particle
+@onready var sprite: Sprite2D = $Sprite
 
-# FIXME: COLISIONES ROTAS
+func _enter_tree() -> void:
+	if stats == null:
+		push_error("StatsComponent no encontrado en el nodo Player")
+		return
+	sprite.texture = stats.attribute.sprite
+	particle.texture = stats.attribute.sprite
 
-func get_damage():
-	
-	emit_signal("player_death")
-
-func _ready():
-	randomize()
-	
-	if randomized == true:
-		randomize_stats()
+func _physics_process(_delta):
+	if !death:
+		if Input.is_action_just_pressed("restart") and OS.is_debug_build(): get_tree().reload_current_scene()
+		if Input.is_action_just_pressed("right_click") and OS.is_debug_build(): stamina.stamina_recharge.emit(45)
+		if Input.is_action_just_pressed("down"):
+			#weapon_state = (weapon_state + 1) % available_weapons.size()
+			weapon.switch_weapon(1)
+		if Input.is_action_just_pressed("up"):
+			#weapon_state = (weapon_state - 1) % available_weapons.size()
+			weapon.switch_weapon(-1)
 		
-	cooldown_shoot.wait_time = cooldown
+		$HurtboxPlayer/Col.disabled = invulnerabilty or death
+		sprite.self_modulate = Color(1, 1, 1, 0.435) if invulnerabilty else Color(1, 1, 1, 1)
+		particle.emitting = (direction != Vector2.ZERO and velocity != Vector2.ZERO)
+		
+		direction.x = Input.get_axis("left", "right")
+		direction.y = Input.get_axis("up", "down")
+		
+		$InvalidLabel.visible = true if ((direction or Input.is_action_pressed("left_click")) and !can_move) else false
+		
+		if direction and can_move:
+			stamina.stamina_drop.emit(1)
+			velocity = direction * stats.attribute.speed_max
+		else: velocity = velocity.move_toward(Vector2.ZERO, stats.attribute.speed_max)
+		
+		move_and_slide()
+		
+		if Input.is_action_pressed("left_click") and can_move: weapon.active_weapon.shoot()
+		
+func die():
+	var death_animation = stats.attribute.death_animation.instantiate()
 	
-	cooldown_shoot.start()
-
-func randomize_stats():
-	offset = Vector2(randi_range(-16,100), randi_range(-100,100))
-	cooldown = randf_range(0.5, 2.0)
+	death_animation.position = global_position
 	
-	speed = randi_range(300, 700)
-	max_speed = randi_range(750, 1500)
-	deceleration = randf_range(0.5, 1.5)
-	acceleration = randi_range(5000, 12000)
-	slow_down_distance = randi_range(50,150)
-	stop_distance = randi_range(0.5,1.5)
-
-func follow_mouse(_delta):
-	mouse_position = get_global_mouse_position() + offset
-	direction = (mouse_position - global_position).normalized()
-	var distance_to_mouse = global_position.distance_to(mouse_position)
+	get_parent().call_deferred("add_child", death_animation)
+	$HurtboxPlayer/Col.call_deferred("set_disabled", true)
 	
-	if distance_to_mouse > stop_distance:
-		if distance_to_mouse < slow_down_distance:
-			var target_speed = max_speed * (distance_to_mouse / slow_down_distance)
-			velocity = velocity.move_toward(direction * target_speed, acceleration)
-		else:
-			velocity += direction * acceleration
-			velocity = velocity.limit_length(max_speed)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration)
-	
-	move_and_slide()
-
-func _physics_process(delta):
-	follow_mouse(delta)
-
-func shoot():
-	var bullet = bullet_scene.instantiate()
-	
-	bullet.position = global_position
-	bullet.set_collision_layer_value(3, true)
-	
-	get_parent().add_child(bullet)
-
-func _on_cooldown_shoot_timeout():
-	if can_shoot == true:
-		shoot()
-
-func _on_hurtbox_area_entered(area):
-	if area.is_in_group("Enemy") or area.is_in_group("EnemyBullet"):
-		get_damage()
-	if area.is_in_group("PlayerBullet"):
-		get_damage()
+	death = true
+	visible = false

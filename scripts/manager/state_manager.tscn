@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://y2g0o2vwwell"]
+
+[ext_resource type="Script" path="res://scripts/manager/state_manager.gd" id="1_b7xcq"]
+
+[node name="StateManager" type="Node"]
+script = ExtResource("1_b7xcq")
+
+[node name="ChangeState" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ChangeState" to="." method="_on_change_state_timeout"]

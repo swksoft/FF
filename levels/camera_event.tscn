@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci60x2xii305c"]
+
+[ext_resource type="Script" path="res://levels/camera_event.gd" id="1_ts556"]
+
+[node name="CameraEvent" type="Camera2D"]
+anchor_mode = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 0
+script = ExtResource("1_ts556")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbkgukmwbulwn"]
 
-[ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://manager/level_manager.tscn" id="1_hpwri"]
+[ext_resource type="PackedScene" uid="uid://b7iuep0jsastm" path="res://scripts/manager/level_manager.tscn" id="1_hpwri"]
 [ext_resource type="PackedScene" uid="uid://cln7640tkuc04" path="res://ui/ui_shooter.tscn" id="2_p4fjs"]
 [ext_resource type="PackedScene" uid="uid://dwnt6ota06vbi" path="res://levels/walls.tscn" id="3_mwqse"]
 [ext_resource type="PackedScene" uid="uid://dxkfdjvsl3igf" path="res://levels/area_despawn.tscn" id="4_77slv"]

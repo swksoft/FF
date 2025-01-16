@@ -1,55 +1,67 @@
-[gd_scene load_steps=8 format=3 uid="uid://bymn8ljt8aeps"]
+[gd_scene load_steps=13 format=3 uid="uid://bymn8ljt8aeps"]
 
 [ext_resource type="Script" path="res://entities/enemy/basic_enemy.gd" id="1_nwoin"]
-[ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/bullet/bullet.tscn" id="2_hpyur"]
 [ext_resource type="Texture2D" uid="uid://bro6worfhl0jb" path="res://assets/sprites/enemy_troops_shoot_enemy1.png" id="2_tqwhn"]
-[ext_resource type="PackedScene" path="res://entities/death_animation.tscn" id="3_4na2i"]
+[ext_resource type="PackedScene" uid="uid://dp3mdo47cbto4" path="res://scripts/componentes/health_component.tscn" id="4_o0hr6"]
+[ext_resource type="PackedScene" uid="uid://cfhsx8a7mauxw" path="res://scripts/componentes/stamina_component.tscn" id="5_jia1o"]
+[ext_resource type="PackedScene" uid="uid://bei8pnr6ia8c4" path="res://scripts/componentes/hurtbox_component.tscn" id="5_m75ol"]
+[ext_resource type="Resource" uid="uid://dy18gc2huka7n" path="res://entities/enemy/available enemies/en_normal2.tres" id="5_qri4b"]
+[ext_resource type="PackedScene" uid="uid://conkxcxr1a0wp" path="res://scripts/componentes/hitbox.tscn" id="6_p5m85"]
+[ext_resource type="PackedScene" uid="uid://bfakbxqn8gfh4" path="res://scripts/componentes/stats_component.tscn" id="6_tqjkv"]
+[ext_resource type="PackedScene" uid="uid://ck4npq4x3nr23" path="res://scripts/componentes/weapon_component.tscn" id="7_3vqs3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnphb"]
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rqfk"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxa80"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgi1j"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d0yf"]
 
-[node name="BasicEnemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats", "weapon", "stamina", "health") groups=["Enemy"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nwoin")
 randomized = false
-bullet_scene = ExtResource("2_hpyur")
-death_scene = ExtResource("3_4na2i")
+stats = NodePath("StatsComponent")
+weapon = NodePath("WeaponComponent")
+stamina = NodePath("StaminaComponent")
+health = NodePath("HealthComponent")
+
+[node name="StatsComponent" parent="." instance=ExtResource("6_tqjkv")]
+attribute = ExtResource("5_qri4b")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("4_o0hr6")]
+stats = NodePath("../StatsComponent")
+
+[node name="StaminaComponent" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("5_jia1o")]
+stats = NodePath("../StatsComponent")
+
+[node name="WeaponComponent" parent="." instance=ExtResource("7_3vqs3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bnphb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_tqwhn")
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
-collision_layer = 0
-collision_mask = 196
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_0rqfk")
-debug_color = Color(2.98411e-06, 0.638502, 0.37781, 0.42)
-
-[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_sgi1j")
-debug_color = Color(0.978037, 0, 0.399389, 0.42)
-
-[node name="Timer" type="Timer" parent="."]
+[node name="CooldownShootTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="HurtboxComponent" parent="." instance=ExtResource("5_m75ol")]
+collision_mask = 5
+
+[node name="Col" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_pxa80")
+
+[node name="Hitbox" parent="." instance=ExtResource("6_p5m85")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7d0yf")
+
+[connection signal="timeout" from="CooldownShootTimer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="hit_detected" from="HurtboxComponent" to="HealthComponent" method="_on_hurtbox_component_hit_detected"]

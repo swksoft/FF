@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7iuep0jsastm"]
+
+[ext_resource type="Script" path="res://scripts/manager/level_manager.gd" id="1_1qdxe"]
+
+[node name="LevelManager" type="Node"]
+process_mode = 1
+script = ExtResource("1_1qdxe")
+countdown_time = 1.0

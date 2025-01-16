@@ -9,7 +9,7 @@ func _physics_process(delta):
 			
 	if has_entered_screen:
 		# Calcular la nueva posición
-		var new_position = position + direction * speed * delta
+		var new_position = position + direction * stats.attribute.speed * delta
 
 		if new_position.x <= 0 or new_position.x >= 640:
 			direction.x = -direction.x  # Invertir la dirección en el eje X
@@ -17,4 +17,4 @@ func _physics_process(delta):
 			direction.y = -direction.y  # Invertir la dirección en el eje Y
 
 	# Aplicar el movimiento
-	position += direction * speed * delta
+	position += direction * stats.attribute.speed * delta

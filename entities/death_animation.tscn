@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c033r4epjy5y2" path="res://assets/sprites/explosion-3.png" id="3_8yobc"]
 [ext_resource type="Texture2D" uid="uid://b0i1vpju85hyq" path="res://assets/sprites/explosion-4.png" id="4_uae86"]
 [ext_resource type="Texture2D" uid="uid://de0vk3kiqfgq3" path="res://assets/sprites/explosion-5.png" id="5_1bfn1"]
-[ext_resource type="AudioStream" uid="uid://b6ncrwl4aafsp" path="res://assets/sfx/Explosion.ogg" id="6_7i13e"]
+[ext_resource type="AudioStream" uid="uid://b6ncrwl4aafsp" path="res://entities/weapons/assets/sfx/Explosion.ogg" id="6_7i13e"]
 [ext_resource type="Script" path="res://entities/death_animation.gd" id="6_r58jd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nq2h4"]

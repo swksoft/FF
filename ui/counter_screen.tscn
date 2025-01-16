@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/counter_screen.gd" id="1_6adcf"]
 [ext_resource type="AudioStream" uid="uid://byk35jdfp8awx" path="res://assets/sfx/decide5.wav" id="2_r46xf"]
 [ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="2_tk0ks"]
-[ext_resource type="FontFile" uid="uid://bx7v6nlmmrefv" path="res://fonts/Pixelme.ttf" id="3_fw1i3"]
+[ext_resource type="FontFile" uid="uid://bx7v6nlmmrefv" path="res://Pixelme.ttf" id="3_fw1i3"]
 
 [node name="CounterScreen" type="CanvasLayer"]
 process_mode = 3
