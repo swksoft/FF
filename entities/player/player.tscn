@@ -36,12 +36,11 @@ alpha_curve = SubResource("CurveTexture_xwrq6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uakj7"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 0
 collision_mask = 32
 motion_mode = 1
 script = ExtResource("1_gjltl")
-stats = NodePath("StatsComponent")
 curve = SubResource("Curve_o2gm4")
 metadata/_edit_group_ = true
 

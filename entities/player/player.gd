@@ -1,8 +1,6 @@
-extends CharacterBody2D
+extends Entity
 class_name Player
 
-@export_category("imports")
-@export var stats : StatsComponent
 @export_group("advanced")
 @export var offset : Vector2 = Vector2.ZERO
 @export var curve : Curve
@@ -13,19 +11,20 @@ var direction : Vector2
 var invulnerabilty : bool = false
 var death = false
 
-@onready var health: HealthComponent = $HealthComponent
-@onready var stamina: StaminaComponent = $StaminaComponent
-@onready var weapon: WeaponComponent = $WeaponComponent
 @onready var particle: GPUParticles2D = $Particle
 @onready var sprite: Sprite2D = $Sprite
 @onready var invalid_label: Label = $InvalidLabel
 @onready var turn_manager = get_tree().get_first_node_in_group("TurnManagerBattle")
 
-func _ready() -> void:
-	GameEvents.player_ready.emit()
+func _on_entity_ready() -> void:
+	GameEvents.emit_loading_started()
+
 	sprite.texture = stats.attribute.sprite
 	particle.texture = stats.attribute.sprite
 	turn_manager.turn_changed.connect(_on_turn_changed)
+
+	GameEvents.player_ready.emit()
+	GameEvents.emit_loading_finished()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:

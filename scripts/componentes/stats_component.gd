@@ -1,4 +1,4 @@
-extends Node
+extends BaseComponent
 class_name StatsComponent
 
 signal effect(stat: String, value: float, time: float)
@@ -7,13 +7,14 @@ signal level_up(stat: String, value: float)
 
 @export var attribute : CharacterStats
 
-func _ready() -> void:
+func _setup() -> void:
+	await get_tree().process_frame
+	
 	if attribute == null:
-		push_error("StatsComponent no encontrado en el nodo stats")
-		return
-
-func emit_stats_loaded():
-	GameEvents.emit_stats_loaded()
+		printerr("ERROR: StatsComponent sin attribute asignado en: ", self.get_path())
+		get_tree().quit()
+	
+	is_ready = true
 
 func _on_bonus_start(stat: String, value: float) -> void:
 	attribute.stat *= value

@@ -1,4 +1,4 @@
-extends Node
+extends BaseComponent
 class_name StaminaComponent
 
 signal stamina_change(value: float)
@@ -22,17 +22,18 @@ var current_stamina : float:
 var recharge_rate : float
 var recharge_penalty = 1
 
-func _enter_tree() -> void:
+func _setup() -> void:
+	await get_tree().process_frame
+	
 	if stats == null:
 		push_error("StatsComponent no encontrado en el nodo stamina")
-		return
+		
 	max_stamina = stats.attribute.stamina_max
 	current_stamina = max_stamina
 	recharge_rate = stats.attribute.stamina_charge
 	GameEvents.stamina_update.emit(current_stamina)
-
-func _ready() -> void:
-	GameEvents.stamina_update.emit(current_stamina)
+		
+	is_ready = true
 
 func _on_stamina_drop(rate) -> void:
 	current_stamina -= rate

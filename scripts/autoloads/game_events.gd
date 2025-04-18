@@ -11,6 +11,8 @@ signal defend
 signal life_down()
 signal life_up()
 signal terrain_lives_hud
+signal loading_started
+signal loading_finished
 
 # MAP SIGNALS
 signal action_taken
@@ -121,7 +123,6 @@ func reset_data():
 		"ys": { "lives": 2, "is_conquered": false , "confronted": false}
 	}
 	
-	
 	conquisted_territories = 0
 	# TODO: LO DE ABAJO ESTA MAL CAMBIAR POR TYPES TROOP
 	current_turn = 0
@@ -169,3 +170,11 @@ func emit_terrain_lives_hud():
 
 func emit_stats_loaded():
 	stats_loaded.emit()
+
+# TODO: COMO HAREMOS QUE LA CARGA FUNCIONE CON MULTIPLES ENTIDADES?
+# TODO: APLICAR CON ENEMIGOS APLICANDO CLASE ENTITY
+func emit_loading_started():
+	loading_started.emit()
+
+func emit_loading_finished():
+	loading_finished.emit()

@@ -1,4 +1,4 @@
-extends Node
+extends BaseComponent
 class_name HealthComponent
 
 signal health_change(value)
@@ -14,12 +14,16 @@ var current_health : float:
 
 @export var stats: StatsComponent
 
-func _enter_tree() -> void:
+func _setup() -> void:
+	await get_tree().process_frame
+	
 	if stats == null:
 		push_error("StatsComponent no encontrado en el nodo health")
-		return
+		
 	max_health = stats.attribute.health_max + stats.attribute.bonus.bonus_stat["health"]
 	current_health = max_health
+		
+	is_ready = true
 	
 func _on_health_change(amount: int):
 	current_health = max(0, current_health - amount)

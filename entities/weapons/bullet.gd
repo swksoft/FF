@@ -2,10 +2,10 @@ extends HitboxComponent
 class_name Bullet
 
 @export var trail_lenght = 5
-@export var stats : BulletResource
+@export var stats: BulletResource
 
-var pierce : int = 0
-var direction : Vector2 = Vector2.ZERO
+var pierce: int = 0
+var direction: Vector2 = Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var despawn_timer: Timer = $DespawnTimer
@@ -20,7 +20,7 @@ func _ready():
 		push_error("El recurso sprite_bullet es nulo")
 	
 func _process(delta):
-	sprite.flip_v = true if (direction.x < 0 ) else false
+	sprite.flip_v = true if (direction.x < 0) else false
 	_trajectory(delta)
 	
 func _trajectory(delta):

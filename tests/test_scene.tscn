@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjnspysrbedcr"]
+[gd_scene load_steps=9 format=3 uid="uid://cjnspysrbedcr"]
 
 [ext_resource type="PackedScene" uid="uid://urgen6mle7w3" path="res://ui/debug/fps_counter.tscn" id="1_ecjii"]
 [ext_resource type="PackedScene" uid="uid://ci60x2xii305c" path="res://levels/camera_event.tscn" id="1_fnhnb"]
@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="4_bi1n5"]
 [ext_resource type="PackedScene" uid="uid://pc1ya140k6j7" path="res://levels/bg_cloudy_sky.tscn" id="6_yblrr"]
 [ext_resource type="PackedScene" uid="uid://ciw02d0xa2fac" path="res://ui/debug/debug_container.tscn" id="7_y10f4"]
+[ext_resource type="PackedScene" uid="uid://ck831ajmab6l1" path="res://ui/in_game/hud.tscn" id="8_2rgn6"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="TurnManagerBattle" parent="." instance=ExtResource("1_s8vdy")]
-turn_who = 1
 
 [node name="FPScounter" parent="." instance=ExtResource("1_ecjii")]
 
@@ -33,6 +33,7 @@ color = Color(0.900012, 0, 0.245309, 1)
 metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.278431)
 offset_left = 640.0
 offset_right = 1281.0
@@ -49,16 +50,10 @@ offset_right = 1276.0
 target = NodePath("../BasicEnemy")
 
 [node name="BG" parent="." instance=ExtResource("6_yblrr")]
+visible = false
 
-[node name="Hud" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="Hud"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Hud" parent="." node_paths=PackedStringArray("entities") instance=ExtResource("8_2rgn6")]
+entities = [NodePath("../Player")]
 
 [editable path="Player"]
 [editable path="BasicEnemy"]
