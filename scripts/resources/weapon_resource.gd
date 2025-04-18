@@ -5,10 +5,10 @@ class_name WeaponResource
 @export var manufacturer : String
 @export var icon : CompressedTexture2D 
 @export_multiline var description : String
-@export var bullet_data : Array[BulletResource] = []
+@export var bullet_data : BulletResource
 @export_group("audio")
-@export var shoot_sfx : AudioStream = load("res://assets/sfx/projectile1.wav")
-@export var hit_sfx : AudioStream = load("res://assets/sfx/projectile1.wav")
+@export var shoot_sfx : AudioStream
+@export var hit_sfx : AudioStream
 @export_category("gameplay_stats")
 @export var price_solaris : float
 @export var total_uses : int

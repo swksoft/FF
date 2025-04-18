@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://crs5bvsnkishe"]
+[gd_scene load_steps=2 format=3 uid="uid://crs5bvsnkishe"]
 
-[ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="1_qvhl5"]
-[ext_resource type="Script" path="res://ui/stats_panel.gd" id="2_sk1h7"]
+[ext_resource type="Script" uid="uid://bgdotjigdexh6" path="res://ui/stats_panel.gd" id="2_sk1h7"]
 
 [node name="StatsPanel" type="Panel"]
 visible = false
@@ -9,7 +8,6 @@ offset_left = 8.0
 offset_top = 184.0
 offset_right = 144.0
 offset_bottom = 312.0
-theme = ExtResource("1_qvhl5")
 script = ExtResource("2_sk1h7")
 metadata/_edit_group_ = true
 

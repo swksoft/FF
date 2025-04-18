@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=7 format=3 uid="uid://gudntbx6ify7"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=6 format=3 uid="uid://gudntbx6ify7"]
 
-[ext_resource type="Script" path="res://scripts/resources/weapon_resource.gd" id="1_1opri"]
-[ext_resource type="Script" path="res://scripts/resources/bullet_resource.gd" id="1_a1ngi"]
-[ext_resource type="Resource" uid="uid://c0xbq5g8iynya" path="res://entities/weapons/weapons_data_all/b_test.tres" id="2_hrqpe"]
+[ext_resource type="Script" uid="uid://dtggb23a1fa86" path="res://scripts/resources/weapon_resource.gd" id="1_1opri"]
+[ext_resource type="Resource" uid="uid://bypjqlawxxlmd" path="res://entities/weapons/weapons_data_all/b_rayo.tres" id="2_vf747"]
 [ext_resource type="AudioStream" uid="uid://dm5q076x5pouy" path="res://entities/weapons/assets/sfx/missile.wav" id="3_j0lrq"]
 [ext_resource type="Texture2D" uid="uid://dcf11c5s50avt" path="res://assets/sprites/iconsga1.png" id="4_c8yh6"]
-[ext_resource type="AudioStream" uid="uid://dxbiwebsdpqps" path="res://entities/weapons/assets/sfx/laser2.wav" id="5_retv7"]
+[ext_resource type="AudioStream" uid="uid://byk35jdfp8awx" path="res://assets/sfx/decide5.wav" id="5_8lqn5"]
 
 [resource]
 script = ExtResource("1_1opri")
@@ -14,9 +13,10 @@ manufacturer = "Eaten Tuna"
 icon = ExtResource("4_c8yh6")
 description = "Disparo en ráfaga a un módico precio!
 "
-bullet_data = Array[ExtResource("1_a1ngi")]([ExtResource("2_hrqpe"), ExtResource("2_hrqpe")])
-shoot_sfx = ExtResource("5_retv7")
+bullet_data = ExtResource("2_vf747")
+shoot_sfx = ExtResource("5_8lqn5")
 hit_sfx = ExtResource("3_j0lrq")
 price_solaris = 200.0
 total_uses = 90
-cooldown_shoot = 24.0
+cooldown_shoot = 2.0
+stamina_consumption = 24.0

@@ -11,12 +11,10 @@ var direction : Vector2
 
 @onready var cooldown: Timer = $Cooldown
 
-func _enter_tree() -> void:
-	if weapon_stat == null:
-		push_error("NO SE ENCONTRO WEAPON STAT")
-		return
-
-# FIXME: INSTANCIA EL MISMO NODO, DEBERIA SOLO INTERCAMBIAR EL RESOURCE
+#func _ready() -> void:
+	#if weapon_stat == null:
+		#push_error("NO SE ENCONTRO WEAPON STAT")
+		#return
 
 func play_sound():
 	var sfx = AudioStreamPlayer.new()
@@ -24,6 +22,7 @@ func play_sound():
 	add_child(sfx)
 	sfx.stream = weapon_stat.shoot_sfx
 	sfx.finished.connect(Callable(self, "_on_sfx_finished").bind(sfx))
+	sfx.bus = "SFX"
 	sfx.play()
 
 func shoot():
@@ -32,23 +31,27 @@ func shoot():
 		
 		cooldown.wait_time = weapon_stat.cooldown_shoot
 		cooldown.start()
-		
-		# REDUCCION STAMINA
-		# FIXME: CAMBIAR A GETSET STAMINA
-		#get_parent().get_parent().stamina.stamina_drop.emit(15)
+	
 		get_parent().get_parent().stamina.current_stamina -= weapon_stat.stamina_consumption
 		
-		for bullet_type in weapon_stat.bullet_data:
-			var bullet : Bullet = BULLET_SCENE.instantiate()
-			
-			bullet.stats = weapon_stat.bullet_data[bullet_type]
-			bullet.direction = direction
-			bullet.position = get_parent().get_parent().global_position
-			
-			bullet.set_collision_layer_value(collision_layer,true)
-			
-			get_tree().get_root().add_child(bullet)
-			
+		if weapon_stat.bullet_data == null:
+			push_error("Bullet stats no se han cargado correctamente")
+			return
+		
+		var bullet : Bullet = BULLET_SCENE.instantiate()
+
+		if weapon_stat.bullet_data != null:
+			bullet.stats = weapon_stat.bullet_data
+		else:
+			push_warning("Bullet.stats es nulo; se asignará un nuevo recurso dinámicamente.")
+			bullet.stats = BulletResource.new()
+
+		bullet.direction = direction
+		bullet.position = get_parent().get_parent().global_position
+		bullet.set_collision_layer_value(collision_layer, true)
+		
+		get_tree().get_root().add_child(bullet)
+		
 		play_sound()
 
 func _on_sfx_finished(sfx: AudioStreamPlayer) -> void:

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciw02d0xa2fac"]
+
+[ext_resource type="Script" uid="uid://6aymr73tbywn" path="res://ui/debug/debug_container.gd" id="1_qlodk"]
+
+[node name="DebugContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 80)
+offset_right = 100.0
+offset_bottom = 80.0
+script = ExtResource("1_qlodk")
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="Name" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "nombre: ninguno"
+
+[node name="Health" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "health: ninguno"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stamina" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "stamina: ninguno"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Speed" type="Label" parent="V"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "speed: ninguno"
+horizontal_alignment = 1
+vertical_alignment = 1

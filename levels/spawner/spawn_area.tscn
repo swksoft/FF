@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vum6rvnoxutj"]
 
-[ext_resource type="Script" path="res://levels/spawner/spawn_area.gd" id="1_nlop1"]
+[ext_resource type="Script" uid="uid://i3jlstv5ha5d" path="res://levels/spawner/spawn_area.gd" id="1_nlop1"]
 
 [node name="SpawnArea" type="Node2D"]
 script = ExtResource("1_nlop1")

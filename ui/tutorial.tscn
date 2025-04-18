@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0ucco71dbkiq"]
 
-[ext_resource type="Script" path="res://ui/tutorial.gd" id="1_aapb3"]
+[ext_resource type="Script" uid="uid://bmkmo6k30iqp0" path="res://ui/tutorial.gd" id="1_aapb3"]
 [ext_resource type="Texture2D" uid="uid://c2a5ip5ggjfls" path="res://assets/sprites/tutojuegoses1.png" id="2_hm6kh"]
 [ext_resource type="Texture2D" uid="uid://dfruc0emtuqdy" path="res://assets/sprites/tutojuegoses2.png" id="3_68ft8"]
 [ext_resource type="Texture2D" uid="uid://dxqtsbdni6ama" path="res://assets/sprites/tutojuegoses3.png" id="4_dd8e2"]

@@ -11,8 +11,6 @@ func _ready() -> void:
 	if attribute == null:
 		push_error("StatsComponent no encontrado en el nodo stats")
 		return
-	
-	call_deferred("emit_stats_loaded")
 
 func emit_stats_loaded():
 	GameEvents.emit_stats_loaded()
@@ -29,4 +27,5 @@ func _on_level_up(stat: String, value: float) -> void:
 	attribute.stat += value
 
 func _on_cooldown_timeout() -> void:
+	# TODO: one shot TRUE?
 	attribute.stat *= 1

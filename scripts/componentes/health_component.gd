@@ -18,12 +18,11 @@ func _enter_tree() -> void:
 	if stats == null:
 		push_error("StatsComponent no encontrado en el nodo health")
 		return
-	max_health = stats.attribute.health + stats.attribute.bonus.bonus_stat["health"]
+	max_health = stats.attribute.health_max + stats.attribute.bonus.bonus_stat["health"]
 	current_health = max_health
 	
 func _on_health_change(amount: int):
 	current_health = max(0, current_health - amount)
-	#current_health -= amount
 	invulneravility.emit()
 	if current_health == 0:
 		emit_signal("dead")

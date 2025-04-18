@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk0srfwbfdrak"]
 
-[ext_resource type="Script" path="res://ui/general_data_display.gd" id="1_mtkuf"]
+[ext_resource type="Script" uid="uid://cnxoqwmdbrhqo" path="res://ui/general_data_display.gd" id="1_mtkuf"]
 
 [node name="GeneralDataDisplay" type="HBoxContainer"]
 anchors_preset = 5

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://cvvl8sucelpao"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=7 format=3 uid="uid://cvvl8sucelpao"]
 
-[ext_resource type="Script" path="res://scripts/resources/stat_bonus_resource.gd" id="1_1ryd0"]
-[ext_resource type="Script" path="res://scripts/resources/character_stats.gd" id="1_5uvbb"]
+[ext_resource type="Script" uid="uid://1l5sxh3weg4u" path="res://scripts/resources/stat_bonus_resource.gd" id="1_1ryd0"]
+[ext_resource type="Script" uid="uid://bttki57vpc7u8" path="res://scripts/resources/character_stats.gd" id="1_5uvbb"]
 [ext_resource type="PackedScene" uid="uid://4yekcuds2grw" path="res://entities/death_animation.tscn" id="1_py5dt"]
 [ext_resource type="Texture2D" uid="uid://2ofhu7cdw8gm" path="res://assets/sprites/spacemegasex_48x48.png" id="2_ait84"]
+[ext_resource type="AudioStream" uid="uid://cn5o6xpd43bdq" path="res://assets/sfx/wall.wav" id="3_ta1fj"]
 
 [sub_resource type="Resource" id="Resource_xd0en"]
 script = ExtResource("1_1ryd0")
@@ -25,11 +26,12 @@ sprite = ExtResource("2_ait84")
 death_animation = ExtResource("1_py5dt")
 health_max = 255.0
 defense_max = 45.0
-speed_max = 250.0
+speed_max = 187.0
 base_damage_max = 0.0
 stamina_max = 300.0
 stamina_charge = 0.0
 shoot_cooldown_max = 5.0
 accuracy_max = 60.0
 crit_chance = 12.0
+dmg_sfx = ExtResource("3_ta1fj")
 bonus = SubResource("Resource_xd0en")

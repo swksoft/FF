@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://jey2tsytquc5"]
 
 [ext_resource type="Texture2D" uid="uid://cc5yhbxi7rgte" path="res://assets/sprites/gluglo1.png" id="1_o7gxe"]
-[ext_resource type="Script" path="res://entities/boss/pointy_boss.gd" id="1_t1pbb"]
-[ext_resource type="Shader" path="res://scripts/shaders/flash_hit.gdshader" id="2_dbntn"]
-[ext_resource type="Script" path="res://entities/boss/StateMachine.gd" id="3_3suvh"]
-[ext_resource type="Script" path="res://entities/boss/States/EnemyPong.gd" id="4_d56pa"]
-[ext_resource type="Script" path="res://entities/boss/States/EnemyShootPlayer.gd" id="5_u87ir"]
+[ext_resource type="Script" uid="uid://sbpdmnaajaw8" path="res://entities/boss/pointy_boss.gd" id="1_t1pbb"]
+[ext_resource type="Shader" uid="uid://g5nievma0hwc" path="res://scripts/shaders/flash_hit.gdshader" id="2_dbntn"]
+[ext_resource type="Script" uid="uid://bp4dtacqqa2hf" path="res://entities/boss/StateMachine.gd" id="3_3suvh"]
+[ext_resource type="Script" uid="uid://citl2o0knd0uo" path="res://entities/boss/States/EnemyPong.gd" id="4_d56pa"]
+[ext_resource type="Script" uid="uid://bag7yvosmx16s" path="res://entities/boss/States/EnemyShootPlayer.gd" id="5_u87ir"]
 [ext_resource type="PackedScene" uid="uid://by521l74ulvsi" path="res://entities/weapons/bullet.tscn" id="6_orrjd"]
-[ext_resource type="Script" path="res://entities/boss/States/EnemySpawn.gd" id="7_0pki6"]
+[ext_resource type="Script" uid="uid://dlp4irckiy7ge" path="res://entities/boss/States/EnemySpawn.gd" id="7_0pki6"]
 [ext_resource type="PackedScene" uid="uid://xrmutp0gvgqk" path="res://entities/enemy/follow_enemy.tscn" id="8_yybdk"]
 [ext_resource type="AudioStream" uid="uid://busvisq0gs0ol" path="res://entities/weapons/assets/sfx/laser3.wav" id="10_v0n1b"]
 
@@ -25,8 +25,8 @@ resource_local_to_scene = true
 shader = ExtResource("2_dbntn")
 shader_parameter/opacity = 1.0
 shader_parameter/r = 1.0
-shader_parameter/g = null
-shader_parameter/b = null
+shader_parameter/g = 0.0
+shader_parameter/b = 0.0
 shader_parameter/mix_color = 0.0
 
 [sub_resource type="Animation" id="Animation_jx4qh"]
@@ -63,8 +63,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rge40"]
 _data = {
-"RESET": SubResource("Animation_jx4qh"),
-"take_damage": SubResource("Animation_w1n83")
+&"RESET": SubResource("Animation_jx4qh"),
+&"take_damage": SubResource("Animation_w1n83")
 }
 
 [node name="PointyBoss" type="CharacterBody2D"]

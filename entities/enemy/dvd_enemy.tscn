@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl0o6t3fup2hn"]
 
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_esfdy"]
-[ext_resource type="Script" path="res://entities/enemy/dvd_enemy.gd" id="2_hgfh1"]
+[ext_resource type="Script" uid="uid://dphcrheackj2v" path="res://entities/enemy/dvd_enemy.gd" id="2_hgfh1"]
 
 [node name="DvdEnemy" instance=ExtResource("1_esfdy")]
 script = ExtResource("2_hgfh1")

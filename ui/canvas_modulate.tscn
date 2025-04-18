@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ca6ybgp3mhvb7"]
 
-[ext_resource type="Script" path="res://ui/canvas_modulate.gd" id="1_0i4of"]
+[ext_resource type="Script" uid="uid://b6q4f32cmlcgq" path="res://ui/canvas_modulate.gd" id="1_0i4of"]
 
 [node name="CanvasModulate" type="CanvasModulate" groups=["ui_modulate"]]
 modulate = Color(0.298039, 0.396078, 0.490196, 0)

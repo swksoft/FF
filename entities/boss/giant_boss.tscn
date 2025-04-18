@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://dg6eo21okjx5f"]
 
-[ext_resource type="Script" path="res://entities/boss/pointy_boss.gd" id="1_v4pa5"]
-[ext_resource type="Shader" path="res://scripts/shaders/flash_hit.gdshader" id="2_642q6"]
+[ext_resource type="Script" uid="uid://sbpdmnaajaw8" path="res://entities/boss/pointy_boss.gd" id="1_v4pa5"]
+[ext_resource type="Shader" uid="uid://g5nievma0hwc" path="res://scripts/shaders/flash_hit.gdshader" id="2_642q6"]
 [ext_resource type="Texture2D" uid="uid://dn56peubfviiu" path="res://assets/sprites/gomez.png" id="2_frorx"]
-[ext_resource type="Script" path="res://entities/boss/StateMachine.gd" id="3_gc2m1"]
-[ext_resource type="Script" path="res://entities/boss/States/EnemyIdle.gd" id="4_qoq4h"]
-[ext_resource type="Script" path="res://entities/boss/States/SpawnEnemies.gd" id="5_iop2t"]
+[ext_resource type="Script" uid="uid://bp4dtacqqa2hf" path="res://entities/boss/StateMachine.gd" id="3_gc2m1"]
+[ext_resource type="Script" uid="uid://dphenv8wcn2uo" path="res://entities/boss/States/EnemyIdle.gd" id="4_qoq4h"]
+[ext_resource type="Script" uid="uid://bbgcfei2y38x5" path="res://entities/boss/States/SpawnEnemies.gd" id="5_iop2t"]
 [ext_resource type="AudioStream" uid="uid://cdnknbo7ii3cb" path="res://assets/sfx/miau.wav" id="7_k4cxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3v06u"]
@@ -21,8 +21,8 @@ size = Vector2(240, 256)
 shader = ExtResource("2_642q6")
 shader_parameter/opacity = 1.0
 shader_parameter/r = 1.0
-shader_parameter/g = null
-shader_parameter/b = null
+shader_parameter/g = 0.0
+shader_parameter/b = 0.0
 shader_parameter/mix_color = 0.0
 
 [sub_resource type="Animation" id="Animation_jx4qh"]
@@ -59,8 +59,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rge40"]
 _data = {
-"RESET": SubResource("Animation_jx4qh"),
-"take_damage": SubResource("Animation_w1n83")
+&"RESET": SubResource("Animation_jx4qh"),
+&"take_damage": SubResource("Animation_w1n83")
 }
 
 [node name="GiantBoss" type="CharacterBody2D" groups=["Enemy"]]

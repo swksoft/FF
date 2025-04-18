@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://baubbuxjjja4y"]
 
 [ext_resource type="Texture2D" uid="uid://cc3bbeobhew1b" path="res://assets/screens/defeat.png" id="1_m5qse"]
-[ext_resource type="Script" path="res://ui/over_screen.gd" id="1_pqe7e"]
+[ext_resource type="Script" uid="uid://cmq6ljm4minau" path="res://ui/over_screen.gd" id="1_pqe7e"]
 [ext_resource type="AudioStream" uid="uid://b77ttfn0fb3ts" path="res://assets/music/menu.ogg" id="3_05r2w"]
 
 [node name="GameOverScreen" type="Control"]

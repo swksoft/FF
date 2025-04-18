@@ -2,14 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dd4w57cb0bwcv" path="res://entities/troops/troop.tscn" id="1_oknpb"]
 [ext_resource type="Texture2D" uid="uid://4oti0onwt3yp" path="res://assets/sprites/troops_bomb5.png" id="2_3bjha"]
-[ext_resource type="Script" path="res://entities/troops/troop_bomb.gd" id="2_ydois"]
-[ext_resource type="PackedScene" uid="uid://bvfft881a7uv6" path="res://entities/weapons/bullet/bomb.tscn" id="3_uhrh2"]
+[ext_resource type="Script" uid="uid://b360p2j5rwqtf" path="res://entities/troops/troop_bomb.gd" id="2_ydois"]
+
+[sub_resource type="Resource" id="Resource_73c2y"]
+metadata/__load_path__ = "res://entities/weapons/bullet/bomb.tscn"
 
 [node name="TroopBomb" instance=ExtResource("1_oknpb")]
 script = ExtResource("2_ydois")
 orbit_radius = 45
 orbit_speed = 6.28319
-bomb_scene = ExtResource("3_uhrh2")
+bomb_scene = SubResource("Resource_73c2y")
 contact_damage = 20
 bullet_scene = null
 stop_distance = 5

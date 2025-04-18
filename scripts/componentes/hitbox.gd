@@ -6,4 +6,4 @@ class_name HitboxComponent
 func on_hit(area):
 	#print("QUE ES ESTO: ", area.name)
 	#print("DAMAGE: ", damage)
-	DamageNumbers.display_number(damage, global_position + Vector2(0, -18))
+	DamageNumbers.display_number(damage, area.global_position + Vector2(0, -18))

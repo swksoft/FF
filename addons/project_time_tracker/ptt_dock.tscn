@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://djywon7mdvm74"]
 
-[ext_resource type="Script" path="res://addons/project_time_tracker/ptt_dock.gd" id="1_7wcfh"]
+[ext_resource type="Script" uid="uid://ccf7b7vioymkk" path="res://addons/project_time_tracker/ptt_dock.gd" id="1_7wcfh"]
 
 [node name="Project Time Tracker" type="Control" node_paths=PackedStringArray("lbl_CST", "lbl_LST", "lbl_TOOD", "cb_sn", "lbl_StartDate")]
 layout_mode = 3

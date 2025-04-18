@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dle1imcy41gsn"]
 
-[ext_resource type="Script" path="res://ui/counter_attacks_ui.gd" id="1_uipsq"]
+[ext_resource type="Script" uid="uid://db2mwhxriqko7" path="res://ui/counter_attacks_ui.gd" id="1_uipsq"]
 [ext_resource type="PackedScene" uid="uid://cplsms2sj4cd3" path="res://ui/counter_screen.tscn" id="2_qcnbv"]
 
 [node name="CounterAttacksUI" type="Control"]

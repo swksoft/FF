@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://by521l74ulvsi"]
 
-[ext_resource type="Script" path="res://entities/weapons/bullet.gd" id="1_18tu8"]
+[ext_resource type="Script" uid="uid://dv1g0j262i245" path="res://entities/weapons/bullet.gd" id="1_18tu8"]
 [ext_resource type="Texture2D" uid="uid://c5vpgke06wckg" path="res://assets/sprites/iconsga5.png" id="2_ts76w"]
 [ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/weapons/trails.tscn" id="3_28jn2"]
 [ext_resource type="AudioStream" uid="uid://77cipdv40821" path="res://entities/weapons/assets/sfx/laseer3.wav" id="5_1bt5o"]
@@ -30,5 +30,6 @@ shape = SubResource("CircleShape2D_0bwo3")
 stream = ExtResource("5_1bt5o")
 volume_db = -20.0
 autoplay = true
+bus = &"SFX"
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timeout"]

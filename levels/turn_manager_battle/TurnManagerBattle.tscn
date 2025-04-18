@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkre05coasxe7"]
+
+[ext_resource type="Script" uid="uid://nvqtnqwdknnm" path="res://levels/turn_manager_battle/turn_manager_battle.gd" id="1_fwl7a"]
+
+[node name="TurnManagerBattle" type="Node" groups=["TurnManagerBattle"]]
+script = ExtResource("1_fwl7a")

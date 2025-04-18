@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bb4pbsj7mgobj"]
 
 [ext_resource type="PackedScene" uid="uid://jey2tsytquc5" path="res://entities/boss/pointy_boss.tscn" id="1_be88a"]
-[ext_resource type="Shader" path="res://scripts/shaders/flash_hit.gdshader" id="2_hj7fv"]
+[ext_resource type="Shader" uid="uid://g5nievma0hwc" path="res://scripts/shaders/flash_hit.gdshader" id="2_hj7fv"]
 [ext_resource type="Texture2D" uid="uid://d2ip5dmut7yje" path="res://assets/sprites/sprites13.png" id="2_igmbg"]
 [ext_resource type="AudioStream" uid="uid://bfu8cflvs038" path="res://assets/sfx/CCZ BF Vocal.wav" id="4_dlu5u"]
 
@@ -16,8 +16,8 @@ resource_local_to_scene = true
 shader = ExtResource("2_hj7fv")
 shader_parameter/opacity = 1.0
 shader_parameter/r = 1.0
-shader_parameter/g = null
-shader_parameter/b = null
+shader_parameter/g = 0.0
+shader_parameter/b = 0.0
 shader_parameter/mix_color = 0.0
 
 [node name="SnakeBoss" instance=ExtResource("1_be88a")]

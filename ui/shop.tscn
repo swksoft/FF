@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://i4aj2qk6glgq"]
 
-[ext_resource type="Script" path="res://ui/shop.gd" id="1_fvkmh"]
+[ext_resource type="Script" uid="uid://dr5ln213puygp" path="res://ui/shop.gd" id="1_fvkmh"]
 [ext_resource type="Texture2D" uid="uid://id1rqod15c1l" path="res://assets/sprites/troops_shoot1.png" id="2_yuhqq"]
 [ext_resource type="Texture2D" uid="uid://bhudmftn870fb" path="res://assets/sprites/troops_missile3.png" id="3_gsatk"]
 [ext_resource type="Texture2D" uid="uid://xdpw5ubddwmk" path="res://assets/sprites/troops_homing4.png" id="4_lkv5c"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck4npq4x3nr23"]
+[gd_scene load_steps=5 format=3 uid="uid://ck4npq4x3nr23"]
 
-[ext_resource type="Script" path="res://scripts/componentes/weapon_component.gd" id="1_hxgy4"]
-[ext_resource type="Script" path="res://scripts/resources/weapon_resource.gd" id="2_5tnya"]
+[ext_resource type="Script" uid="uid://dhocwn37vl76v" path="res://scripts/componentes/weapon_component.gd" id="1_hxgy4"]
+[ext_resource type="Script" uid="uid://dtggb23a1fa86" path="res://scripts/resources/weapon_resource.gd" id="2_5tnya"]
 [ext_resource type="Resource" uid="uid://xc0o1jww0031" path="res://entities/weapons/weapons_data_all/w_test.tres" id="3_o66ni"]
+[ext_resource type="PackedScene" uid="uid://bm2jqyfpmefc6" path="res://entities/weapons/weapon.tscn" id="4_6s1be"]
 
 [node name="WeaponComponent" type="Node"]
 script = ExtResource("1_hxgy4")
 available_weapons = Array[ExtResource("2_5tnya")]([ExtResource("3_o66ni")])
 
-[connection signal="shoot" from="." to="." method="_on_shoot"]
+[node name="Weapon" parent="." instance=ExtResource("4_6s1be")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0orec0883j1m"]
 
-[ext_resource type="Script" path="res://ui/menu/main_menu.gd" id="1_fifkn"]
+[ext_resource type="Script" uid="uid://c6ti7luf4p30l" path="res://ui/menu/main_menu.gd" id="1_fifkn"]
 [ext_resource type="Texture2D" uid="uid://bw1qbrnpqxiuh" path="res://assets/portraitsex.png" id="2_1usm5"]
 [ext_resource type="Texture2D" uid="uid://cd3hqk05h3b4p" path="res://assets/game_logo.png" id="3_m2o8l"]
 [ext_resource type="AudioStream" uid="uid://mfy4vdqn4g7y" path="res://assets/music/cagliostro.ogg" id="4_l6mf5"]

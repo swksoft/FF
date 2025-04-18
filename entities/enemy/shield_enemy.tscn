@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdydricfgcfdg"]
 
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_uqwwn"]
-[ext_resource type="Script" path="res://entities/enemy/shield_enemy.gd" id="2_0tr7c"]
+[ext_resource type="Script" uid="uid://c22mryt3govie" path="res://entities/enemy/shield_enemy.gd" id="2_0tr7c"]
 [ext_resource type="Texture2D" uid="uid://l03h7uw280ju" path="res://assets/sprites/enemy_troops_shield_enemy2.png" id="2_74tbu"]
 
 [node name="ShieldEnemy" instance=ExtResource("1_uqwwn")]

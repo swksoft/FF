@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brwm5of2viki"]
 
-[ext_resource type="Script" path="res://entities/enemy/formations/path_spawn.gd" id="1_txpow"]
+[ext_resource type="Script" uid="uid://citsbafi6st4g" path="res://entities/enemy/formations/path_spawn.gd" id="1_txpow"]
 
 [sub_resource type="Curve2D" id="Curve2D_uamj4"]
 

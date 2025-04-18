@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://gyjyu2bliujw"]
 
-[ext_resource type="Script" path="res://entities/player/player.gd" id="1_gjltl"]
+[ext_resource type="Script" uid="uid://clex3p4ner537" path="res://entities/player/player.gd" id="1_gjltl"]
+[ext_resource type="Resource" uid="uid://cvvl8sucelpao" path="res://entities/player/playable_characters/ch_space_sex.tres" id="3_8p0bb"]
 [ext_resource type="PackedScene" uid="uid://dp3mdo47cbto4" path="res://scripts/componentes/health_component.tscn" id="3_xpdgr"]
 [ext_resource type="PackedScene" uid="uid://cfhsx8a7mauxw" path="res://scripts/componentes/stamina_component.tscn" id="4_414oj"]
 [ext_resource type="PackedScene" uid="uid://cu3uy1pv8jksi" path="res://entities/weapons/trails.tscn" id="4_u1xur"]
 [ext_resource type="PackedScene" uid="uid://ck4npq4x3nr23" path="res://scripts/componentes/weapon_component.tscn" id="5_gm5wt"]
 [ext_resource type="PackedScene" uid="uid://bei8pnr6ia8c4" path="res://scripts/componentes/hurtbox_component.tscn" id="5_j86qt"]
-[ext_resource type="PackedScene" uid="uid://bm2jqyfpmefc6" path="res://entities/weapons/weapon.tscn" id="6_f6sey"]
 [ext_resource type="PackedScene" uid="uid://bfakbxqn8gfh4" path="res://scripts/componentes/stats_component.tscn" id="6_iy134"]
 
 [sub_resource type="Curve" id="Curve_o2gm4"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.419808, 0.376246), 0.0, 0.0, 0, 0, Vector2(0.941059, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.275461, 0.321849), 0.0, 0.0, 0, 0, Vector2(0.941059, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_wb842"]
@@ -36,18 +36,17 @@ alpha_curve = SubResource("CurveTexture_xwrq6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uakj7"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats", "weapon", "stamina", "health") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats") groups=["Player"]]
 collision_layer = 0
 collision_mask = 32
 motion_mode = 1
 script = ExtResource("1_gjltl")
 stats = NodePath("StatsComponent")
-weapon = NodePath("WeaponComponent")
-stamina = NodePath("StaminaComponent")
-health = NodePath("HealthComponent")
 curve = SubResource("Curve_o2gm4")
+metadata/_edit_group_ = true
 
 [node name="StatsComponent" parent="." groups=["Player"] instance=ExtResource("6_iy134")]
+attribute = ExtResource("3_8p0bb")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("3_xpdgr")]
 stats = NodePath("../StatsComponent")
@@ -56,9 +55,8 @@ stats = NodePath("../StatsComponent")
 stats = NodePath("../StatsComponent")
 
 [node name="WeaponComponent" parent="." instance=ExtResource("5_gm5wt")]
-collision_layer = 2
-direction = Vector2(1, 0)
-weapon_scene = ExtResource("6_f6sey")
+collision_layer = 3
+direction_bullet = Vector2(1, 0)
 
 [node name="Trails" parent="." instance=ExtResource("4_u1xur")]
 modulate = Color(0.496337, 0.496337, 0.496337, 1)
@@ -70,9 +68,9 @@ MAX_LENGHT = 10
 [node name="Particle" type="GPUParticles2D" parent="."]
 rotation = 1.5708
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_qchni")
 lifetime = 0.15
 speed_scale = 2.0
+process_material = SubResource("ParticleProcessMaterial_qchni")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -84,6 +82,7 @@ shape = SubResource("CircleShape2D_sr4xg")
 
 [node name="HurtboxPlayer" parent="." instance=ExtResource("5_j86qt")]
 collision_mask = 10
+freeze = true
 
 [node name="Col" type="CollisionShape2D" parent="HurtboxPlayer"]
 shape = SubResource("RectangleShape2D_uakj7")
@@ -101,5 +100,7 @@ theme_override_font_sizes/font_size = 32
 text = "x"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="hit_detected" from="HurtboxPlayer" to="HealthComponent" method="_on_hurtbox_component_hit_detected"]

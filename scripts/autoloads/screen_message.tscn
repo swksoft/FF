@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://btb5tmtoqptee"]
 
-[ext_resource type="Script" path="res://scripts/autoloads/screen_message.gd" id="1_03var"]
+[ext_resource type="Script" uid="uid://c5n1261oider3" path="res://scripts/autoloads/screen_message.gd" id="1_03var"]
 [ext_resource type="AudioStream" uid="uid://dqudjbg5kr4ac" path="res://assets/sfx/decide10.wav" id="2_1vbou"]
 
 [sub_resource type="Animation" id="Animation_inso4"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofunw"]
 _data = {
-"RESET": SubResource("Animation_inso4"),
-"sweep": SubResource("Animation_iqxid")
+&"RESET": SubResource("Animation_inso4"),
+&"sweep": SubResource("Animation_iqxid")
 }
 
 [node name="ScreenMessage" type="CanvasLayer"]

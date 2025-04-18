@@ -1,6 +1,8 @@
 extends Node
 
 signal stats_loaded
+signal stamina_update(value)
+signal player_ready
 
 # NEW SIGNALS
 signal end_turn

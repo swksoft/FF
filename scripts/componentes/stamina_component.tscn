@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfhsx8a7mauxw"]
 
-[ext_resource type="Script" path="res://scripts/componentes/stamina_component.gd" id="1_tdd56"]
+[ext_resource type="Script" uid="uid://cwk8moutql8xn" path="res://scripts/componentes/stamina_component.gd" id="1_tdd56"]
 
 [node name="StaminaComponent" type="Node"]
 script = ExtResource("1_tdd56")
@@ -8,4 +8,3 @@ script = ExtResource("1_tdd56")
 [connection signal="stamina_change" from="." to="." method="_on_stamina_change"]
 [connection signal="stamina_drop" from="." to="." method="_on_stamina_drop"]
 [connection signal="stamina_out" from="." to="." method="_on_stamina_out"]
-[connection signal="stamina_recharge" from="." to="." method="_on_stamina_recharge"]

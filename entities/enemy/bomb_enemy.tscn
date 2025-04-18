@@ -1,13 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://by6hy655p6o2v"]
 
 [ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="1_c011k"]
-[ext_resource type="Script" path="res://entities/enemy/bomb_enemy.gd" id="2_4gd5s"]
+[ext_resource type="Script" uid="uid://c45wik342ayxe" path="res://entities/enemy/bomb_enemy.gd" id="2_4gd5s"]
 [ext_resource type="Texture2D" uid="uid://syf2twkypxeg" path="res://assets/sprites/enemy_troops_bomb_enemy5.png" id="2_q2lg3"]
-[ext_resource type="PackedScene" uid="uid://bellw87v5438m" path="res://entities/weapons/bullet/enemy_bomb.tscn" id="3_5tc1d"]
+
+[sub_resource type="Resource" id="Resource_xt5ka"]
+metadata/__load_path__ = "res://entities/weapons/bullet/enemy_bomb.tscn"
 
 [node name="BombEnemy" instance=ExtResource("1_c011k")]
 script = ExtResource("2_4gd5s")
-explosion_scene = ExtResource("3_5tc1d")
+explosion_scene = SubResource("Resource_xt5ka")
 can_shoot = false
 
 [node name="Sprite2D" parent="." index="1"]

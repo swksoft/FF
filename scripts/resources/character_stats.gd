@@ -41,4 +41,6 @@ class_name CharacterStats
 	get: return crit_chance
 	set(value): crit_chance = clamp(value, 0, 999)
 
+@export var dmg_sfx : AudioStreamWAV
+
 @export var bonus : StatBonusResource

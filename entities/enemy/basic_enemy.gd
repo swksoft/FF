@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var money_get = 5
 @export var randomized : bool = true
 @export var can_shoot : bool = true
 @export_category("imports")
@@ -14,6 +13,10 @@ var can_move : bool
 var direction = Vector2.LEFT.normalized()
 var invulnerabilty : bool = false
 
+@onready var hitbox: HitboxComponent = $Hitbox
+@onready var cooldown_shoot: Timer = $CooldownShootTimer
+@onready var turn_manager = get_tree().get_first_node_in_group("TurnManagerBattle")
+
 func _ready():
 	if stats == null:
 		push_error("StatsComponent no encontrado en el nodo Player")
@@ -22,10 +25,16 @@ func _ready():
 	GameEvents.emit_enemy_spawn()
 	GameEvents.stats_loaded.connect(on_stats_loaded)
 	
+	turn_manager.turn_changed.connect(_on_turn_changed)
+	hitbox.damage = stats.attribute.base_damage_max
+	
 	randomize()
 	
+	cooldown_shoot.wait_time = weapon.available_weapons[0].cooldown_shoot
+	cooldown_shoot.start()
+	
 	if randomized == true:
-		stats.attribute.speed = randi_range(50, 250)
+		stats.attribute.speed_max += randi_range(-250, 250)
 
 func on_stats_loaded():
 	name = stats.attribute.name_character
@@ -34,27 +43,13 @@ func on_stats_loaded():
 	$Sprite.texture = stats.attribute.sprite
 
 func _physics_process(delta):
-	position += direction * stats.attribute.speed * delta
-
-#func shoot():
-	#var bullet = bullet_scene.instantiate()
-	#
-	#bullet.position = global_position
-	#bullet.set_collision_layer_value(2, true)
-	#bullet.direction = Vector2.LEFT
-	#bullet.name = "BulletEnemy"
-	#get_parent().add_child(bullet, true)
+	if stamina.current_stamina > 0:
+		stamina.stamina_drop.emit(1)
+		position += direction * (stats.attribute.speed_max * delta)
 
 func _on_timer_timeout():
-	if can_shoot == true:
-		pass
-		#shoot()
-
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	visible = true
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	visible = false
+	if can_shoot == true and stamina.current_stamina > 0:
+		weapon.weapon.shoot()
 
 func die():
 	GameEvents.emit_enemy_death(stats.attribute.money_get)
@@ -64,3 +59,13 @@ func die():
 	get_parent().call_deferred("add_child", death)
 	
 	queue_free()
+
+func _on_turn_changed(turn_who):
+	print("AA")
+	var condition = (turn_who == 1)
+	
+	set_process(condition)
+	set_physics_process(condition)
+	set_process_input(condition)
+	cooldown_shoot.paused = !condition
+	

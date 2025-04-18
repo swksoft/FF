@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://duklhvuyyqi3a"]
 
-[ext_resource type="Script" path="res://addons/project_time_tracker/Demo/TestAccessFunctions.gd" id="1_7vbgl"]
+[ext_resource type="Script" uid="uid://dved2t036v4pa" path="res://addons/project_time_tracker/Demo/TestAccessFunctions.gd" id="1_7vbgl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 

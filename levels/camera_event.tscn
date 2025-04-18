@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci60x2xii305c"]
 
-[ext_resource type="Script" path="res://levels/camera_event.gd" id="1_ts556"]
+[ext_resource type="Script" uid="uid://ciyjqs0euvj5f" path="res://levels/camera_event.gd" id="1_ts556"]
 
 [node name="CameraEvent" type="Camera2D"]
 anchor_mode = 0

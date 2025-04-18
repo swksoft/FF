@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cln7640tkuc04"]
+[gd_scene load_steps=4 format=3 uid="uid://cln7640tkuc04"]
 
-[ext_resource type="Theme" uid="uid://qin8gj4wb2wr" path="res://assets/panel_theme.tres" id="1_8n2ms"]
-[ext_resource type="Script" path="res://ui/ui_shooter.gd" id="1_mrmt8"]
+[ext_resource type="Script" uid="uid://m0xc4mwb350x" path="res://ui/ui_shooter.gd" id="1_mrmt8"]
 [ext_resource type="Texture2D" uid="uid://dwihtb5uuqvrr" path="res://assets/sprites/tilemap_packed.png" id="3_56jux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rv54"]
@@ -29,7 +28,6 @@ anchor_bottom = 1.0
 offset_top = -32.0
 offset_right = 64.0
 grow_vertical = 0
-theme = ExtResource("1_8n2ms")
 
 [node name="V" type="VBoxContainer" parent="Control/PlayerTroopsContainer"]
 layout_mode = 1
@@ -63,7 +61,6 @@ horizontal_alignment = 1
 layout_mode = 1
 offset_right = 64.0
 offset_bottom = 32.0
-theme = ExtResource("1_8n2ms")
 
 [node name="V" type="VBoxContainer" parent="Control/EarningsContainer2"]
 layout_mode = 1
@@ -105,7 +102,6 @@ offset_left = -72.0
 offset_top = -32.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = ExtResource("1_8n2ms")
 
 [node name="V" type="VBoxContainer" parent="Control/EnemyTroopsContainer"]
 layout_mode = 1

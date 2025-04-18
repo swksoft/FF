@@ -1,24 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjnspysrbedcr"]
+[gd_scene load_steps=8 format=3 uid="uid://cjnspysrbedcr"]
 
+[ext_resource type="PackedScene" uid="uid://urgen6mle7w3" path="res://ui/debug/fps_counter.tscn" id="1_ecjii"]
 [ext_resource type="PackedScene" uid="uid://ci60x2xii305c" path="res://levels/camera_event.tscn" id="1_fnhnb"]
 [ext_resource type="PackedScene" uid="uid://gyjyu2bliujw" path="res://entities/player/player.tscn" id="1_qol4y"]
-[ext_resource type="Resource" uid="uid://cvvl8sucelpao" path="res://entities/player/playable_characters/ch_space_sex.tres" id="3_sx11x"]
-[ext_resource type="Script" path="res://scripts/resources/weapon_resource.gd" id="4_hmujw"]
-[ext_resource type="Resource" uid="uid://xc0o1jww0031" path="res://entities/weapons/weapons_data_all/w_test.tres" id="5_uwctu"]
-[ext_resource type="Resource" uid="uid://gudntbx6ify7" path="res://entities/weapons/weapons_data_all/w_tormenta.tres" id="6_e2f1q"]
+[ext_resource type="PackedScene" uid="uid://bkre05coasxe7" path="res://levels/turn_manager_battle/TurnManagerBattle.tscn" id="1_s8vdy"]
+[ext_resource type="PackedScene" uid="uid://bymn8ljt8aeps" path="res://entities/enemy/basic_enemy.tscn" id="4_bi1n5"]
+[ext_resource type="PackedScene" uid="uid://pc1ya140k6j7" path="res://levels/bg_cloudy_sky.tscn" id="6_yblrr"]
+[ext_resource type="PackedScene" uid="uid://ciw02d0xa2fac" path="res://ui/debug/debug_container.tscn" id="7_y10f4"]
 
 [node name="TestScene" type="Node2D"]
 
+[node name="TurnManagerBattle" parent="." instance=ExtResource("1_s8vdy")]
+turn_who = 1
+
+[node name="FPScounter" parent="." instance=ExtResource("1_ecjii")]
+
 [node name="CameraEvent" parent="." instance=ExtResource("1_fnhnb")]
+anchor_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_qol4y")]
 position = Vector2(76, 178)
 
-[node name="StatsComponent" parent="Player" index="0"]
-attribute = ExtResource("3_sx11x")
-
-[node name="WeaponComponent" parent="Player" index="3"]
-available_weapons = Array[ExtResource("4_hmujw")]([ExtResource("5_uwctu"), ExtResource("6_e2f1q")])
+[node name="BasicEnemy" parent="." instance=ExtResource("4_bi1n5")]
+position = Vector2(1224, 184)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -29,7 +33,6 @@ color = Color(0.900012, 0, 0.245309, 1)
 metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.278431)
 offset_left = 640.0
 offset_right = 1281.0
@@ -37,4 +40,25 @@ offset_bottom = 359.0
 color = Color(0, 0.555127, 0.558894, 1)
 metadata/_edit_lock_ = true
 
+[node name="DebugContainer" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_y10f4")]
+target = NodePath("../Player")
+
+[node name="DebugContainer2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_y10f4")]
+offset_left = 1176.0
+offset_right = 1276.0
+target = NodePath("../BasicEnemy")
+
+[node name="BG" parent="." instance=ExtResource("6_yblrr")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [editable path="Player"]
+[editable path="BasicEnemy"]

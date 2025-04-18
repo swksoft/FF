@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://chqqqa7i6n1en"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_nxr6k"]
+[ext_resource type="Script" uid="uid://dw40xu6wl7we0" path="res://ui/ui.gd" id="1_nxr6k"]
 [ext_resource type="PackedScene" uid="uid://ca6ybgp3mhvb7" path="res://ui/canvas_modulate.tscn" id="2_usvbh"]
 [ext_resource type="PackedScene" uid="uid://dk0srfwbfdrak" path="res://ui/general_data_display.tscn" id="3_gyt4t"]
 [ext_resource type="PackedScene" uid="uid://crs5bvsnkishe" path="res://ui/stats_panel.tscn" id="3_iprop"]
 [ext_resource type="PackedScene" uid="uid://i4aj2qk6glgq" path="res://ui/shop.tscn" id="3_nlmlf"]
 [ext_resource type="PackedScene" uid="uid://c0ucco71dbkiq" path="res://ui/tutorial.tscn" id="4_56bi6"]
 [ext_resource type="PackedScene" uid="uid://cta8kqqo48hva" path="res://ui/enable_and_disable_on_turn.tscn" id="4_f2s04"]
-[ext_resource type="Script" path="res://ui/enable_and_disable_on_turn.gd" id="5_74tor"]
+[ext_resource type="Script" uid="uid://2ty5blqanef3" path="res://ui/enable_and_disable_on_turn.gd" id="5_74tor"]
 [ext_resource type="Texture2D" uid="uid://44qfej66jfvr" path="res://assets/sprites/james.png" id="5_rm24b"]
 
 [node name="UI" type="Control"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://bypjqlawxxlmd"]
+
+[ext_resource type="Script" uid="uid://bgsji47wdma6d" path="res://scripts/resources/bullet_resource.gd" id="1_6ssd5"]
+[ext_resource type="Texture2D" uid="uid://bydhuo25yjua2" path="res://entities/weapons/assets/laser.png" id="2_6vkk8"]
+
+[resource]
+script = ExtResource("1_6ssd5")
+name_bullet = "No Name"
+sprite_bullet = ExtResource("2_6vkk8")
+damage = 10.0
+speed = 500.0
+lifetime = 5.0
+explosion_radius = 3.0
+pierce = 3

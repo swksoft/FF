@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu3uy1pv8jksi"]
 
-[ext_resource type="Script" path="res://entities/weapons/trails.gd" id="1_dsneg"]
+[ext_resource type="Script" uid="uid://d2k75xe50ted4" path="res://entities/weapons/trails.gd" id="1_dsneg"]
 
 [sub_resource type="Curve" id="Curve_7xe7e"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
