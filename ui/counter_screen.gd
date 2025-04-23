@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-# FIXME: DINERO NO SUBE AL PARECER 
-# FIXME: HAY COLISIONES/PROYECTILES ROTOS
-
 var territory : String
 var layer_num = 5
 

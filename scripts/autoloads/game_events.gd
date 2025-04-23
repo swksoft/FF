@@ -112,7 +112,7 @@ func get_total_troops():
 
 func _ready():
 	actions = max_actions
-	reset_data() # TODO: COLOCAR EN BUILD
+	reset_data()
 
 func reset_data():
 	territories = {
@@ -172,7 +172,6 @@ func emit_stats_loaded():
 	stats_loaded.emit()
 
 # TODO: COMO HAREMOS QUE LA CARGA FUNCIONE CON MULTIPLES ENTIDADES?
-# TODO: APLICAR CON ENEMIGOS APLICANDO CLASE ENTITY
 func emit_loading_started():
 	loading_started.emit()
 

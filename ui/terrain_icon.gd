@@ -1,7 +1,5 @@
 extends VBoxContainer
 
-#FIXME: EXPLOSIONS WORKS AT RANDOM
-
 @export var territory_name : String = "None"
 @export var conquered_image : CompressedTexture2D
 

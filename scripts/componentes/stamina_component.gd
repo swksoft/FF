@@ -16,7 +16,7 @@ var current_stamina : float:
 	get:
 		return current_stamina
 	set(value):
-		current_stamina = clamp(value, -9999, max_stamina)
+		current_stamina = clamp(value, 0, max_stamina)
 		if current_stamina <= 0:
 			stamina_out.emit()
 var recharge_rate : float
@@ -40,7 +40,7 @@ func _on_stamina_drop(rate) -> void:
 	GameEvents.stamina_update.emit(current_stamina)
 
 func _on_stamina_out() -> void:
-	get_parent().can_move = false
+	get_parent().finish_turn.emit()
 
 func _on_stamina_change(value: float) -> void:
 	current_stamina += value

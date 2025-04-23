@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck831ajmab6l1"]
+[gd_scene load_steps=5 format=3 uid="uid://ck831ajmab6l1"]
 
 [ext_resource type="Script" uid="uid://1g43pww3y2kk" path="res://ui/in_game/hud.gd" id="1_f3kwf"]
+[ext_resource type="Script" uid="uid://cd64mw42tg6kr" path="res://ui/in_game/turn_label.gd" id="2_a4n18"]
+[ext_resource type="Script" uid="uid://b7p80kc6017k0" path="res://ui/in_game/result_label.gd" id="3_t6u48"]
+[ext_resource type="Script" uid="uid://bnfndv2dx3ssk" path="res://ui/in_game/turn_number_label.gd" id="4_hcjlq"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_f3kwf")
@@ -37,3 +40,52 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Loading..."
+
+[node name="TurnLabel" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.041
+anchor_right = 0.5
+anchor_bottom = 0.041
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_a4n18")
+
+[node name="ResultLabel" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_t6u48")
+
+[node name="TurnNumberLabel" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.975
+anchor_right = 0.5
+anchor_bottom = 0.98
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Round 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_hcjlq")

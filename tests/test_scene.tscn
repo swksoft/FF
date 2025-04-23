@@ -55,5 +55,9 @@ visible = false
 [node name="Hud" parent="." node_paths=PackedStringArray("entities") instance=ExtResource("8_2rgn6")]
 entities = [NodePath("../Player")]
 
+[connection signal="battle_ended" from="TurnManagerBattle" to="Player" method="_on_turn_manager_battle_battle_ended"]
+[connection signal="battle_ended" from="TurnManagerBattle" to="Hud" method="_on_turn_manager_battle_battle_ended"]
+[connection signal="turn_changed" from="TurnManagerBattle" to="Hud" method="_on_turn_manager_battle_turn_changed"]
+
 [editable path="Player"]
 [editable path="BasicEnemy"]

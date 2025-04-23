@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strenght, shake_strenght), rng.randf_range(-shake_strenght, shake_strenght))
 
-func _on_turn_changed(turn_who):
+func _on_turn_changed(turn_who, number):
 	if turn_who == 0:
 		position.x = RIGHT_SCREEN
 	else:

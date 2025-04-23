@@ -1,8 +1,11 @@
 extends CanvasLayer
 
-@onready var loading_screen: ColorRect = $Hud/LoadingScreen
-
 @export var entities: Array[Node]
+
+@onready var loading_screen: ColorRect = $Hud/LoadingScreen
+@onready var turn_label: Label = $Hud/TurnLabel
+@onready var result_label: Label = $Hud/ResultLabel
+@onready var turn_number_label: Label = $Hud/TurnNumberLabel
 
 var nodes_loading := 0
 
@@ -22,3 +25,10 @@ func _on_node_loading_finished() -> void:
 	
 	if nodes_loading <= 0:
 		loading_screen.visible = false
+
+func _on_turn_manager_battle_turn_changed(turn_who: Variant, number) -> void:
+	turn_label.set_target(turn_who)
+	turn_number_label.set_number(number)
+
+func _on_turn_manager_battle_battle_ended(winner: String) -> void:
+	result_label.set_target(str(winner))

@@ -4,3 +4,5 @@
 
 [node name="TurnManagerBattle" type="Node" groups=["TurnManagerBattle"]]
 script = ExtResource("1_fwl7a")
+max_turns = 4
+turn_who = 1
