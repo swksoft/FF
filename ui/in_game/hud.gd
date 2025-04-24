@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var turn_label: Label = $Hud/TurnLabel
 @onready var result_label: Label = $Hud/ResultLabel
 @onready var turn_number_label: Label = $Hud/TurnNumberLabel
+@onready var timer_label: Label = $Hud/TimerLabel
 
 var nodes_loading := 0
 
@@ -18,7 +19,7 @@ func _on_node_loading_started() -> void:
 
 	loading_screen.visible = true
 	
-	print_debug(nodes_loading)
+	print_debug("Nodos cargando: ", nodes_loading)
 
 func _on_node_loading_finished() -> void:
 	nodes_loading -= 1
@@ -32,3 +33,6 @@ func _on_turn_manager_battle_turn_changed(turn_who: Variant, number) -> void:
 
 func _on_turn_manager_battle_battle_ended(winner: String) -> void:
 	result_label.set_target(str(winner))
+
+func _on_turn_manager_battle_turn_time_send(amount: float) -> void:
+	timer_label.set_time(amount)

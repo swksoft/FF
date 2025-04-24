@@ -30,18 +30,15 @@ func _on_entity_ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
-		if event.is_action_pressed("restart") and OS.is_debug_build():
-			get_tree().reload_current_scene()
-		
-		elif event.is_action_pressed("wheel_up"):
+		if event.is_action_pressed("wheel_up"):
 			weapon.switch_weapon(1)
 		elif event.is_action_pressed("wheel_down"):
 			weapon.switch_weapon(-1)
 		
-		elif event.is_action_pressed("right_click") and OS.is_debug_build():
+		elif event.is_action_pressed("recharge_debug") and OS.is_debug_build():
 			stamina.stamina_change.emit(45)
 		
-		elif event.is_action_pressed("finish_turn"):
+		elif event.is_action_pressed("finish_turn") and stamina.current_stamina > 0:
 			finish_turn.emit()
 
 	if event.is_action_pressed("shoot") and can_move and stamina.current_stamina > 0:
@@ -78,7 +75,7 @@ func die():
 	super.die()
 
 func _on_turn_changed(_turn_who, _number):
-	stamina.stamina_change.emit(50)
+	super._on_turn_changed(_turn_who, _number)
 	set_physics_process(_turn_who == 0)
 	set_process_input(_turn_who == 0)
 
@@ -86,4 +83,4 @@ func _on_turn_manager_battle_battle_ended(_winner: String) -> void:
 	set_physics_process(false)
 
 func _on_finish_turn() -> void:
-	print("TURNO FINALIZADO")
+	turn_manager.end_turn()

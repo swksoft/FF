@@ -29,7 +29,7 @@ func _on_entity_ready() -> void:
 	turn_manager.turn_changed.connect(_on_turn_changed)
 
 func _on_turn_changed(_turn_who, _number) -> void:
-	pass
+	stamina.stamina_change.emit(50)
 
 func die():
 	var death = stats.attribute.death_animation.instantiate()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck831ajmab6l1"]
+[gd_scene load_steps=6 format=3 uid="uid://ck831ajmab6l1"]
 
 [ext_resource type="Script" uid="uid://1g43pww3y2kk" path="res://ui/in_game/hud.gd" id="1_f3kwf"]
 [ext_resource type="Script" uid="uid://cd64mw42tg6kr" path="res://ui/in_game/turn_label.gd" id="2_a4n18"]
 [ext_resource type="Script" uid="uid://b7p80kc6017k0" path="res://ui/in_game/result_label.gd" id="3_t6u48"]
 [ext_resource type="Script" uid="uid://bnfndv2dx3ssk" path="res://ui/in_game/turn_number_label.gd" id="4_hcjlq"]
+[ext_resource type="Script" uid="uid://r5kh56oua0hn" path="res://ui/in_game/timer_label.gd" id="5_xpgyu"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_f3kwf")
@@ -15,6 +16,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="LoadingScreen" type="ColorRect" parent="Hud"]
 layout_mode = 1
@@ -89,3 +92,19 @@ text = "Round 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_hcjlq")
+
+[node name="TimerLabel" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.975
+anchor_top = 0.983
+anchor_right = 0.985
+anchor_bottom = 0.985
+offset_left = -40.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "15.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_xpgyu")

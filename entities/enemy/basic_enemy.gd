@@ -48,6 +48,7 @@ func die():
 	super.die()
 
 func _on_turn_changed(_turn_who, _number) -> void:
+	super._on_turn_changed(_turn_who, _number)
 	var condition = (_turn_who == 1)
 	
 	set_physics_process(condition)
@@ -55,4 +56,4 @@ func _on_turn_changed(_turn_who, _number) -> void:
 	cooldown_shoot.paused = !condition
 
 func _on_finish_turn() -> void:
-	print("TURNO FINALIZADO")
+	turn_manager.end_turn()

@@ -30,7 +30,6 @@ func _on_health_change(amount: int):
 	invulneravility.emit()
 	if current_health == 0:
 		emit_signal("dead")
-	print(current_health)
 
 func _on_dead() -> void:
 	get_parent().die()
