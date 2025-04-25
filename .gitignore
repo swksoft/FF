@@ -3,4 +3,4 @@ zbuilds/
 addons/
 .vscode/
 tests/
-ptt.json
+/ptt.json

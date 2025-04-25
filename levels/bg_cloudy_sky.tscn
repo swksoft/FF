@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://pc1ya140k6j7"]
+[gd_scene load_steps=10 format=3 uid="uid://pc1ya140k6j7"]
 
 [ext_resource type="Shader" uid="uid://d4hsumoyck22a" path="res://scripts/shaders/scroll.gdshader" id="1_yeidh"]
 [ext_resource type="Texture2D" uid="uid://cafvuwcmyfgx8" path="res://assets/gui/nocheestrellada.png" id="2_jdmn8"]
 [ext_resource type="Texture2D" uid="uid://cmtaemfquqk88" path="res://assets/gui/sky2.png" id="3_0rjbo"]
 [ext_resource type="Texture2D" uid="uid://cad3b8e7cj46i" path="res://assets/gui/sky1.png" id="4_ys85t"]
+[ext_resource type="Shader" uid="uid://cv8860tudub4k" path="res://scripts/shaders/gaussian_blur.gdshader" id="5_umd44"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jii21"]
 shader = ExtResource("1_yeidh")
@@ -17,60 +18,30 @@ shader_parameter/speed = 0.5
 shader = ExtResource("1_yeidh")
 shader_parameter/speed = 0.25
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o60a"]
+shader = ExtResource("5_umd44")
+shader_parameter/blur_radius = 4
+shader_parameter/blur_scale = 3.145
+shader_parameter/darkness = 1.0
+shader_parameter/fade_direction = 2
+shader_parameter/fade_cutoff = 1.0
+shader_parameter/fade_intensity = 2.415
+
 [node name="BG" type="CanvasLayer"]
 layer = -2
 
 [node name="LayerBG3" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.396078)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_jii21")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_jdmn8")
-
-[node name="LayerBG4" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.396078)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_jii21")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 640.0
-offset_right = 640.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_jdmn8")
-
-[node name="LayerBG5" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.396078)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_jii21")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1280.0
-offset_right = 1280.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_jdmn8")
-
-[node name="LayerBG6" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.396078)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_jii21")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -640.0
-offset_right = -640.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_jdmn8")
 
 [node name="LayerBG1" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.509804)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_gv3wo")
@@ -80,22 +51,6 @@ anchor_bottom = 1.0
 offset_left = -640.0
 offset_top = -12.0
 offset_right = -640.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-texture = ExtResource("3_0rjbo")
-
-[node name="LayerBG8" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.509804)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_gv3wo")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 640.0
-offset_top = -12.0
-offset_right = 640.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -103,6 +58,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_0rjbo")
 
 [node name="LayerBG2" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.509804)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_nchiv")
@@ -118,18 +74,11 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("4_ys85t")
 
-[node name="LayerBG7" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.509804)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_nchiv")
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_6o60a")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 640.0
-offset_top = -12.0
-offset_right = 640.0
-offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-texture = ExtResource("4_ys85t")

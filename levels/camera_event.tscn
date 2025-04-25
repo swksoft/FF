@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciyjqs0euvj5f" path="res://levels/camera_event.gd" id="1_ts556"]
 
 [node name="CameraEvent" type="Camera2D"]
+process_mode = 3
 anchor_mode = 0
 limit_left = 0
 limit_top = 0

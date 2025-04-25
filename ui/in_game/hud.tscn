@@ -45,6 +45,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Loading..."
 
 [node name="TurnLabel" type="Label" parent="Hud"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -60,6 +61,7 @@ vertical_alignment = 1
 script = ExtResource("2_a4n18")
 
 [node name="ResultLabel" type="Label" parent="Hud"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,6 +79,7 @@ vertical_alignment = 1
 script = ExtResource("3_t6u48")
 
 [node name="TurnNumberLabel" type="Label" parent="Hud"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -94,6 +97,7 @@ vertical_alignment = 1
 script = ExtResource("4_hcjlq")
 
 [node name="TimerLabel" type="Label" parent="Hud"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.975
@@ -104,7 +108,7 @@ offset_left = -40.0
 offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "15.00"
+text = "TIME: [float]"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_xpgyu")

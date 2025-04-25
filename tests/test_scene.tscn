@@ -18,6 +18,7 @@ process_mode = 1
 [node name="EventManagerBattle" parent="." instance=ExtResource("2_12c2v")]
 
 [node name="FPScounter" parent="." instance=ExtResource("1_ecjii")]
+layer = 128
 
 [node name="CameraEvent" parent="." instance=ExtResource("1_fnhnb")]
 anchor_mode = 1
@@ -37,7 +38,6 @@ offset_right = 1276.0
 target = NodePath("../BasicEnemy")
 
 [node name="BG" parent="." instance=ExtResource("6_yblrr")]
-visible = false
 
 [node name="Hud" parent="." node_paths=PackedStringArray("entities") instance=ExtResource("8_2rgn6")]
 entities = [NodePath("../Player")]

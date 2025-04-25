@@ -11,6 +11,7 @@ extends CanvasLayer
 var nodes_loading := 0
 
 func _ready() -> void:
+	layer = 999
 	GameEvents.loading_started.connect(_on_node_loading_started)
 	GameEvents.loading_finished.connect(_on_node_loading_finished)
 
@@ -26,6 +27,11 @@ func _on_node_loading_finished() -> void:
 	
 	if nodes_loading <= 0:
 		loading_screen.visible = false
+	layer = 1
+	
+	turn_label.visible = true
+	result_label.visible = true
+	turn_number_label.visible = true
 
 func _on_turn_manager_battle_turn_changed(turn_who: Variant, number) -> void:
 	turn_label.set_target(turn_who)
@@ -35,4 +41,5 @@ func _on_turn_manager_battle_battle_ended(winner: String) -> void:
 	result_label.set_target(str(winner))
 
 func _on_turn_manager_battle_turn_time_send(amount: float) -> void:
+	timer_label.visible = true
 	timer_label.set_time(amount)
